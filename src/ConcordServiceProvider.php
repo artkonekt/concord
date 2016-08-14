@@ -26,6 +26,10 @@ class ConcordServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('concord', function ($app) {
+            return new Concord();
+        });
+
         $this->registerListCommand();
     }
 
@@ -39,9 +43,10 @@ class ConcordServiceProvider extends ServiceProvider
     {
         // For each of the registered modules, include their routes and Views
         $modules = config("concord.modules");
+        $modules = $modules ?: [];
 
-        while (list(, $module) = each($modules)) {
-            App::register($module);
+        foreach ($modules as $module) {
+            $this->app['concord']->registerModule($module);
         }
 
         $this->publishes([

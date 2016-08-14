@@ -48,6 +48,12 @@ In the `config/app.php` configuration file, add to the provider array:
 ]
 ```
 
+#### Publish The Config File
+
+```
+php artisan vendor:publish --provider="Konekt\Concord\ConcordServiceProvider" --tag=config
+```
+
 ## Application
 
 Any application can be a Concord compliant application that complies with its rules.

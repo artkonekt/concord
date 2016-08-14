@@ -14,6 +14,7 @@ namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Konekt\Concord\Concord;
 use Konekt\Concord\Module;
 
 class ListCommand extends Command
@@ -31,11 +32,11 @@ class ListCommand extends Command
     protected $modules;
 
 
-    public function __construct(Collection $modules)
+    public function __construct(Concord $concord)
     {
         parent::__construct();
 
-        $this->modules = $modules;
+        $this->modules = $concord->getModules();
     }
 
     /**
