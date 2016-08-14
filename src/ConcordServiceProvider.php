@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Konekt\Concord\Console\Commands\ListCommand;
 
@@ -27,7 +26,7 @@ class ConcordServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('concord', function ($app) {
-            return new Concord();
+            return new Concord($app);
         });
 
         $this->registerListCommand();

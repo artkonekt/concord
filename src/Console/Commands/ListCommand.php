@@ -15,7 +15,7 @@ namespace Konekt\Concord\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Konekt\Concord\Concord;
-use Konekt\Concord\Module;
+use Konekt\Concord\ModuleServiceProvider;
 
 class ListCommand extends Command
 {
@@ -26,7 +26,7 @@ class ListCommand extends Command
     protected $description = 'List Concord Application Modules';
 
     /** @var array  */
-    protected $headers = ['#', 'Name', 'Version'];
+    protected $headers = ['#', 'Name', 'Version', 'Namespace'];
 
     /** @var  Collection */
     protected $modules;
@@ -49,7 +49,7 @@ class ListCommand extends Command
         if ($this->modules->count()) {
             $this->showModules();
         } else {
-            $this->line('No modules have been registered so far. Go to config/concord.php to add one.');
+            $this->line('No modules have been registered. Add one in config/concord.php.');
         }
     }
 
@@ -61,14 +61,15 @@ class ListCommand extends Command
         $table = [];
         $i     = 0;
 
-        /** @var Module $module */
+        /** @var ModuleServiceProvider $module */
         foreach ($this->modules as $module) {
             $i++;
 
             $table[] = [
-                'no'      => sprintf('%d.', $i),
-                'name'    => $module->name,
-                'version' => $module->version
+                'no'        => sprintf('%d.', $i),
+                'name'      => $module->getManifest()->getName(),
+                'version'   => $module->getManifest()->getVersion(),
+                'namespace' => $module->getNamespaceRoot()
             ];
         }
 

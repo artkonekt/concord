@@ -13,19 +13,28 @@
 namespace Konekt\Concord;
 
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
+use Konekt\Concord\Module\Loader;
 
 class Concord
 {
     /** @var Collection  */
     protected $modules;
 
+    /** @var  Loader */
+    protected $loader;
+
+    /** @var  Application */
+    protected $app;
+
     /**
      * Concord class constructor
      */
-    public function __construct()
+    public function __construct(Application $app)
     {
         $this->modules = Collection::make([]);
+        $this->app     = $app;
     }
 
 
@@ -36,10 +45,7 @@ class Concord
      */
     public function registerModule($moduleClass)
     {
-        $module = new Module();
-        $module->name = $moduleClass;
-
-        App::register($moduleClass);
+        $module = $this->getLoader()->loadModule($moduleClass);
 
         $this->modules->push($module);
     }
@@ -52,6 +58,20 @@ class Concord
     public function getModules()
     {
         return $this->modules;
+    }
+
+    /**
+     * Returns the Module Loader instance (lazy load)
+     *
+     * @return Loader
+     */
+    protected function getLoader()
+    {
+        if (!$this->loader) {
+            $this->loader = new Loader($this->app);
+        }
+
+        return $this->loader;
     }
 
 }
