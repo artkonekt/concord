@@ -2,9 +2,9 @@
 
 > **Note**: This is a very early draft version of the Concord spec, it is about to change a lot.
 
-Concord is a set of rules and contracts that establishes the foundations of an extensible PHP application framework.
+Concord is a set of rules and contracts that establishes a modular business application framework on top of Laravel.
 
-It is **NOT** an MVC framework but it's intended to be built on top of Laravel 5.3+
+It is **NOT** an MVC framework but an extension on top of Laravel 5.3+
 
 ## Main Goals
 
@@ -29,6 +29,24 @@ It is **NOT** an MVC framework but it's intended to be built on top of Laravel 5
 - [Caffeinated Themes](https://github.com/caffeinated/themes)
 - [Caffeinated Repository](https://github.com/caffeinated/repository)
 - https://github.com/creolab/laravel-modules
+
+## Installation
+
+#### With Composer
+
+Add the dependency to composer: `composer require konekt/concord`
+
+#### Register The Provider
+
+In the `config/app.php` configuration file, add to the provider array:
+
+```php
+'providers' => [
+    // Other Service Providers
+
+    Konekt\Concord\ConcordServiceProvider::class,
+]
+```
 
 ## Application
 

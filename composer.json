@@ -1,0 +1,24 @@
+{
+    "name": "konekt/concord",
+    "description": "Concord is a set of rules and contracts that establishes a modular business application framework on top of Laravel",
+    "type": "library",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Attila Fulop",
+            "homepage": "https://github.com/fulopattila122"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/artkonekt/concord"
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "~5.3",
+        "illuminate/console": "~5.3"
+    },
+    "autoload": {
+        "psr-4": { "Konekt\\Concord\\": "src"}
+    }
+}
