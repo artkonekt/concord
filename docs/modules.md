@@ -30,8 +30,6 @@ module-src/
     Providers/
         |-- ModuleServiceProvider.php
     resources/
-        |-- config/
-            |-- module.php
         |-- manifest.php
     
 ```
@@ -74,4 +72,4 @@ module-src/
     
 ```
 
-#### Next: [Rules &raquo;](rules.md)
+#### Next: [Create A Module &raquo;](modules-create.md)

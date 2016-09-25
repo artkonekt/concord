@@ -19,6 +19,9 @@
         "illuminate/console": "~5.3"
     },
     "autoload": {
-        "psr-4": { "Konekt\\Concord\\": "src"}
+        "psr-4": { "Konekt\\Concord\\": "src"},
+        "files": [
+            "src/Support/functions.php"
+        ]
     }
 }
