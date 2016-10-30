@@ -8,6 +8,7 @@
  * @since       2016-09-25
  *
  */
+use Konekt\Concord\Contracts\ConcordInterface;
 
 /**
  * Converts a fully qualified classname to a string (backslashes to dots, parts to snake case)
@@ -50,4 +51,27 @@ function slug_to_classpath($str)
 
     return implode('\\', $parts);
 
+}
+
+/**
+ * Shortcut function for returning helper instances by their name
+ *
+ * @param string    $name       The name of the helper
+ * @param array     $arguments  Optional arguments to pass to the helper class
+ *
+ * @return
+ */
+function helper($name, $arguments = [])
+{
+    return App::make('concord.helper')->get($name, $arguments);
+}
+
+/**
+ * Returns the concord instance
+ *
+ * @return ConcordInterface
+ */
+function concord()
+{
+    return App::make('concord');
 }

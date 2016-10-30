@@ -16,9 +16,10 @@
 ## Optional Rules
 
 1. Modules should define configuration files
-2. Modules should do controller bindings via interfaces in their routes definition
-3. Modules should use Eloquent models
-4. Apps should aggregate all entities (Eloquent models) from the models in `app/Entities` folder by extending their classes, eg.:
+2. Module services should be defined via interfaces instead of string based names. Eg. `VendorX\ModuleY\Contracts\FooRepositoryInterface` instead of `moduley.fooreposoitory`. (_The latter is prevalent in the Symfony world, but it has no direct binding on the code level. Laravel's container supports both of these, Concord recommends the interface variant._)
+3. Modules should do controller bindings via interfaces in their routes definition
+4. Modules should use Eloquent models
+5. Apps should aggregate all entities (Eloquent models) from the models in `app/Entities` folder by extending their classes, eg.:
     ```php
     namespace App\Entities;
 

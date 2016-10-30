@@ -100,4 +100,5 @@ pushing instances from controllers would just increase noise.
 
 So Concord's idea is that helpers are generally just services registered
 in the service container but they can be reached via an abbreviated call
-like `helper('money')->helperMeyhod()`.
+like `helper('money')->helperMethod()` or if you register the Helper
+facade `Helper::get('money')->helperMethod()`.

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the ModuleServiceProvider.php class.
+ * Contains the ModuleServiceProvider class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop

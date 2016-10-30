@@ -48,6 +48,16 @@ In the `config/app.php` configuration file, add to the provider array:
 ]
 ```
 
+Optionally, you can register facade aliases in `config/app.php`:
+
+```php
+'aliases' => [
+    // ...
+    'Concord' => Konekt\Concord\Facades\Concord::class,
+    'Helper'  => Konekt\Concord\Facades\Helper::class,
+],
+```
+
 #### Publish The Config File
 
 ```
@@ -56,4 +66,4 @@ php artisan vendor:publish --provider="Konekt\Concord\ConcordServiceProvider" --
 
 ## Documenatation
 
-Find the documentation [in the `docs/` folder](docs/index.md) in this repo
+See the [documentation](docs/index.md) in the `docs` folder of this repo.

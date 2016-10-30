@@ -15,9 +15,10 @@ namespace Konekt\Concord;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
+use Konekt\Concord\Contracts\ConcordInterface;
 use Konekt\Concord\Module\Loader;
 
-class Concord
+class Concord implements ConcordInterface
 {
     /** @var Collection  */
     protected $modules;
@@ -30,6 +31,8 @@ class Concord
 
     /**
      * Concord class constructor
+     *
+     * @param Application $app
      */
     public function __construct(Application $app)
     {
@@ -39,9 +42,7 @@ class Concord
 
 
     /**
-     * Registers a new module based on its class name
-     *
-     * @param string    $moduleClass
+     * @inheritdoc
      */
     public function registerModule($moduleClass)
     {
@@ -51,9 +52,17 @@ class Concord
     }
 
     /**
-     * Returns the collection of available modules
-     *
-     * @return Collection
+     * @inheritdoc
+     */
+    public function registerHelper($name, $moduleClass)
+    {
+        config([
+            sprintf('concord.helpers.%s', $name) => $moduleClass
+        ]);
+    }
+
+    /**
+     * @inheritdoc
      */
     public function getModules()
     {
