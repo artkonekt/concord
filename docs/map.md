@@ -11,8 +11,8 @@ It shows, where specific parts should be placed, implemented or customized
 | Repositories                  |   D    |  E,B  |    E,O,B    |
 | Events                        |   D    |   D   |      D      |
 | Listeners                     |   -    |   D   |      D      |
-| Event-Listener Bindings       |   -    |   D   |     D,O     |
-| Helpers                       |   D    |   D   |      D      |
+| Event-Listener Bindings       |   -    |   D   |    D,O,I    |
+| Helpers                       |   D    |   D   |    D,E,O    |
 | Blade Components (v5.4)       |   D    |  D,O  |     D,O     |
 | Views                         |   -    |  D,P  |     D,O     |
 | Routes                        |   -    |  D,P  |    D,O,I    |
