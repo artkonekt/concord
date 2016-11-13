@@ -128,3 +128,4 @@ Request types (form types); box or app level.
 
 Laravel notifications; box or app level.
 
+#### Next: [Map &raquo;](map.md)

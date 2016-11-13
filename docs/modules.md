@@ -39,22 +39,15 @@ module-src/
  
 ```
 module-src/
-    Console/
     Contracts/
     Events/
     Exceptions/
-    Http/
-        |-- Controllers/
-        |-- Middleware/
-        |-- Requests/
-    Jobs/
-    Listeners/
+    Helpers/
     Models/
         |-- Entities/
         |-- Repositories/
     Providers/
         |-- ModuleServiceProvider.php
-        |-- EventServiceProvider.php
     Services/
     resources/
         |-- config/
@@ -62,13 +55,6 @@ module-src/
         |-- database/
             |-- migrations/
             |-- seeds/
-        |-- lang/
-        |-- public/
-            |-- assets/
-        |-- routes/
-            |-- api.php
-            |-- web.php
-        |-- views/
         |-- manifest.php
     
 ```

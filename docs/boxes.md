@@ -48,4 +48,51 @@ both boxes**, and from the client's perspective they constitute **a single syste
 - Boxes **should** bind repository interfaces to implementations.
 - Boxes **may define** commands, middlewares, helpers and notifications.
 
+## Module Folder Structure
+
+#### Minimum Fileset For A Concord Module
+
+```
+box-src/
+    Providers/
+        |-- BoxServiceProvider.php
+    resources/
+        |-- manifest.php
+    
+```
+
+#### Full Stack Of Recommended File/Folder Structure
+ 
+```
+box-src/
+    Console/
+    Exceptions/
+    Helpers/
+    Http/
+        |-- Controllers/
+        |-- Middleware/
+        |-- Requests/
+    Jobs/
+    Listeners/
+    Models/
+        |-- Entities/
+        |-- Repositories/
+    Providers/
+        |-- BoxServiceProvider.php
+        |-- EventServiceProvider.php
+    Services/
+    resources/
+        |-- config/
+            |-- box.php
+        |-- lang/
+        |-- public/
+            |-- assets/
+        |-- routes/
+            |-- api.php
+            |-- web.php
+        |-- views/
+        |-- manifest.php
+    
+```
+
 #### Next: [Application &raquo;](application.md)
