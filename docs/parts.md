@@ -1,13 +1,16 @@
-# Module Parts
+# Parts
 
 ## Configuration
 
 Following the Laravel convention, these are simple php files returning arrays.
 
+## Migrations
+
+Migrations.
+
 ## Entities
 
-Entities are preferably Eloquent models, optionally "aggregated" in the `app/Entities` folder (under `App\Entities` namespace) (? -  to be decided).
-
+Entities are Eloquent models, optionally "aggregated" in the `app/Entities` folder (under `App\Entities` namespace) (? -  to be decided).
 
 The approach is somewhat similar to what Doctrine v1 did use (eg. User extends BaseUser), so the `app/Entities` is rather a proxy folder, which typically extends entity classes defined in modules.
 
@@ -15,70 +18,48 @@ The approach is somewhat similar to what Doctrine v1 did use (eg. User extends B
 
 This way apps can easily modify the entities defined by the modules, and they'll be in a single folder
 
-## Controllers
+## Repositories
 
-A module can ship with predefined controllers, and they can be used directly or via routes.
+Concord Repositories are [collection oriented](http://shawnmc.cool/the-repository-pattern#collection-oriented-vs-persistence-oriented),
+thus only to be used for data retrieval; persistence (store, update, delete) should be done directly via the model.
 
-In case an app wants to extend a module's controller AND wants to use the module's built in routes, it should do the following thing:
+Use of [query scopes](https://laravel.com/docs/5.3/eloquent#query-scopes) is encouraged, repositories should wrap them.
 
-- The module controllers should specified in routes via interfaces (`Contracts` folder)
-- Laravel's dynamic class loader is able to resolve classes
-- In case the app wants to use a different implementation, it has to bind another implementation to that interface:
+## Events
 
-```php
-    $this->app->bind(
-        'ExampleModule\Contracts\ExampleController',
-        'App\Concord\ExampleModule\Controllers\ExampleController'
-    );
-```
+Events should be defined on module level, but it is allowed define them on higher levels (box, app).
 
-## Middlewares
+## Listeners
 
-## Events And Listeners
+Listeners should not be defined on module level, they are expected to be defined on box or app level.
 
-Events and listeners can be defined either by modules or the application itself.
-Modules define their default event-listener bindings in their own `Providers/EventServiceProvider.php` file.
+## Event-Listener Bindings
 
-An app however, may want to override these bindings.
+Modules must not bind events to listeners. Boxes and apps are expected to do so.
+[Details](parts-event-listener-bindings.md)
 
-As an example a forum module defines that a `CommentWasPosted` event is being listened by `SendEmailToThreadSubscribers` and `IncreaseUserPostCount` listeners.
-But the implementing app may want to omit sending these emails, so they can override these module bindings.
+## Helpers
 
-So in case you want the module loader to register the module's EventServiceProvider (which it doesn't do by default) you should add this to the module's config file:
+Freely based on the idea of Magento helpers. These kinds of classes are
+often required in views where using namespaces isn't very elegant, and
+pushing instances from controllers would just increase noise.
 
-```php
-return [
-    'concord' => [
-        'loader' => [
-            'register' => [
-                'events_provider' => true
-            ]
-        ]
-    ]
-];
-```
+So Concord's idea is that helpers are generally just services registered
+in the service container but they can be reached via an abbreviated call
+like `helper('money')->helperMethod()` or if you register the Helper
+facade `Helper::get('money')->helperMethod()`.
 
-## Routes
+## Blade Components
 
-You may or may not want to use routes provided by the module.
-Registering of routes therefore can be enabled in the module config
+> **Warning**: This is a Laravel 5.4 feature!
 
-```php
-return [
-    'concord' => [
-        'loader' => [
-            'register' => [
-                'routes' => ['web', 'api']
-            ]
-        ]
-    ]
-];
-```
+Modules must not define views, however they can define blade components that act as "view templates" to be reused on higher levels.
 
 ## Views
 
-You may or may not want to use views provided by the module.
-Registering of views can be enabled in the module config very similarly to routes
+Modules must not define views, and boxes are expected to.
+Applications may or may not want to use views provided by boxes.
+Registering of views can be enabled in the box config
 
 ```php
 return [
@@ -92,13 +73,58 @@ return [
 ];
 ```
 
-## Helpers
+## Routes
 
-Freely based on the idea of Magento helpers. These kinds of classes are
-often required in views where using namespaces isn't very elegant, and
-pushing instances from controllers would just increase noise.
+Modules must not define routes, boxes are expected to.
+An App may or may not want to use routes provided by a box.
+Registering of routes therefore can be enabled in the box config very similarly to views.
 
-So Concord's idea is that helpers are generally just services registered
-in the service container but they can be reached via an abbreviated call
-like `helper('money')->helperMethod()` or if you register the Helper
-facade `Helper::get('money')->helperMethod()`.
+```php
+return [
+    'concord' => [
+        'loader' => [
+            'register' => [
+                'routes' => ['web', 'api']
+            ]
+        ]
+    ]
+];
+```
+
+## Resources
+
+Resources (assets, sass, js, lang files, etc) belong to boxes and applications.
+
+## Controllers
+
+A box can ship with predefined controllers, and they can be used directly or via routes.
+
+In case an app wants to extend a boxes controller AND wants to use the boxes built in routes, it should do the following thing:
+
+- The box controllers should specified in routes via interfaces (`Contracts` folder)
+- Laravel's dynamic class loader is able to resolve classes
+- In case the app wants to use a different implementation, it has to bind another implementation to that interface:
+
+```php
+    $this->app->bind(
+        'ExampleBox\Contracts\ExampleController',
+        'App\Concord\ExampleBox\Controllers\ExampleController'
+    );
+```
+
+## Commands
+
+Commands; box or app level.
+
+## Middlewares
+
+Middlewares; box or app level.
+
+## Request Types
+
+Request types (form types); box or app level.
+
+## Notifications
+
+Laravel notifications; box or app level.
+

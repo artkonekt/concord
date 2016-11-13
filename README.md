@@ -1,16 +1,18 @@
 # Concord
 
-> **Note**: This is a very early draft version of the Concord spec, it is about to change a lot.
+> **Note**: This is an early version of the Concord spec, it will suffer many changes in the upcoming months (Nov 2016).
 
-Concord is a set of rules and contracts that establishes a modular business application framework on top of Laravel.
-
-It is **NOT** an MVC framework but an extension on top of Laravel 5.3+
+Concord at first is a Laravel 5.3+ extension. Concord's essence is to
+define a set of rules and recommendations that help you to better
+structure complex systems.
 
 ## Main Goals
 
 - Provide an extensible PHP platform for business applications
+- To establish the foundation for layered applications
 - Provide a system for using/creating a plugin-like modular architecture
 - Have a system that can embrace decoupled modules, so that we can get rid of duplications across projects
+- Define the inverse (but not opposite) of the SOLID principle: one thing should be done one way
 - Use all the goodness and best practices of Laravel 5.3+
 - Standardize entities and their related design patterns (repositories, factories, etc)
 - DDD but ActiveRecord :)
@@ -30,7 +32,44 @@ It is **NOT** an MVC framework but an extension on top of Laravel 5.3+
 - [Caffeinated Repository](https://github.com/caffeinated/repository)
 - https://github.com/creolab/laravel-modules
 
+## Who Is It For?
+
+This creation is an engineering shit so think twice if you really need it.
+
+##### Concord is not for you if
+any of these applies to you:
+
+- "_My code is organized enough._"
+- "_I know how to write my stuff, and I'm OK with it._"
+- "_The amount I'm copypasting is fine._"
+- "_I'm fed up with interfaces and abstractions._"
+- "_Rules just chain me._"
+- "_In real life, every application is very different._"
+- "_I prefer to complete tasks as quickly as possible._"
+- "_Code beauty is bullshit._"
+
+##### Concord is for you if
+any of these applies to you:
+
+- "_Something smells with the organization of my code_"
+- "_Sometimes I look for code design advice on the net, but everything turns out to be relative._"
+- "_I'm fed up with writing the same stuff over and over again._"
+- "_The way I'm using abstracts, traits and interfaces is not solid._"
+- "_Sometimes I'd be happy to have some guides on code organization and design._"
+- "_I often keep thinking where to put a class._"
+- "_I **need** reusable business functionality._"
+- "_I rather spend time **now** for creating something solid than to pay the price later._"
+- "_Clean code is not about aesthetics but about robust systems._"
+
+One of the main reasons I gave Concord birth for was my need for **Reusable
+Business Functionality**. In most of the cases there's no need for that.
+
+Recommended reading: [10 Modern Software Over-Engineering Mistakes](https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8).
+
+
 ## Installation
+
+Great, you're still here :)
 
 #### With Composer
 

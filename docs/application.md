@@ -1,6 +1,6 @@
 # Concord Applications
 
-A Concord application is nothing but any Laravel application that uses the concord service provider and loads at least one concord module.
+A Concord application is nothing but any Laravel application that uses the concord service provider and loads at least one concord module (or box).
 
 This app may or may not comply with all the concord rules.
 
@@ -19,6 +19,6 @@ Setting up a Laravel app for concord is simple:
     ```
 3. Publish The Config File: `php artisan vendor:publish --provider="Konekt\Concord\ConcordServiceProvider" --tag=config`
 
-It's done, you can start adding modules to your app.
+It's done, you can start adding modules/boxes to your app.
 
-#### Next: [Modules &raquo;](modules.md)
+#### Next: [Create A Module &raquo;](modules-create.md)

@@ -1,6 +1,7 @@
 # Concord Modules
 
-Modules are decoupled components and are glued together by the application.
+Modules are decoupled components and are glued together by the
+[application](application.md) (or by a [box](boxes.md)).
 
 There are basically two kinds of modules:
 
@@ -72,4 +73,4 @@ module-src/
     
 ```
 
-#### Next: [Create A Module &raquo;](modules-create.md)
+#### Next: [Boxes &raquo;](boxes.md)
