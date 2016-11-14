@@ -18,4 +18,15 @@ The application defines it's own logic and incorporates Concord
 modules and/or boxes.
 
 
+
+### Simple Layout (Modules Only)
+
+![Simple Layout (Modules Only)](img/layers-simple.png)
+
+
+### Multi-box Layout
+
+![Multi-box Application Structure](img/layers-multibox.png)
+
+
 #### Next: [Modules &raquo;](modules.md)

@@ -9,8 +9,7 @@ docs_dir: docs
 
 theme: readthedocs
 
-extra_css: [css/extra.css]
-extra_javascript: [js/extra.js]
+extra_css: [extra/rtd.css]
 
 pages:
     - Home: index.md
