@@ -4,6 +4,7 @@
 
 1. Create the module folder `app/Modules/Demo`
 2. Create the file `app/Modules/Demo/Providers/ModuleServiceProvider.php`:
+
     ```php
     <?php
     
@@ -15,7 +16,9 @@
     {
     }
     ```
+
 3. Create `app/Modules/Demo/resources/mainfest.php`:
+
     ```php
     <?php
     
@@ -24,7 +27,9 @@
         'version' => '1.3.9'
     ];
     ```
+
 4. Add the module to `config/concord.php`:
+
     ```php
     <?php
     
@@ -36,6 +41,7 @@
     ```
     
 Now if you run the `php artisan concord:list` command it shows the newly added module:
+
 ```
 +----+-----------------+---------+------------------+
 | #  | Name            | Version | Namespace        |

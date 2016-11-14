@@ -6,6 +6,7 @@
 2. Applications must load the concord service provider.
 3. Modules must contain a `<ModuleNameSpace>\Providers\ModuleServiceProvider` class that extends `Konekt\Concord\ModuleServiceProvider`
 4. Modules must contain a `resources/mainfest.php` file that returns at least these
+
     ```php
     return [
         'name'    => 'The module name',
@@ -20,6 +21,7 @@
 3. Modules should do controller bindings via interfaces in their routes definition
 4. Modules should use Eloquent models
 5. Apps should aggregate all entities (Eloquent models) from the models in `app/Entities` folder by extending their classes, eg.:
+    
     ```php
     namespace App\Entities;
 

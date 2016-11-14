@@ -1,0 +1,25 @@
+/* Make the code font size bigger so its easier to read */
+
+code {
+    font-size: 90%;
+}
+
+.wy-side-nav-search {
+    background-color: #025c65;
+}
+
+a, h3, h4, h5, h6 {
+    color: #025c65;
+}
+
+a:hover {
+    color: #04818e;
+}
+
+a:visited {
+    color: #02655d;
+}
+
+.hljs {
+    color: #111;
+}
