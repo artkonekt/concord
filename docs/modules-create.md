@@ -10,9 +10,9 @@
     
     namespace App\Modules\Demo\Providers;
     
-    use Konekt\Concord\ModuleServiceProvider as BaseModuleServiceProvider;
+    use Konekt\Concord\AbstractModuleServiceProvider;
     
-    class ModuleServiceProvider extends BaseModuleServiceProvider
+    class ModuleServiceProvider extends AbstractModuleServiceProvider
     {
     }
     ```

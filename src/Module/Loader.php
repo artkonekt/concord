@@ -14,7 +14,7 @@ namespace Konekt\Concord\Module;
 
 
 use Illuminate\Contracts\Foundation\Application;
-use Konekt\Concord\ModuleServiceProvider;
+use Konekt\Concord\AbstractModuleServiceProvider;
 
 
 class Loader
@@ -37,11 +37,11 @@ class Loader
      *
      * @param string    $moduleClass    The full classname of the Module's ModuleServiceProvider class
      *
-     * @return ModuleServiceProvider
+     * @return AbstractModuleServiceProvider
      */
     public function loadModule($moduleClass)
     {
-        /** @var ModuleServiceProvider $module */
+        /** @var AbstractModuleServiceProvider $module */
         $module = $this->app->register($moduleClass);
 
         return $module;

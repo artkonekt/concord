@@ -15,7 +15,7 @@ namespace Konekt\Concord\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Konekt\Concord\Concord;
-use Konekt\Concord\ModuleServiceProvider;
+use Konekt\Concord\AbstractModuleServiceProvider;
 
 class ListCommand extends Command
 {
@@ -61,7 +61,7 @@ class ListCommand extends Command
         $table = [];
         $i     = 0;
 
-        /** @var ModuleServiceProvider $module */
+        /** @var AbstractModuleServiceProvider $module */
         foreach ($this->modules as $module) {
             $i++;
 

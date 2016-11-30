@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the ModuleServiceProvider class.
+ * Contains the AbstractModuleServiceProvider class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
@@ -18,13 +18,13 @@ use Konekt\Concord\Module\Manifest;
 use ReflectionClass;
 
 /**
- * Class ModuleServiceProvider is the abstract class all concord modules have to extend.
+ * Class AbstractModuleServiceProvider is the abstract class all concord modules have to extend.
  *
  * This will be the main entry point for the module.
  * Nevertheless it's a normal Laravel Service Provider class.
  *
  */
-abstract class ModuleServiceProvider extends ServiceProvider
+abstract class AbstractModuleServiceProvider extends ServiceProvider
 {
     /** @var  string */
     protected $basePath;

@@ -4,7 +4,7 @@
 
 1. Both the application and modules must be PSR-0 or PSR-4 compliant.
 2. Applications must load the concord service provider.
-3. Modules must contain a `<ModuleNameSpace>\Providers\ModuleServiceProvider` class that extends `Konekt\Concord\ModuleServiceProvider`
+3. Modules must contain a `<ModuleNameSpace>\Providers\ModuleServiceProvider` class that extends `Konekt\Concord\AbstractModuleServiceProvider`
 4. Modules must contain a `resources/mainfest.php` file that returns at least these
 
     ```php
