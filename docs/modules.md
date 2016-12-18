@@ -46,6 +46,7 @@ module-src/
     Models/
         |-- Entities/
         |-- Repositories/
+        |-- Factories/
     Providers/
         |-- ModuleServiceProvider.php
     Services/

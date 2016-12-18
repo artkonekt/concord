@@ -75,3 +75,28 @@ function concord()
 {
     return App::make('concord');
 }
+
+if (!function_exists('__')) {
+
+    /**
+     * Gettext fallback function, so that it doesn't break functionality
+     * Note: xinax/laravel-gettext should be used
+     *
+     * @todo: make sure it doesn't hit the loader earlier than laravel-gettext does
+     *
+     * @param      $message
+     * @param null $args
+     *
+     * @return string
+     */
+    function __($message, $args = null)
+    {
+        if (!empty($args) && !is_array($args)) {
+            $args = array_slice(func_get_args(), 1);
+        }
+
+        $message = vsprintf($message, $args);
+
+        return $message;
+    }
+}
