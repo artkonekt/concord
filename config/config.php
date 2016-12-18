@@ -4,8 +4,8 @@ return [
     'modules' => [
         /**
          * Example:
-         * VendorA\ModuleX\Provider\ModuleServiceProvider::class,
-         * VendorB\ModuleY\Provider\ModuleServiceProvider::class
+         * VendorA\ModuleX\Providers\ModuleServiceProvider::class,
+         * VendorB\ModuleY\Providers\ModuleServiceProvider::class
          *
          */
     ]

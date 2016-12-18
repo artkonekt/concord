@@ -48,6 +48,14 @@ abstract class AbstractModuleServiceProvider extends ServiceProvider
         $this->namespaceRoot = str_replace('\\Providers\\ModuleServiceProvider', '', static::class);
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function boot()
+    {
+        $this->registerMigrations();
+    }
+
     public function getManifest()
     {
         if (!$this->manifest) {
@@ -78,6 +86,18 @@ abstract class AbstractModuleServiceProvider extends ServiceProvider
     public function getNamespaceRoot()
     {
         return $this->namespaceRoot;
+    }
+
+    /**
+     * Register the module's migrations
+     */
+    protected function registerMigrations()
+    {
+        $path = $this->getBasePath() . '/resources/database/migrations';
+
+        if ($this->app->runningInConsole() && is_dir($path)) {
+            $this->loadMigrationsFrom($path);
+        }
     }
 
 }
