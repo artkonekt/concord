@@ -16,7 +16,8 @@
     "require": {
         "php": ">=7.0.0",
         "illuminate/support": "~5.3",
-        "illuminate/console": "~5.3"
+        "illuminate/console": "~5.3",
+        "konekt/enum": "~1.2"
     },
     "autoload": {
         "psr-4": { "Konekt\\Concord\\": "src"},

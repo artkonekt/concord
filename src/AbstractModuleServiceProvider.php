@@ -15,6 +15,7 @@ namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
 use Konekt\Concord\Module\Manifest;
+use Konekt\Concord\Module\Kind;
 use ReflectionClass;
 
 /**
@@ -62,7 +63,9 @@ abstract class AbstractModuleServiceProvider extends ServiceProvider
             $data = include($this->basePath . '/resources/manifest.php' );
 
             extract($data);
-            $this->manifest = new Manifest($name, $version);
+            $kind = isset($kind) ? $kind : Kind::MODULE();
+
+            $this->manifest = new Manifest($name, $version, $kind);
         }
 
         return $this->manifest;

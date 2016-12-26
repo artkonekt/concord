@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the Module.php class.
+ * Contains the Module Manifest class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
@@ -21,10 +21,14 @@ class Manifest
     /** @var  string */
     protected $version;
 
-    public function __construct($name, $version)
+    /** @var  Kind */
+    protected $kind;
+
+    public function __construct($name, $version, $kind)
     {
         $this->name    = $name;
         $this->version = $version;
+        $this->kind    = $kind;
     }
 
     /**
@@ -45,6 +49,16 @@ class Manifest
     public function getVersion()
     {
         return $this->version;
+    }
+
+    /**
+     * Returns what kind of module this is (module or box)
+     *
+     * @return Kind
+     */
+    public function getKind()
+    {
+        return $this->kind;
     }
 
 }

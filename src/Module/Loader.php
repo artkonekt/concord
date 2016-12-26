@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the Loader.php class.
+ * Contains the Module Loader class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop

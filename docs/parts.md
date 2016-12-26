@@ -6,15 +6,13 @@ Following the Laravel convention, these are simple php files returning arrays.
 
 ## Migrations
 
-Migrations.
+Usual Laravel migrations.
 
 ## Entities
 
-Entities are Eloquent models, optionally "aggregated" in the `app/Entities` folder (under `App\Entities` namespace) (? -  to be decided).
+Entities are Eloquent models, optionally "aggregated" by boxes or the application in the `app/Entities` folder (under `App\Entities` namespace) (? -  to be decided).
 
 The approach is somewhat similar to what Doctrine v1 did use (eg. User extends BaseUser), so the `app/Entities` is rather a proxy folder, which typically extends entity classes defined in modules.
-
-> Proposal: there should be a boolean config setting eg. `concord.entities.collect` that if set, generators(?) will collect and create an overridden version of the entities in the app/Entities folder.
 
 This way apps can easily modify the entities defined by the modules, and they'll be in a single folder
 
@@ -35,7 +33,7 @@ Listeners should not be defined on module level, they are expected to be defined
 
 ## Event-Listener Bindings
 
-Modules must not bind events to listeners. Boxes and apps are expected to do so.
+Modules should not bind events to listeners. Boxes and apps are expected to do so.
 [Details](parts-event-listener-bindings.md)
 
 ## Helpers
@@ -53,11 +51,11 @@ facade `Helper::get('money')->helperMethod()`.
 
 > **Warning**: This is a Laravel 5.4 feature!
 
-Modules must not define views, however they can define blade components that act as "view templates" to be reused on higher levels.
+Modules should not define views, however they are encouraged to define blade components that act as "view templates" to be reused on higher levels.
 
 ## Views
 
-Modules must not define views, and boxes are expected to.
+Modules should not define views, and boxes are expected to.
 Applications may or may not want to use views provided by boxes.
 Registering of views can be enabled in the box config
 
@@ -75,7 +73,7 @@ return [
 
 ## Routes
 
-Modules must not define routes, boxes are expected to.
+Modules should not define routes, boxes are expected to.
 An App may or may not want to use routes provided by a box.
 Registering of routes therefore can be enabled in the box config very similarly to views.
 
@@ -122,7 +120,7 @@ Middlewares; box or app level.
 
 ## Request Types
 
-Request types (form types); box or app level.
+Modules should only define abstract variants of [Request types](https://laravel.com/docs/5.3/validation#form-request-validation) (form types), concretes should be done on box or app level.
 
 ## Notifications
 

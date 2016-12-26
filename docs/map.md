@@ -1,5 +1,7 @@
 # Map Of Concord Parts
-  
+
+> **Note: _This is a recommendation_**, not a mandatory ruleset.
+
 This is the cheat sheet for Concord's intended structure.
 It shows, where specific parts should be placed, implemented or customized
 

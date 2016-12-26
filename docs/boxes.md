@@ -1,6 +1,6 @@
 # Boxes
 
-Boxes are optional parts of the ecosystem.
+Boxes are optional parts of the ecosystem. Technically they're modules too, and as such they're also built around Laravel Service Providers.
 
 Think of boxes as re-usable application templates, that are ready to be
 used and to be customized. They can either be used as standalone apps,
@@ -41,8 +41,8 @@ both boxes**, and from the client's perspective they constitute **a single syste
 
 ## Parts To Be Included In Boxes
 
-- Boxes **must not** define entities, migrations and in general any module specific models.
-- Boxes **must gather and publish** entities and migrations from underlying modules.
+- Boxes **should only** define entities, migrations that "glue" module parts together.
+- Boxes **may gather and publish** entities and migrations from underlying modules.
 - Boxes **should not** define new repositories but **may extend** existing ones.
 - Boxes **are expected to** define views, routes, resources, controllers, listeners, event bindings, request types.
 - Boxes **should** bind repository interfaces to implementations.
@@ -55,7 +55,7 @@ both boxes**, and from the client's perspective they constitute **a single syste
 ```
 box-src/
     Providers/
-        |-- BoxServiceProvider.php
+        |-- ModuleServiceProvider.php
     resources/
         |-- manifest.php
     
@@ -78,7 +78,7 @@ box-src/
         |-- Entities/
         |-- Repositories/
     Providers/
-        |-- BoxServiceProvider.php
+        |-- ModuleServiceProvider.php
         |-- EventServiceProvider.php
     Services/
     resources/

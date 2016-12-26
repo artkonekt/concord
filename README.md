@@ -1,9 +1,11 @@
 # Concord
 
-> **Note**: This is an early version of the Concord spec, it will suffer many changes in the upcoming months (Nov 2016).
+_Concord is a Laravel Extension that serves as a foundation to build **Modules for Laravel Applications** on top of Laravel's built in Service Providers._
 
-Concord at first is a Laravel 5.3+ extension. Concord's essence is to
-define a set of rules and recommendations that help you to better
+
+> **Note**: This is still a work-in-progress version of the Concord spec, it is about to change in the upcoming months (Dec 2016).
+
+Concord at first is a Laravel 5.3+ extension (Service Provicder). Concord also defines a set of rules and recommendations that help you to better
 structure complex systems.
 
 ## Main Goals
@@ -37,7 +39,7 @@ structure complex systems.
 This creation is an engineering shit so think twice if you really need it.
 
 ##### Concord is not for you if
-any of these applies to you:
+most of these apply to you:
 
 - "_My code is organized enough._"
 - "_I know how to write my stuff, and I'm OK with it._"
@@ -49,7 +51,7 @@ any of these applies to you:
 - "_Code beauty is bullshit._"
 
 ##### Concord is for you if
-any of these applies to you:
+most of these apply to you:
 
 - "_Something smells with the organization of my code_"
 - "_Sometimes I look for code design advice on the net, but everything turns out to be relative._"
