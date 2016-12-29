@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the ConcordServiceProvider.php class.
+ * Contains the ConcordServiceProvider class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
@@ -12,13 +12,36 @@
 
 namespace Konekt\Concord;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Konekt\Concord\Console\Commands\ListCommand;
+use Konekt\Concord\Contracts\ConcordInterface;
 use Konekt\Concord\Helper\HelperFactory;
 
 
 class ConcordServiceProvider extends ServiceProvider
 {
+    /** @var  ConcordInterface */
+    protected $concordInstance;
+
+    /**
+     * ModuleServiceProvider class constructor
+     *
+     * @param Application $app
+     */
+    public function __construct($app)
+    {
+        parent::__construct($app);
+
+        $app->bind(
+            ConcordInterface::class,
+            $app->config->get('concord.class', Concord::class)
+        );
+
+        $this->concordInstance = $app->make(ConcordInterface::class);
+    }
+
+
     /**
      * Register bindings in the container.
      *
@@ -26,15 +49,21 @@ class ConcordServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('concord', function ($app) {
-            return new Concord($app);
-        });
+        $this->app->instance('concord', $this->concordInstance);
 
         $this->app->singleton('concord.helper', function ($app) {
             return new HelperFactory($app->config->get('concord.helpers'), $app);
         });
 
         $this->registerListCommand();
+
+        // For each of the registered modules, include their routes and Views
+        $modules = config("concord.modules");
+        $modules = $modules ?: [];
+
+        foreach ($modules as $module) {
+            $this->concordInstance->registerModule($module);
+        }
     }
 
 
@@ -45,14 +74,6 @@ class ConcordServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // For each of the registered modules, include their routes and Views
-        $modules = config("concord.modules");
-        $modules = $modules ?: [];
-
-        foreach ($modules as $module) {
-            $this->app['concord']->registerModule($module);
-        }
-
         $this->publishes([
             __DIR__ . '/../config/config.php' => config_path('concord.php')
         ], 'config');

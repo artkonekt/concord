@@ -23,6 +23,9 @@ class Concord implements ConcordInterface
     /** @var Collection  */
     protected $modules;
 
+    /** @var  array */
+    protected $implicitModules = [];
+
     /** @var  Loader */
     protected $loader;
 
@@ -36,7 +39,7 @@ class Concord implements ConcordInterface
      */
     public function __construct(Application $app)
     {
-        $this->modules = Collection::make([]);
+        $this->modules = Collection::make();
         $this->app     = $app;
     }
 
@@ -44,11 +47,15 @@ class Concord implements ConcordInterface
     /**
      * @inheritdoc
      */
-    public function registerModule($moduleClass)
+    public function registerModule($moduleClass, $implicit = false)
     {
         $module = $this->getLoader()->loadModule($moduleClass);
 
         $this->modules->push($module);
+
+        if ($implicit) {
+            $this->implicitModules[get_class($module)] = true;
+        }
     }
 
     /**
@@ -64,9 +71,17 @@ class Concord implements ConcordInterface
     /**
      * @inheritdoc
      */
-    public function getModules()
+    public function getModules($includeImplicits = false)
     {
-        return $this->modules;
+        if ($includeImplicits) {
+            return $this->modules;
+        }
+
+        $implicitModules = $this->implicitModules;
+
+        return $this->modules->reject(function($module) use ($implicitModules) {
+            return array_key_exists(get_class($module), $implicitModules);
+        });
     }
 
     /**

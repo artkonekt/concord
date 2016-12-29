@@ -19,9 +19,12 @@ interface ConcordInterface
     /**
      * Registers a new module based on its class name
      *
-     * @param string    $moduleClass
+     * @param string $moduleClass
+     * @param bool   $implicit
+     *
+     * @return
      */
-    public function registerModule($moduleClass);
+    public function registerModule($moduleClass, $implicit = false);
 
     /**
      * Registers a helper
@@ -34,8 +37,10 @@ interface ConcordInterface
     /**
      * Returns the collection of available modules
      *
+     * @param bool $includeImplicits
+     *
      * @return Collection
      */
-    public function getModules();
+    public function getModules($includeImplicits = false);
 
 }
