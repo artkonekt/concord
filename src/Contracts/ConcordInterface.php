@@ -20,11 +20,11 @@ interface ConcordInterface
      * Registers a new module based on its class name
      *
      * @param string $moduleClass
-     * @param bool   $implicit
+     * @param array  $config
      *
      * @return
      */
-    public function registerModule($moduleClass, $implicit = false);
+    public function registerModule($moduleClass, $config = []);
 
     /**
      * Registers a helper

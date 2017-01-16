@@ -125,19 +125,13 @@ class AbstractBaseServiceProvider extends ServiceProvider implements ModuleInter
      *
      * @param string    $classname
      *
+     * @see concord_module_id
+     *
      * @return string
      */
     protected function getModuleId($classname = null)
     {
-        $parts = explode('\\', $classname ?: static::class);
-
-        $vendorAndModule = empty($parts[0]) ? array_only($parts, [1,2]) : array_only($parts, [0,1]);
-
-        array_walk($vendorAndModule, function(&$part) {
-            $part = snake_case($part);
-        });
-
-        return implode('.', $vendorAndModule);
+        return concord_module_id($classname ?: static::class);
     }
 
     /**

@@ -54,6 +54,28 @@ function slug_to_classpath($str)
 }
 
 /**
+ * Returns a standard module name based on the module provider's classname
+ *
+ * Eg.: '\Vendor\Module\Services\ModuleServiceProvider' -> 'vendor.module'
+ *
+ * @param string    $classname
+ *
+ * @return string
+ */
+function concord_module_id($classname)
+{
+    $parts = explode('\\', $classname);
+
+    $vendorAndModule = empty($parts[0]) ? array_only($parts, [1,2]) : array_only($parts, [0,1]);
+
+    array_walk($vendorAndModule, function(&$part) {
+        $part = snake_case($part);
+    });
+
+    return implode('.', $vendorAndModule);
+}
+
+/**
  * Shortcut function for returning helper instances by their name
  *
  * @param string    $name       The name of the helper

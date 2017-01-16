@@ -28,15 +28,31 @@ class AbstractBoxServiceProvider extends AbstractBaseServiceProvider
         $modules = $modules ?: [];
 
         foreach ($modules as $module => $configuration) {
-            if (is_array($configuration) && isset($configuration['implicit'])) {
-                $implicit = $configuration['implicit'];
+            if (is_int($module) && is_string($configuration)) { // means no configuration was set for module
+                $module = $configuration;
+                $configuration = $this->getDefaultModuleConfiguration();
             } else {
-                $implicit = true; // By default, modules loaded by boxes are implicit
+                $configuration = array_merge($this->getDefaultModuleConfiguration(),
+                    is_array($configuration) ? $configuration : []);
             }
 
-            $this->app['concord']->registerModule($module, $implicit);
+
+            $this->app['concord']->registerModule($module, $configuration);
         }
 
+    }
+
+    /**
+     * Returns the default configuration settings for modules loaded within boxes
+     *
+     * @return array
+     */
+    protected function getDefaultModuleConfiguration()
+    {
+        return [
+            'implicit'   => true,
+            'migrations' => true
+        ];
     }
 
 }

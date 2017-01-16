@@ -39,7 +39,7 @@ abstract class AbstractModuleServiceProvider extends AbstractBaseServiceProvider
      */
     public function boot()
     {
-        if ($this->config('load_migrations', true)) {
+        if ($this->config('migrations', true)) {
             $this->registerMigrations();
         }
     }

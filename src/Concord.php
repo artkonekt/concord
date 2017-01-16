@@ -47,11 +47,13 @@ class Concord implements ConcordInterface
     /**
      * @inheritdoc
      */
-    public function registerModule($moduleClass, $implicit = false)
+    public function registerModule($moduleClass, $config = [])
     {
+        $this->app['config']->set(concord_module_id($moduleClass), $config);
         $module = $this->getLoader()->loadModule($moduleClass);
 
         $this->modules->push($module);
+        $implicit = isset($config['implicit']) ? $config['implicit'] : false;
 
         if ($implicit) {
             $this->implicitModules[get_class($module)] = true;
