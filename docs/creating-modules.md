@@ -6,8 +6,6 @@
 2. Create the file `app/Modules/Demo/Providers/ModuleServiceProvider.php`:
 
     ```php
-    <?php
-    
     namespace App\Modules\Demo\Providers;
     
     use Konekt\Concord\AbstractModuleServiceProvider;

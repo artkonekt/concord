@@ -12,7 +12,7 @@ It is possible to turn on or off migrations in the module configuration setting 
 
 `ExampleBox/resources/config/box.php`:
 
-```
+```php
 <?php
 return [
     'modules' => [
