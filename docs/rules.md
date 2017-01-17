@@ -37,4 +37,4 @@
 2. Eloquent models are subject to customization in the host app
 3. Event and Listener classes are visible to apps, but their bindings defined by the module might be ignored by the host app.
 
-#### Next: [Parts &raquo;](parts.md)
+#### Next: [Application &raquo;](application.md)

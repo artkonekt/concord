@@ -1,5 +1,7 @@
 # Event-Listener Bindings
 
+Modules should not bind events to listeners. Boxes and apps are expected to do so.
+
 Boxes may define their default event-listener bindings in their own `Providers/EventServiceProvider.php` file.
 
 An app however, may want to override these bindings.
@@ -21,3 +23,5 @@ return [
     ]
 ];
 ```
+
+#### Next: [Helpers &raquo;](helpers.md)

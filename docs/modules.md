@@ -11,7 +11,6 @@ Modules can be situated in two ways:
 Technically there's no difference between the two.
 
 
-
 ## Module Folder Structure
 
 #### Minimum Fileset For A Concord Module
@@ -40,6 +39,9 @@ module-src/
     Providers/
         |-- ModuleServiceProvider.php
     Services/
+    Tests/
+        |-- Feature
+        |-- Unit
     resources/
         |-- config/
             |-- module.php
@@ -50,4 +52,4 @@ module-src/
     
 ```
 
-#### Next: [Boxes &raquo;](boxes.md)
+#### Next: [Creating Modules &raquo;](creating-modules.md)

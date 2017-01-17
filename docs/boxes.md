@@ -1,3 +1,8 @@
+---
+title: Boxes
+image: asd.jpg
+---
+
 # Boxes
 
 Boxes are optional parts of the ecosystem. Technically they're modules too, and as such they're also built around Laravel Service Providers.
@@ -81,6 +86,9 @@ box-src/
         |-- ModuleServiceProvider.php
         |-- EventServiceProvider.php
     Services/
+    Tests/
+        |-- Feature
+        |-- Unit
     resources/
         |-- config/
             |-- box.php
@@ -95,4 +103,4 @@ box-src/
     
 ```
 
-#### Next: [Application &raquo;](application.md)
+#### Next: [Creating Boxes &raquo;](creating-boxes.md)

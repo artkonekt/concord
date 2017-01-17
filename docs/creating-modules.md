@@ -50,4 +50,4 @@ Now if you run the `php artisan concord:list` command it shows the newly added m
 +----+-----------------+---------+------------------+
 ```
 
-#### Next: [Rules &raquo;](rules.md)
+#### Next: [Boxes Explained &raquo;](boxes.md)

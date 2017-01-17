@@ -21,4 +21,4 @@ Setting up a Laravel app for concord is simple:
 
 It's done, you can start adding modules/boxes to your app.
 
-#### Next: [Create A Module &raquo;](modules-create.md)
+#### Next: [Modules Explained &raquo;](modules.md)
