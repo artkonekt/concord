@@ -15,6 +15,7 @@ namespace Konekt\Concord;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Konekt\Concord\Console\Commands\ListCommand;
+use Konekt\Concord\Console\Commands\MakeModuleCommand;
 use Konekt\Concord\Contracts\ConcordInterface;
 use Konekt\Concord\Helper\HelperFactory;
 
@@ -56,6 +57,7 @@ class ConcordServiceProvider extends ServiceProvider
         });
 
         $this->registerListCommand();
+        $this->registerMakeModuleCommand();
 
         // For each of the registered modules, include their routes and Views
         $modules = config("concord.modules");
@@ -102,6 +104,18 @@ class ConcordServiceProvider extends ServiceProvider
         });
 
         $this->commands('command.concord.list');
+    }
+
+    /**
+     * Register the make:module command.
+     */
+    protected function registerMakeModuleCommand()
+    {
+        $this->app->singleton('command.concord.module.make', function ($app) {
+            return new MakeModuleCommand($app['files']);
+        });
+
+        $this->commands('command.concord.module.make');
     }
 
 

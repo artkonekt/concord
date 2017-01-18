@@ -4,10 +4,11 @@
 
 #### Introduction
 
-1. [Overview](overview.md)
-2. [Directory Structure](directory-structure.md)
-3. [Concord Rules](rules.md)
-4. [Application](application.md)
+1. [Prologue](prologue.md)
+2. [Overview](overview.md)
+3. [Directory Structure](directory-structure.md)
+4. [Concord Rules](rules.md)
+5. [Application](application.md)
 
 #### Modules
 

@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace\DummyClass\Providers;
+
+use Konekt\Concord\AbstractModuleServiceProvider;
+
+class ModuleServiceProvider extends AbstractModuleServiceProvider
+{
+    //
+}
