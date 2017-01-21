@@ -7,11 +7,11 @@ _Concord's most important feature is to enable **Modules for Laravel Application
 Concord was written with extensible modules in mind. You may have code you're copypasting from one project to another, or even worse - starting from scratch over and over with minimal changes again.
 These repeating units can be outsourced to modules and can be used across several applications that use those modules in a specific, custom manner.
 
-##### Example Scenario
+#### Example Scenario
 
 You may have an in-house CMS module that can handle pages, posts in multiple languages. App "A" only want the pages feature in a single language while app "B" wants all the CMS features. Then comes your client of app "A" and says they want to assign a specific color to each page. You can decide whether you want to implement this in your common CMS module or just for app "B". With Concord you shall be able to do either of those.
 
-##### Composing Parts
+#### Composing Parts
 
 Modules consist of different [parts](parts.md) like model classes, entities, controllers, config files, migrations, views, routes, middleware, frontend assets and so on.
 

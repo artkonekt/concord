@@ -15,7 +15,7 @@
     }
     ```
 
-3. Create `app/Modules/Demo/resources/mainfest.php`:
+3. Create `app/Modules/Demo/resources/manifest.php`:
 
     ```php
     <?php
@@ -47,5 +47,63 @@ Now if you run the `php artisan concord:list` command it shows the newly added m
 | 1. | Demo App Module | 1.3.9   | App\Modules\Demo |
 +----+-----------------+---------+------------------+
 ```
+
+## Creating An External Module (With Git And Composer)
+
+1. Init a git repo in an empty folder: `git init .`
+2. Add composer.json:
+
+    ```
+    {
+        "name": "vendor/mymodule",
+        "description": "My Module Rulez",
+        "type": "library",
+        "require": {
+            "php": ">=7.0.0"
+        },
+        "autoload": {
+            "psr-4": { "Vendor\\MyModule\\": "src/" }
+        }
+    }
+    ```
+
+3. Create the file `src/Providers/ModuleServiceProvider.php`:
+
+       ```php
+       namespace Vendor\MyModule\Providers;
+       
+       use Konekt\Concord\AbstractModuleServiceProvider;
+       
+       class ModuleServiceProvider extends AbstractModuleServiceProvider
+       {
+       }
+       ```
+
+4. Create `src/resources/manifest.php`:
+
+       ```php
+       <?php
+       
+       return [
+           'name'    => 'My Module',
+           'version' => '1.0.0'
+       ];
+       ```
+
+5. Commit all the stuff, and publish it (github and packagist if it's open source)
+6. In the host application: `composer require vendor/mymodule`
+7. Add the module to `config/concord.php`:
+
+       ```php
+       <?php
+       
+       return [
+           'modules' => [
+               Vendor\MyModule\Providers\ModuleServiceProvider::class,
+           ]
+       ];
+       ```
+
+You're done.
 
 #### Next: [Boxes Explained &raquo;](boxes.md)

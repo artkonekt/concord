@@ -43,7 +43,7 @@ Optionally, you can register facade aliases in `config/app.php`:
 php artisan vendor:publish --provider="Konekt\Concord\ConcordServiceProvider" --tag=config
 ```
 
-#### Create A Module
+## Create Your First Module
 
 ```
 php artisan make:module ShinyModule
