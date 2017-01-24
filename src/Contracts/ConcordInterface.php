@@ -35,6 +35,14 @@ interface ConcordInterface
     public function registerHelper($name, $moduleClass);
 
     /**
+     * Utility method for registering facades to Laravel's service container
+     *
+     * @param $alias
+     * @param $concrete
+     */
+    public function registerFacade($alias, $concrete);
+
+    /**
      * Returns the collection of available modules
      *
      * @param bool $includeImplicits

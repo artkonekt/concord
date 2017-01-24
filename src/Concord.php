@@ -14,6 +14,7 @@ namespace Konekt\Concord;
 
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Collection;
 use Konekt\Concord\Contracts\ConcordInterface;
 use Konekt\Concord\Module\Loader;
@@ -84,6 +85,14 @@ class Concord implements ConcordInterface
         return $this->modules->reject(function($module) use ($implicitModules) {
             return array_key_exists(get_class($module), $implicitModules);
         });
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function registerFacade($alias, $concrete)
+    {
+        AliasLoader::getInstance()->alias($alias, $concrete);
     }
 
     /**
