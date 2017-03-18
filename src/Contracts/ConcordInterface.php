@@ -51,4 +51,8 @@ interface ConcordInterface
      */
     public function getModules($includeImplicits = false);
 
+//    public function useModel($abstract, $concrete);
+//
+//    public function model($abstract);
+
 }
