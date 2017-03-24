@@ -13,14 +13,16 @@
 namespace Konekt\Concord\Contracts;
 
 
+use Illuminate\Support\Collection;
+
 interface ConcordInterface
 {
 
     /**
      * Registers a new module based on its class name
      *
-     * @param string $moduleClass
-     * @param array  $config
+     * @param string    $moduleClass
+     * @param array     $config
      *
      * @return
      */
@@ -37,8 +39,8 @@ interface ConcordInterface
     /**
      * Utility method for registering facades to Laravel's service container
      *
-     * @param $alias
-     * @param $concrete
+     * @param string    $alias
+     * @param string    $concrete
      */
     public function registerFacade($alias, $concrete);
 
@@ -49,10 +51,25 @@ interface ConcordInterface
      *
      * @return Collection
      */
-    public function getModules($includeImplicits = false);
+    public function getModules($includeImplicits = false) : Collection;
 
-//    public function useModel($abstract, $concrete);
-//
-//    public function model($abstract);
+    /**
+     * Use/overwrite a model for a specific abstract/interface
+     *
+     * @param string    $abstract
+     * @param string    $concrete
+     *
+     * @return void
+     */
+    public function useModel(string $abstract, string $concrete);
+
+    /**
+     * Return the Model class for a specific abstract class
+     *
+     * @param string    $abstract
+     *
+     * @return string
+     */
+    public function model(string $abstract);
 
 }

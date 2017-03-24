@@ -24,6 +24,9 @@ class Concord implements ConcordInterface
     /** @var Collection  */
     protected $modules;
 
+    /** @var array */
+    protected $models = [];
+
     /** @var  array */
     protected $implicitModules = [];
 
@@ -74,7 +77,7 @@ class Concord implements ConcordInterface
     /**
      * @inheritdoc
      */
-    public function getModules($includeImplicits = false)
+    public function getModules($includeImplicits = false) : Collection
     {
         if ($includeImplicits) {
             return $this->modules;
@@ -94,6 +97,24 @@ class Concord implements ConcordInterface
     {
         AliasLoader::getInstance()->alias($alias, $concrete);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function useModel(string $abstract, string $concrete)
+    {
+        $this->models[$abstract] = $concrete;
+        $this->app->bind($abstract, $concrete);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function model(string $abstract)
+    {
+        return array_get($this->models, $abstract);
+    }
+
 
     /**
      * Returns the Module Loader instance (lazy load)
