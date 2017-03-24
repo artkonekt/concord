@@ -39,8 +39,8 @@ most of these apply to you:
 - "_I know how to write my stuff, and I'm OK with it._"
 - "_The amount I'm copypasting is fine._"
 - "_I'm fed up with interfaces and abstractions._"
-- "_Rules just chain me._"
-- "_In real life, every application is very different._"
+- "_Rules only chain me._"
+- "_In real life, every application is **very** different._"
 - "_I prefer to complete tasks as quickly as possible._"
 - "_Code beauty is bullshit._"
 

@@ -23,29 +23,29 @@
 
 3. Create the file `src/Providers/ModuleServiceProvider.php`:
 
-       ```php
-       namespace Vendor\MyBox\Providers;
-       
-       use Konekt\Concord\AbstractBoxServiceProvider;
-       
-       class ModuleServiceProvider extends AbstractBoxServiceProvider
-       {
-       }
-       ```
+    ```php
+    namespace Vendor\MyBox\Providers;
+    
+    use Konekt\Concord\AbstractBoxServiceProvider;
+    
+    class ModuleServiceProvider extends AbstractBoxServiceProvider
+    {
+    }
+    ```
 
 4. Create `src/resources/manifest.php`:
 
-       ```php
-       <?php
-       
-       use Konekt\Concord\Module\Kind;
-       
-       return [
-           'name'    => 'My Box',
-           'version' => '1.0.0',
-           'kind'    => Kind::BOX()
-       ];
-       ```
+    ```php
+    <?php
+    
+    use Konekt\Concord\Module\Kind;
+    
+    return [
+       'name'    => 'My Box',
+       'version' => '1.0.0',
+       'kind'    => Kind::BOX()
+    ];
+    ```
 
 5. Commit all the stuff, and publish it (github and packagist if it's open source)
 
@@ -90,14 +90,14 @@ return [
 1. In the laravel application: `composer require vendor/mybox`
 2. Add the module to `config/concord.php`:
 
-       ```php
-       <?php
-       
-       return [
-           'modules' => [
-               Vendor\MyBox\Providers\ModuleServiceProvider::class,
-           ]
-       ];
-       ```
+    ```php
+    <?php
+    
+    return [
+       'modules' => [
+           Vendor\MyBox\Providers\ModuleServiceProvider::class,
+       ]
+    ];
+    ```
 
 #### Next: [Configuration &raquo;](configuration.md)

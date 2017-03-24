@@ -69,40 +69,40 @@ Now if you run the `php artisan concord:list` command it shows the newly added m
 
 3. Create the file `src/Providers/ModuleServiceProvider.php`:
 
-       ```php
-       namespace Vendor\MyModule\Providers;
-       
-       use Konekt\Concord\AbstractModuleServiceProvider;
-       
-       class ModuleServiceProvider extends AbstractModuleServiceProvider
-       {
-       }
-       ```
+    ```php
+    namespace Vendor\MyModule\Providers;
+    
+    use Konekt\Concord\AbstractModuleServiceProvider;
+    
+    class ModuleServiceProvider extends AbstractModuleServiceProvider
+    {
+    }
+    ```
 
 4. Create `src/resources/manifest.php`:
 
-       ```php
-       <?php
-       
-       return [
-           'name'    => 'My Module',
-           'version' => '1.0.0'
-       ];
-       ```
+    ```php
+    <?php
+    
+    return [
+       'name'    => 'My Module',
+       'version' => '1.0.0'
+    ];
+    ```
 
 5. Commit all the stuff, and publish it (github and packagist if it's open source)
 6. In the host application: `composer require vendor/mymodule`
 7. Add the module to `config/concord.php`:
 
-       ```php
-       <?php
-       
-       return [
-           'modules' => [
-               Vendor\MyModule\Providers\ModuleServiceProvider::class,
-           ]
-       ];
-       ```
+    ```php
+    <?php
+    
+    return [
+       'modules' => [
+           Vendor\MyModule\Providers\ModuleServiceProvider::class,
+       ]
+    ];
+    ```
 
 You're done.
 
