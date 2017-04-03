@@ -1,6 +1,6 @@
 # Entities (Eloquent Models)
 
-Entities are Eloquent models ie. Active Record with all its goodies and curses.
+Entities are the *nouns* in your system (like product, order, customer, subscription, etc). Concord being a disciplined Laravel citizen uses Eloquent models for that. Yes, Active Record with all its goodies and curses.
 
 ## Preface
 
@@ -8,14 +8,14 @@ As Concord has been created for flexible, modular, "pluginizable" architecture, 
 
 One of the essential goals of Concord is to support creating **reusable code** for Laravel applications. As an example you can create yourself or use a 3rd party [module](modules.md) for managing products. You pull that module in your application with composer and consider that module as **immutable** (indifferent whether it's your own creation or third party).
 
-> Note that this is a real life use case of [SOLID's *open-close* principle](https://en.wikipedia.org/wiki/Open/closed_principle).
+> Did you notice that this is a real life use case of [SOLID's *open-close* principle](https://en.wikipedia.org/wiki/Open/closed_principle)?
 
-The **product module** is a *lower* layer and your **application** is an *upper* layer. It's important to keep in mind that this document discusses both perspectives:
+The **product module** is a *lower* layer and your **application** is an *upper* layer. This document discusses both perspectives:
 
-- How to author reusable modules (ie coding the lower layer)
-- How to extend modules in your application
+- How to author reusable modules (ie coding the lower layer);
+- How to extend modules in your application.
 
-It's obvious that a module is only immutable from the application's perspective. As a module author you definitely want to evolve your module.
+Obviously a module is only immutable from the application's perspective. As a module author you definitely want to evolve your module.
 
 Thus another essential feature is that you want to **be able to update the underlying modules in your application** without breaking your code. (Two words: [Semantic Versioning](http://semver.org/))
 
@@ -32,7 +32,7 @@ In our interpretation, good platforms:
 - provide the essential functionality out of the box, and
 - make it easy to customize their basic behavior.
 
-As an example there is the `Product` model. It's defined in a "_lower_" layer, in the product **module**. "_Upper_" layers, like the final **application** will want to alter/extend it so that it doesn't break the basic functionality the module. That's what OOP is for, or isn't it that simple?
+As an example there is the `Product` model. It's defined in a *lower* layer, in the product **module**. *Upper* layers, like the final **application** will want to alter/extend it so that it doesn't break the basic functionality the module. At its heart, that's what OOP is for. Is it that simple?
 
 ### Possible Entity Modifications
 
