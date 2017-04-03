@@ -2,12 +2,9 @@
 
 _Concord is a Laravel Extension that serves as a foundation to build **Modules for Laravel Applications** on top of Laravel's built in Service Providers._
 
+> **Note**: Concord is still in an early, work-in-progress phase. (Apr 2017).
 
-> **Note**: Concord is still in an early, work-in-progress phase. (Jan 2017).
-
-Concord at first is a Laravel 5.3+ [package](https://laravel.com/docs/5.3/packages) (Service Provicder). Concord also defines a set of rules and recommendations that help you to better
-structure complex systems.
-
+Concord at first is a Laravel 5.3+ [package](https://laravel.com/docs/5.3/packages) (Service Provicder). Concord also defines a set of rules and recommendations that help you to better structure complex systems.
 
 ## Installation
 

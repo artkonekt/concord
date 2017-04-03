@@ -32,7 +32,7 @@ In our interpretation, good platforms:
 - provide the essential functionality out of the box, and
 - make it easy to customize their basic behavior.
 
-As an example there is the `Product` model. It's defined in a *lower* layer, in the product **module**. *Upper* layers, like the final **application** will want to alter/extend it so that it doesn't break the basic functionality the module. At its heart, that's what OOP is for. Is it that simple?
+As an example there is the `Product` model. It's defined in a *lower* layer, in the product **module**. *Upper* layers, like the final **application** will want to alter/extend it so that it doesn't break the basic functionality of the module. At its heart, that's what OOP is for. Is it that simple?
 
 ### Possible Entity Modifications
 
