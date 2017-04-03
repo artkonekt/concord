@@ -2,7 +2,24 @@
 
 Entities are Eloquent models ie. Active Record with all its goodies and curses.
 
-> As Concord has been created for flexible, modular, "pluginizable" architecture, **it's inevitable to have additional complexity** compared to standalone Laravel applications.
+## Preface
+
+As Concord has been created for flexible, modular, "pluginizable" architecture, **it's inevitable to have additional complexity** compared to standalone Laravel applications.
+
+One of the essential goals of Concord is to support creating **reusable code** for Laravel applications. As an example you can create yourself or use a 3rd party [module](modules.md) for managing products. You pull that module in your application with composer and consider that module as **immutable** (indifferent whether it's your own creation or third party).
+
+> Note that this is a real life use case of [SOLID's *open-close* principle](https://en.wikipedia.org/wiki/Open/closed_principle).
+
+The **product module** is a *lower* layer and your **application** is an *upper* layer. It's important to keep in mind that this document discusses both perspectives:
+
+- How to author reusable modules (ie coding the lower layer)
+- How to extend modules in your application
+
+It's obvious that a module is only immutable from the application's perspective. As a module author you definitely want to evolve your module.
+
+Thus another essential feature is that you want to **be able to update the underlying modules in your application** without breaking your code. (Two words: [Semantic Versioning](http://semver.org/))
+
+From the Entities perspective our goal is to outsource basic functionality in modules, ie having basic versions of our *nouns* ready to be customized by the application. For this goal we need a well defined path for extending/overriding Eloquent model classes defined in *lower layers* (module).
 
 ## Overriding Entites (Models)
 
@@ -159,9 +176,9 @@ use Vendor\ProductModule\Models\Entities\Product;
 
 class OrderItem extends Model
 {
-    public function products()
+    public function product()
     {
-        $this->hasMany(Product::class);
+        $this->hasOne(Product::class);
     }
 }
 ```
@@ -243,7 +260,7 @@ class OrderItem extends Model
 {
     public function product()
     {
-        return $this->hasOne(concord()->model(Product::class, 'product_id', 'id'));        
+        return $this->hasOne(concord()->model(Product::class), 'product_id', 'id');        
     }
 }
 ```
