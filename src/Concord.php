@@ -16,6 +16,7 @@ namespace Konekt\Concord;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use Konekt\Concord\Contracts\ConcordInterface;
 use Konekt\Concord\Module\Loader;
 
@@ -103,6 +104,10 @@ class Concord implements ConcordInterface
      */
     public function useModel(string $abstract, string $concrete)
     {
+        if (!is_subclass_of($concrete, $abstract, true)) {
+            throw new InvalidArgumentException("Class {$concrete} must extend or implement {$abstract}. ");
+        }
+
         $this->models[$abstract] = $concrete;
         $this->app->bind($abstract, $concrete);
     }
