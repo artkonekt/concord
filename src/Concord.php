@@ -120,6 +120,13 @@ class Concord implements ConcordInterface
         return array_get($this->models, $abstract);
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getModelBindings() : Collection
+    {
+        return collect($this->models);
+    }
 
     /**
      * Returns the Module Loader instance (lazy load)

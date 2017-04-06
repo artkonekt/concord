@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * Contains class DebugContainerCommand
+ *
+ * @package     app\Console\Command
+ * @copyright   Copyright (c) 2016 Storm Storez Srl-D
+ * @author      Lajos Fazakas <lajos@artkonekt.com>
+ * @license     Proprietary
+ * @since       2017-04-06
+ */
+
+namespace Konekt\Concord\Console\Commands;
+
+use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
+use Konekt\Concord\Contracts\ConcordInterface;
+
+class ModelsCommand extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'concord:models';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'List Concord Models';
+
+    /** @var array */
+    protected $headers = ['Abstract', 'Abstract FQCN', 'Concrete'];
+
+    /**
+     * Execute the console command.
+     *
+     * @param ConcordInterface $concord
+     * @return mixed
+     */
+    public function handle(ConcordInterface $concord)
+    {
+        $bindings = $concord->getModelBindings();
+
+        if ($bindings->count()) {
+            $this->showBindings($bindings);
+        } else {
+            $this->line('No model bindings have been registered.');
+        }
+    }
+
+    /**
+     * Displays the list of model bindings on the output
+     *
+     * @param Collection $bindings
+     */
+    protected function showBindings(Collection $bindings)
+    {
+        $table = [];
+
+        $bindings->map(function ($item, $key) {
+            return [
+                'shortName' => substr(strrchr($key, '\\'), 1),
+                'abstract' => $key,
+                'concrete' => $item
+            ];
+        })->sort(function ($a, $b) {
+            return $a['shortName'] > $b['shortName'];
+        })->each(function ($binding) use (&$table) {
+            $table[] = [
+                $binding['shortName'],
+                $binding['abstract'],
+                $binding['concrete'],
+            ];
+        });
+
+        $this->table($this->headers, $table);
+    }
+}

@@ -12,9 +12,9 @@
 
 namespace Konekt\Concord;
 
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Konekt\Concord\Console\Commands\ListCommand;
+use Konekt\Concord\Console\Commands\ModelsCommand;
+use Konekt\Concord\Console\Commands\ModulesCommand;
 use Konekt\Concord\Console\Commands\MakeModuleCommand;
 use Konekt\Concord\Contracts\ConcordInterface;
 use Konekt\Concord\Helper\HelperFactory;
@@ -22,27 +22,6 @@ use Konekt\Concord\Helper\HelperFactory;
 
 class ConcordServiceProvider extends ServiceProvider
 {
-    /** @var  ConcordInterface */
-    protected $concordInstance;
-
-    /**
-     * ModuleServiceProvider class constructor
-     *
-     * @param Application $app
-     */
-    public function __construct($app)
-    {
-        parent::__construct($app);
-
-        $app->bind(
-            ConcordInterface::class,
-            $app->config->get('concord.class', Concord::class)
-        );
-
-        $this->concordInstance = $app->make(ConcordInterface::class);
-    }
-
-
     /**
      * Register bindings in the container.
      *
@@ -50,13 +29,21 @@ class ConcordServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->instance('concord', $this->concordInstance);
+        $this->app->singleton(
+            ConcordInterface::class,
+            $this->app->config->get('concord.class', Concord::class)
+        );
+
+        $concordInstance = $this->app->make(ConcordInterface::class);
+
+        $this->app->instance('concord', $concordInstance);
 
         $this->app->singleton('concord.helper', function ($app) {
             return new HelperFactory($app->config->get('concord.helpers'), $app);
         });
 
-        $this->registerListCommand();
+        $this->registerModulesCommand();
+        $this->registerModelsCommand();
         $this->registerMakeModuleCommand();
 
         // For each of the registered modules, include their routes and Views
@@ -64,10 +51,9 @@ class ConcordServiceProvider extends ServiceProvider
         $modules = $modules ?: [];
 
         foreach ($modules as $module) {
-            $this->concordInstance->registerModule($module);
+            $concordInstance->registerModule($module);
         }
     }
-
 
     /**
      * Post-registration booting
@@ -81,29 +67,29 @@ class ConcordServiceProvider extends ServiceProvider
         ], 'config');
 
     }
+
     /**
-     * Returns the provided services
-     *
-     * @return array
+     * Register the concord:modules command.
      */
-    public function provides()
+    protected function registerModulesCommand()
     {
-        return [
-            'concord',
-            'concord.helper'
-        ];
+        $this->app->singleton('command.concord.modules', function ($app) {
+            return new ModulesCommand($app['concord']);
+        });
+
+        $this->commands('command.concord.modules');
     }
 
     /**
-     * Register the concord:list command.
+     * Register the concord:model command.
      */
-    protected function registerListCommand()
+    protected function registerModelsCommand()
     {
-        $this->app->singleton('command.concord.list', function ($app) {
-            return new ListCommand($app['concord']);
+        $this->app->singleton('command.concord.models', function ($app) {
+            return new ModelsCommand($app['concord']);
         });
 
-        $this->commands('command.concord.list');
+        $this->commands('command.concord.models');
     }
 
     /**

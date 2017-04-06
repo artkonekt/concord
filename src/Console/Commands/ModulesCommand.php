@@ -15,11 +15,12 @@ namespace Konekt\Concord\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Konekt\Concord\AbstractModuleServiceProvider;
+use Konekt\Concord\Contracts\ConcordInterface;
 
-class ListCommand extends Command
+class ModulesCommand extends Command
 {
     /** @var string  */
-    protected $signature = 'concord:list {--a|all : List all modules, including implicit ones}';
+    protected $signature = 'concord:modules {--a|all : List all modules, including implicit ones}';
 
     /** @var string  */
     protected $description = 'List Concord Modules';
@@ -27,21 +28,19 @@ class ListCommand extends Command
     /** @var array  */
     protected $headers = ['#', 'Name', 'Kind', 'Version', 'Id', 'Namespace'];
 
-    /** @var  Collection */
-    protected $modules;
-
-
     /**
      * Execute the command.
      *
+     * @param ConcordInterface $concord
+     *
      * @return mixed
      */
-    public function handle()
+    public function handle(ConcordInterface $concord)
     {
-        $this->modules = app('concord')->getModules($this->option('all'));
+        $modules = $concord->getModules($this->option('all'));
 
-        if ($this->modules->count()) {
-            $this->showModules();
+        if ($modules->count()) {
+            $this->showModules($modules);
         } else {
             $this->line('No modules have been registered. Add one in config/concord.php.');
         }
@@ -49,14 +48,16 @@ class ListCommand extends Command
 
     /**
      * Displays the list of modules on the output
+     *
+     * @param $modules Collection
      */
-    public function showModules()
+    protected function showModules(Collection $modules)
     {
         $table = [];
         $i     = 0;
 
         /** @var AbstractModuleServiceProvider $module */
-        foreach ($this->modules as $module) {
+        foreach ($modules as $module) {
             $i++;
 
             $table[] = [

@@ -72,4 +72,10 @@ interface ConcordInterface
      */
     public function model(string $abstract);
 
+    /**
+     * Returns all model bindings
+     *
+     * @return Collection
+     */
+    public function getModelBindings() : Collection;
 }
