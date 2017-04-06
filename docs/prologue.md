@@ -18,14 +18,15 @@
 
 ## Inspirations
 
-- [Symfony Bundles](http://symfony.com/doc/bundles/)
-- [Sylius Resource Component](https://github.com/Sylius/Resource)
+- [Monolithic vs. modular - what's the difference?](https://gist.github.com/joepie91/7f03a733a3a72d2396d6)
 - [Creating a Modular Application in Laravel 5.1](http://kamranahmed.info/blog/2015/12/03/creating-a-modular-application-in-laravel/)
 - [Modular Structure in Laravel 5](https://ziyahanalbeniz.blogspot.ro/2015/03/modular-structure-in-laravel-5.html)
 - [Caffeinated Modules](https://github.com/caffeinated/modules)
 - [Caffeinated Presenters](https://github.com/caffeinated/presenter)
 - [Caffeinated Themes](https://github.com/caffeinated/themes)
 - [Caffeinated Repository](https://github.com/caffeinated/repository)
+- [Symfony Bundles](http://symfony.com/doc/bundles/)
+- [Sylius Resource Component](https://github.com/Sylius/Resource)
 - https://github.com/creolab/laravel-modules
 
 ## Who Is It For?

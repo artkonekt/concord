@@ -18,6 +18,7 @@ module-src/
 ```
 module-src/
     Console/
+        Commands/
     Contracts/
     Events/
     Exceptions/
