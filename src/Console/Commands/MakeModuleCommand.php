@@ -13,6 +13,7 @@
 namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Konekt\Concord\Exceptions\UnkownLaravelVersionException;
 
 
 class MakeModuleCommand extends GeneratorCommand
@@ -42,7 +43,8 @@ class MakeModuleCommand extends GeneratorCommand
         }
 
         $name = $this->getNameInput();
-        $manifestPath = str_replace('Providers/ModuleServiceProvider', 'resources/mainfest', $this->getPath($this->parseName($name)));
+        $manifestPath = str_replace('Providers/ModuleServiceProvider', 'resources/mainfest',
+            $this->getPath($this->getFQCNComp($name)));
 
         if (!$this->files->exists($manifestPath)) {
             $this->makeDirectory($manifestPath);
@@ -91,6 +93,33 @@ class MakeModuleCommand extends GeneratorCommand
         $stub = $this->files->get(__DIR__ . '/stubs/module_manifest.stub');
 
         return str_replace('DummyName', $name, $stub);
+    }
+
+    /**
+     * Returns the fully qualified class name from the base generator command in a Laravel 5.3/5.4
+     * compatible manner
+     *
+     * @param string    $name
+     *
+     * @throws UnkownLaravelVersionException
+     *
+     * @return string
+     */
+    protected function getFQCNComp($name)
+    {
+        if (method_exists($this, 'qualifyClass')) {
+            return $this->qualifyClass($name);
+        } elseif (method_exists($this, 'parseName')) {
+            return $this->parseName($name);
+        } else {
+            throw new UnkownLaravelVersionException(
+                sprintf(
+                    "There's an incompatible parent class `%s` in your installed version of Laravel",
+                    get_parent_class($this)
+                )
+            );
+        }
+
     }
 
 }
