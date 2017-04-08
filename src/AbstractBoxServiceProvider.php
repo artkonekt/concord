@@ -36,7 +36,6 @@ class AbstractBoxServiceProvider extends AbstractBaseServiceProvider
                     is_array($configuration) ? $configuration : []);
             }
 
-
             $this->app['concord']->registerModule($module, $configuration);
         }
 

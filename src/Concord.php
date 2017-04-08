@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the Concord.php class.
+ * Contains the Concord class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop

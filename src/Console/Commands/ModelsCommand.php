@@ -1,12 +1,10 @@
 <?php
-
 /**
  * Contains class DebugContainerCommand
  *
- * @package     app\Console\Command
- * @copyright   Copyright (c) 2016 Storm Storez Srl-D
- * @author      Lajos Fazakas <lajos@artkonekt.com>
- * @license     Proprietary
+ * @copyright   Copyright (c) Lajos Fazakas
+ * @author      Lajos Fazakas
+ * @license     MIT
  * @since       2017-04-06
  */
 

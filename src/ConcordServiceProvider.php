@@ -46,7 +46,6 @@ class ConcordServiceProvider extends ServiceProvider
         $this->registerModelsCommand();
         $this->registerMakeModuleCommand();
 
-        // For each of the registered modules, include their routes and Views
         $modules = config("concord.modules");
         $modules = $modules ?: [];
 
