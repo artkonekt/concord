@@ -31,8 +31,6 @@ module-src/
     Listeners/
     Models/
         |-- Factories/
-        |-- Proxies/
-        |-- Repositories/
     Providers/
         |-- ModuleServiceProvider.php
         |-- EventServiceProvider.php

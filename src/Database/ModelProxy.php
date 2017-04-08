@@ -10,7 +10,7 @@
  */
 
 
-namespace Database;
+namespace Konekt\Concord\Database;
 
 
 use LogicException;
@@ -30,7 +30,7 @@ abstract class ModelProxy
             $this->contract = $this->guessContract();
         }
 
-        if (!class_exists($this->contract)) {
+        if (!interface_exists($this->contract)) {
             throw new LogicException(
                 sprintf('The proxy %s has a non-existent contract class: `%s`',
                     static::class, $this->contract
@@ -55,14 +55,17 @@ abstract class ModelProxy
         return call_user_func(static::getInstance()->realClass() . '::' . $method, ...$parameters);
     }
 
-    public function useModelClass($extendedClass)
+    public static function useModelClass($extendedClass)
     {
-        $this->app->alias($extendedClass, $this->contract);
+        $instance = static::getInstance();
+        $instance->app->alias($extendedClass, $instance->contract);
     }
 
-    public function realClass()
+    public static function realClass()
     {
-        return $this->app->getAlias($this->contract);
+        $instance = static::getInstance();
+
+        return $instance->app->getAlias($instance->contract);
     }
 
     /**
@@ -70,7 +73,7 @@ abstract class ModelProxy
      *
      * @return string
      */
-    public function entityName()
+    public static function entityName()
     {
         return str_replace_last('Proxy', '', class_basename(static::class));
     }

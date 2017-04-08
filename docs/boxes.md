@@ -88,8 +88,6 @@ box-src/
     Jobs/
     Listeners/
     Models/
-        |-- Proxies/
-        |-- Repositories/
     Providers/
         |-- ModuleServiceProvider.php
         |-- EventServiceProvider.php
