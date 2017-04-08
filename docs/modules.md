@@ -33,9 +33,9 @@ module-src/
     Exceptions/
     Helpers/
     Models/
-        |-- Entities/
-        |-- Repositories/
         |-- Factories/
+        |-- Proxies/
+        |-- Repositories/
     Providers/
         |-- ModuleServiceProvider.php
     Services/

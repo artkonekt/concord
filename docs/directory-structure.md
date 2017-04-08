@@ -30,9 +30,9 @@ module-src/
     Jobs/
     Listeners/
     Models/
-        |-- Entities/
-        |-- Repositories/
         |-- Factories/
+        |-- Proxies/
+        |-- Repositories/
     Providers/
         |-- ModuleServiceProvider.php
         |-- EventServiceProvider.php
