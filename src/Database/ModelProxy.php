@@ -19,8 +19,8 @@ abstract class ModelProxy
 {
     protected $contract;
 
-    /** @var UserProxy */
-    protected static $instance;
+    /** @var array */
+    protected static $instances = [];
 
     protected $app;
 
@@ -41,13 +41,18 @@ abstract class ModelProxy
         $this->app = $app ?: app();
     }
 
+    /**
+     * This is a method where the dark word 'static' has 7 occurences
+     *
+     * @return mixed
+     */
     public static function getInstance()
     {
-        if (is_null(static::$instance)) {
-            static::$instance = new static();
+        if (!isset(static::$instances[static::class])) {
+            static::$instances[static::class] = new static();
         }
 
-        return static::$instance;
+        return static::$instances[static::class];
     }
 
     public static function __callStatic($method, $parameters)
