@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the ModelProxy class.
+ * Contains the Repository class.
  *
  * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
@@ -13,17 +13,25 @@
 namespace Konekt\Concord\Database;
 
 
+use Illuminate\Contracts\Foundation\Application;
 use LogicException;
 
-abstract class ModelProxy
+abstract class Repository
 {
+    /** @var string */
     protected $contract;
 
     /** @var array */
     protected static $instances = [];
 
+    /** @var Application */
     protected $app;
 
+    /**
+     * Repository constructor.
+     *
+     * @param Application $app
+     */
     public function __construct($app = null)
     {
         if (empty($this->contract)) {
@@ -32,7 +40,7 @@ abstract class ModelProxy
 
         if (!interface_exists($this->contract)) {
             throw new LogicException(
-                sprintf('The proxy %s has a non-existent contract class: `%s`',
+                sprintf('The repository %s has a non-existent contract class: `%s`',
                     static::class, $this->contract
                 )
             );
@@ -42,9 +50,9 @@ abstract class ModelProxy
     }
 
     /**
-     * This is a method where the dark word 'static' has 7 occurences
+     * This is a method where the dark word 'static' has 7 occurrences
      *
-     * @return mixed
+     * @return Repository
      */
     public static function getInstance()
     {
@@ -55,18 +63,34 @@ abstract class ModelProxy
         return static::$instances[static::class];
     }
 
+    /**
+     * @param $method
+     * @param $parameters
+     *
+     * @return mixed
+     */
     public static function __callStatic($method, $parameters)
     {
-        return call_user_func(static::getInstance()->realClass() . '::' . $method, ...$parameters);
+        return call_user_func(static::getInstance()->modelClass() . '::' . $method, ...$parameters);
     }
 
+    /**
+     * Set the repository to use the given model class
+     *
+     * @param string $extendedClass
+     */
     public static function useModelClass($extendedClass)
     {
         $instance = static::getInstance();
         $instance->app->alias($extendedClass, $instance->contract);
     }
 
-    public static function realClass()
+    /**
+     * Returns the real model class FQCN
+     *
+     * @return string
+     */
+    public static function modelClass()
     {
         $instance = static::getInstance();
 
@@ -74,18 +98,19 @@ abstract class ModelProxy
     }
 
     /**
-     * Returns the associated entity's name eg 'OrderProxy' => 'Order'
+     * Returns the associated entity's name eg 'OrderRepository' => 'Order'
      *
      * @return string
      */
     public static function entityName()
     {
-        return str_replace_last('Proxy', '', class_basename(static::class));
+        return str_replace_last('Repository', '', class_basename(static::class));
     }
 
     /**
-     * Try guessing the associated contract class to a model proxy
-     * Pattern is 'UserProxy' => entity name is 'User' => contract is '../Contracts/User'
+     * Try guessing the associated contract class for the actual repository
+     * Pattern is 'UserRepository' => entity name is 'User' => contract is '../Contracts/User'
+     *
      * @return string
      */
     private function guessContract()
