@@ -13,7 +13,7 @@
 namespace Konekt\Concord;
 
 
-class AbstractBoxServiceProvider extends AbstractBaseServiceProvider
+abstract class BaseBoxServiceProvider extends BaseServiceProvider
 {
 
     public function register()
@@ -36,7 +36,7 @@ class AbstractBoxServiceProvider extends AbstractBaseServiceProvider
                     is_array($configuration) ? $configuration : []);
             }
 
-            $this->app['concord']->registerModule($module, $configuration);
+            $this->concord->registerModule($module, $configuration);
         }
 
     }

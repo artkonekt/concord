@@ -12,6 +12,9 @@
 namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Filesystem\Filesystem;
+use Konekt\Concord\Contracts\Concord;
+use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Exceptions\UnknownLaravelVersionException;
 
 
@@ -23,12 +26,22 @@ class MakeModuleCommand extends GeneratorCommand
     /** @var string  */
     protected $description = 'Create a new Concord module';
 
+    /** @var Convention */
+    protected $convention;
+
     /**
      * The type of class being generated.
      *
      * @var string
      */
     protected $type = 'Module';
+
+    public function __construct(Filesystem $files, Concord $concord)
+    {
+        parent::__construct($files);
+
+        $this->convention = $concord->getConvention();
+    }
 
     /**
      * Execute the console command.
@@ -71,7 +84,7 @@ class MakeModuleCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\\Modules';
+        return $rootNamespace . '\\' . str_replace('/', '\\', $this->convention->modulesFolder());
     }
 
     /**

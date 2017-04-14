@@ -21,7 +21,7 @@ namespace Konekt\Concord;
  * Nevertheless it's a normal Laravel Service Provider class.
  *
  */
-abstract class AbstractModuleServiceProvider extends AbstractBaseServiceProvider
+abstract class BaseModuleServiceProvider extends BaseServiceProvider
 {
 
     public function register()
@@ -41,6 +41,10 @@ abstract class AbstractModuleServiceProvider extends AbstractBaseServiceProvider
     {
         if ($this->config('migrations', true)) {
             $this->registerMigrations();
+        }
+
+        if ($this->config('models', true)) {
+            $this->registerModels();
         }
     }
 

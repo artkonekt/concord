@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the AbstractBaseServiceProvider class.
+ * Contains the BaseServiceProvider class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
@@ -13,13 +13,15 @@
 namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
+use Konekt\Concord\Contracts\Concord as ConcordContract;
+use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Contracts\Module;
 use Konekt\Concord\Module\Manifest;
 use Konekt\Concord\Module\Kind;
 use ReflectionClass;
 
 
-class AbstractBaseServiceProvider extends ServiceProvider implements Module
+abstract class BaseServiceProvider extends ServiceProvider implements Module
 {
     /** @var  string */
     protected $basePath;
@@ -33,6 +35,14 @@ class AbstractBaseServiceProvider extends ServiceProvider implements Module
     /** @var  string */
     protected $id;
 
+    /** @var  array */
+    protected $models = [];
+
+    /** @var  ConcordContract */
+    protected $concord;
+
+    /** @var  Convention */
+    protected $convention;
 
     /**
      * ModuleServiceProvider class constructor
@@ -43,6 +53,8 @@ class AbstractBaseServiceProvider extends ServiceProvider implements Module
     {
         parent::__construct($app);
 
+        $this->concord       = $app->make(ConcordContract::class); // retrieve the concord singleton
+        $this->convention    = $this->concord->getConvention(); // storing to get rid of train wrecks
         $this->basePath      = dirname(dirname((new ReflectionClass(static::class))->getFileName()));
         $this->namespaceRoot = str_replace('\\Providers\\ModuleServiceProvider', '', static::class);
         $this->id            = $this->getModuleId();
@@ -59,22 +71,26 @@ class AbstractBaseServiceProvider extends ServiceProvider implements Module
     /**
      * Returns module configuration value(s)
      *
-     * @param string $key   If left empty, the entire module configuration gets retrieved
+     * @param string $key If left empty, the entire module configuration gets retrieved
+     * @param null   $default
      *
      * @return mixed
      */
-    public function config(string $key = null)
+    public function config(string $key = null, $default = null)
     {
         $key = $key ? sprintf('%s.%s', $this->getId(), $key) : $this->getId();
 
-        return config($key);
+        return config($key, $default);
     }
 
 
+    /**
+     * @return Manifest
+     */
     public function getManifest(): Manifest
     {
         if (!$this->manifest) {
-            $data = include($this->basePath . '/resources/manifest.php' );
+            $data = include($this->basePath . '/' . $this->convention->manifestFile());
 
             extract($data);
             $kind = isset($kind) ? $kind : Kind::MODULE();
@@ -102,7 +118,7 @@ class AbstractBaseServiceProvider extends ServiceProvider implements Module
      */
     public function getConfigPath(): string
     {
-        return $this->getBasePath() . '/resources/config';
+        return $this->getBasePath() . '/' . $this->convention->configFolder();
 
     }
 
@@ -138,11 +154,23 @@ class AbstractBaseServiceProvider extends ServiceProvider implements Module
      */
     protected function registerMigrations()
     {
-        $path = $this->getBasePath() . '/resources/database/migrations';
+        $path = $this->getBasePath() . '/' . $this->convention->migrationsFolder();
 
         if ($this->app->runningInConsole() && is_dir($path)) {
             $this->loadMigrationsFrom($path);
         }
+    }
+
+    /**
+     * Register models in a box/module
+     */
+    protected function registerModels()
+    {
+        foreach ($this->models as $key => $model) {
+            $contract = is_string($key) ? $key : $this->convention->contractForModel($model);
+            $this->concord->registerModel($contract, $model);
+        }
+
     }
 
 }

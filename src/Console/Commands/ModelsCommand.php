@@ -28,10 +28,10 @@ class ModelsCommand extends Command
      *
      * @var string
      */
-    protected $description = 'List Concord Models';
+    protected $description = 'List registered models';
 
     /** @var array */
-    protected $headers = ['Abstract', 'Abstract FQCN', 'Concrete'];
+    protected $headers = ['Entity', 'Contract', 'Model'];
 
     /**
      * Execute the console command.

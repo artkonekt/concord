@@ -13,10 +13,13 @@
 namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
+use InvalidArgumentException;
 use Konekt\Concord\Console\Commands\ModelsCommand;
 use Konekt\Concord\Console\Commands\ModulesCommand;
 use Konekt\Concord\Console\Commands\MakeModuleCommand;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
+use Konekt\Concord\Contracts\Convention;
+use Konekt\Concord\Conventions\ConcordDefault;
 use Konekt\Concord\Helper\HelperFactory;
 
 
@@ -29,6 +32,14 @@ class ConcordServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Set convention to use
+        $this->app->bind(
+                Convention::class,
+                $this->resolveConventionClass(
+                    $this->app->config->get('concord.convention', 'default')
+                )
+        );
+
         // Register interface -> actual class binding as singleton
         // For the sake of flexibility it's possible to replace
         // the actual class by setting `class` in the config
@@ -81,6 +92,27 @@ class ConcordServiceProvider extends ServiceProvider
             ]);
         }
 
+    }
+
+
+    /**
+     * Resolve the convention class
+     *
+     * @param string $name Either a short name like 'default' or an FQCN
+     *
+     * @return string
+     */
+    private function resolveConventionClass(string $name)
+    {
+        if ('default' == $name) {
+            return ConcordDefault::class;
+        } elseif (class_exists($name)) {
+            return $name;
+        }
+
+        throw new InvalidArgumentException(
+            sprintf('%s is not a valid convention class', $name)
+        );
     }
 
 

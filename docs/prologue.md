@@ -4,17 +4,18 @@
 
 ## Main Goals
 
-- Provide an extensible PHP platform for business applications
-- To establish the foundation for layered applications
-- Provide a system for using/creating a plugin-like modular architecture
-- Have a system that can embrace decoupled modules, so that we can get rid of duplications across projects
-- Define the inverse (but not opposite) of the SOLID principle: one thing should be done one way
+- Provide an extensible PHP platform for business applications.
+- To establish the foundation for layered applications.
+- Provide a system for using/creating a plugin-like modular architecture.
+- Have a system that can embrace decoupled modules, so that we can get rid of duplications across projects.
+- One thing should be done one way.
 - Use all the goodness and best practices of Laravel 5.3+
-- Standardize entities and their related design patterns (repositories, factories, etc)
+- Standardize usage of Eloquent models (entities) and their related design patterns (repositories, factories, etc).
 - DDD but ActiveRecord :)
-- Establish a framework where specific modules can be customized, or even replaced
-- Avoid over-engineering
-- Keep the developer's liberty so that it's not a nightmare to implement/customize things
+- Establish a framework where specific modules can be customized, or even replaced.
+- Avoid over-engineering.
+- Keep the developer's liberty so that it's not a nightmare to implement/customize things.
+- Follow Laravel's standards and practices.
 
 ## Inspirations
 
@@ -31,30 +32,31 @@
 
 ## Who Is It For?
 
-This creation is an engineering shit so think twice if you really need it.
+Concord adds some features **and therefore additional complexity** to the Laravel Framework. So think twice if you really need it.
 
-##### Concord is _not_ for you if
+#### Concord is _not_ for you if
 most of these apply to you:
 
+- "_I'm writing a simple application._"
+- "_I have no need of code reuse in multiple applications._"
 - "_My code is organized enough._"
 - "_I know how to write my stuff, and I'm OK with it._"
 - "_The amount I'm copypasting is fine._"
 - "_I'm fed up with interfaces and abstractions._"
-- "_Rules only chain me._"
-- "_In real life, every application is **very** different._"
+- "_Applications I develop are pretty different from each other._"
 - "_I prefer to complete tasks as quickly as possible._"
 - "_Code beauty is bullshit._"
 
-##### Concord is for you if
+#### Concord is for you if
 most of these apply to you:
 
-- "_Something smells with the organization of my code_"
-- "_Sometimes I look for code design advice on the net, but everything turns out to be relative._"
-- "_I'm fed up with writing the same stuff over and over again._"
-- "_The way I'm using abstracts, traits and interfaces is not solid._"
-- "_Sometimes I'd be happy to have some guides on code organization and design._"
-- "_I often keep thinking where to put a class._"
 - "_I **need** reusable business functionality._"
+- "_I'm fed up with writing the same stuff over and over again._"
+- "_My code organization isn't always consistent. One day a class of `Foo` might be a `Bar` the and the other day a `Baz`._"
+- "_I often think about where to put a class._"
+- "_The way I'm using abstracts, traits and interfaces is not solid._"
+- "_Sometimes I look for code design advice on the net, but everything turns out to be relative._"
+- "_Sometimes I'd be happy to have some guides on code organization and design._"
 - "_I rather spend time **now** for creating something solid than to pay the price later._"
 - "_Clean code is not about aesthetics but about robust systems._"
 
@@ -62,5 +64,7 @@ One of the main reasons I gave Concord birth for was my need for **Reusable
 Business Functionality**. In most of the cases there's no need for that.
 
 Recommended reading: [10 Modern Software Over-Engineering Mistakes](https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8).
+
+OK, you've been warned :)
 
 #### Next: [Overview &raquo;](overview.md)

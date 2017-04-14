@@ -18,6 +18,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
+use Konekt\Concord\Contracts\Convention;
 
 class Concord implements ConcordContract
 {
@@ -36,15 +37,20 @@ class Concord implements ConcordContract
     /** @var  Application */
     protected $app;
 
+    /** @var Convention */
+    private $convention;
+
     /**
      * Concord class constructor
      *
      * @param Application $app
+     * @param Convention  $convention
      */
-    public function __construct(Application $app)
+    public function __construct(Application $app, Convention $convention)
     {
-        $this->modules = Collection::make();
-        $this->app     = $app;
+        $this->modules    = Collection::make();
+        $this->app        = $app;
+        $this->convention = $convention;
     }
 
 
@@ -101,14 +107,14 @@ class Concord implements ConcordContract
     /**
      * @inheritDoc
      */
-    public function useModel(string $abstract, string $concrete)
+    public function registerModel(string $abstract, string $concrete)
     {
         if (!is_subclass_of($concrete, $abstract, true)) {
             throw new InvalidArgumentException("Class {$concrete} must extend or implement {$abstract}. ");
         }
 
         $this->models[$abstract] = $concrete;
-        $this->app->bind($abstract, $concrete);
+        $this->app->alias($concrete, $abstract);
     }
 
     /**
@@ -127,4 +133,11 @@ class Concord implements ConcordContract
         return collect($this->models);
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getConvention(): Convention
+    {
+        return $this->convention;
+    }
 }

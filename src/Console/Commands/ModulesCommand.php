@@ -13,7 +13,7 @@ namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Konekt\Concord\AbstractModuleServiceProvider;
+use Konekt\Concord\BaseModuleServiceProvider;
 use Konekt\Concord\Contracts\Concord;
 
 class ModulesCommand extends Command
@@ -55,7 +55,7 @@ class ModulesCommand extends Command
         $table = [];
         $i     = 0;
 
-        /** @var AbstractModuleServiceProvider $module */
+        /** @var BaseModuleServiceProvider $module */
         foreach ($modules as $module) {
             $i++;
 

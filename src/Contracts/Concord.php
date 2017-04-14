@@ -53,14 +53,14 @@ interface Concord
     public function getModules($includeImplicits = false) : Collection;
 
     /**
-     * Use/overwrite a model for a specific abstract/interface
+     * Register/overwrite a model for a specific abstract/interface
      *
      * @param string    $abstract
      * @param string    $concrete
      *
      * @return void
      */
-    public function useModel(string $abstract, string $concrete);
+    public function registerModel(string $abstract, string $concrete);
 
     /**
      * Return the Model class for a specific abstract class
@@ -77,4 +77,11 @@ interface Concord
      * @return Collection
      */
     public function getModelBindings() : Collection;
+
+    /**
+     * Returns the the current convention
+     *
+     * @return Convention
+     */
+    public function getConvention() : Convention;
 }
