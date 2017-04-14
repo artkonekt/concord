@@ -34,6 +34,8 @@ abstract class ModelProxy
      */
     public function __construct(Concord $concord = null)
     {
+        $this->concord = $concord ?: app(Concord::class);
+
         if (empty($this->contract)) {
             $this->contract = $this->guessContract();
         }
@@ -45,8 +47,6 @@ abstract class ModelProxy
                 )
             );
         }
-
-        $this->concord = $concord ?: app(Concord::class);
     }
 
     /**
