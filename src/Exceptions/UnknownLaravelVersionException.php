@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the UnkownLaravelVersionException class.
+ * Contains the UnknownLaravelVersionException class.
  *
  * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
@@ -14,7 +14,7 @@ namespace Konekt\Concord\Exceptions;
 
 use Exception;
 
-class UnkownLaravelVersionException extends Exception
+class UnknownLaravelVersionException extends Exception
 {
 
 }

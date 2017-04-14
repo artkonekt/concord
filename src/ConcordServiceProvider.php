@@ -16,7 +16,7 @@ use Illuminate\Support\ServiceProvider;
 use Konekt\Concord\Console\Commands\ModelsCommand;
 use Konekt\Concord\Console\Commands\ModulesCommand;
 use Konekt\Concord\Console\Commands\MakeModuleCommand;
-use Konekt\Concord\Contracts\ConcordInterface;
+use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Helper\HelperFactory;
 
 
@@ -29,25 +29,26 @@ class ConcordServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Register interface -> actual class binding as singleton
+        // For the sake of flexibility it's possible to replace
+        // the actual class by setting `class` in the config
         $this->app->singleton(
-            ConcordInterface::class,
+            ConcordContract::class,
             $this->app->config->get('concord.class', Concord::class)
         );
 
-        $concordInstance = $this->app->make(ConcordInterface::class);
-
+        // Make an instance
+        $concordInstance = $this->app->make(ConcordContract::class);
+        // And make it available as the 'concord' service
         $this->app->instance('concord', $concordInstance);
 
         $this->app->singleton('concord.helper', function ($app) {
             return new HelperFactory($app->config->get('concord.helpers'), $app);
         });
 
-        $this->registerModulesCommand();
-        $this->registerModelsCommand();
-        $this->registerMakeModuleCommand();
+        $this->registerCommands();
 
-        $modules = config("concord.modules");
-        $modules = $modules ?: [];
+        $modules = config("concord.modules") ?: [];
 
         foreach ($modules as $module) {
             $concordInstance->registerModule($module);
@@ -68,39 +69,18 @@ class ConcordServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the concord:modules command.
+     * Register the console commands of this package
      */
-    protected function registerModulesCommand()
+    protected function registerCommands()
     {
-        $this->app->singleton('command.concord.modules', function ($app) {
-            return new ModulesCommand($app['concord']);
-        });
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ModulesCommand::class,
+                ModelsCommand::class,
+                MakeModuleCommand::class
+            ]);
+        }
 
-        $this->commands('command.concord.modules');
-    }
-
-    /**
-     * Register the concord:model command.
-     */
-    protected function registerModelsCommand()
-    {
-        $this->app->singleton('command.concord.models', function ($app) {
-            return new ModelsCommand($app['concord']);
-        });
-
-        $this->commands('command.concord.models');
-    }
-
-    /**
-     * Register the make:module command.
-     */
-    protected function registerMakeModuleCommand()
-    {
-        $this->app->singleton('command.concord.module.make', function ($app) {
-            return new MakeModuleCommand($app['files']);
-        });
-
-        $this->commands('command.concord.module.make');
     }
 
 

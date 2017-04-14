@@ -24,7 +24,14 @@ class Manifest
     /** @var  Kind */
     protected $kind;
 
-    public function __construct($name, $version, $kind)
+    /**
+     * Manifest constructor.
+     *
+     * @param string $name
+     * @param string $version
+     * @param Kind   $kind
+     */
+    public function __construct(string $name, string $version, Kind $kind)
     {
         $this->name    = $name;
         $this->version = $version;

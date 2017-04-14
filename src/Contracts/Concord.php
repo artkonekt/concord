@@ -1,12 +1,11 @@
 <?php
 /**
- * Contains the ConcordInterface class.
+ * Contains the Concord interface.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
  * @since       2016-10-30
- *
  */
 
 
@@ -15,7 +14,7 @@ namespace Konekt\Concord\Contracts;
 
 use Illuminate\Support\Collection;
 
-interface ConcordInterface
+interface Concord
 {
 
     /**
@@ -31,18 +30,18 @@ interface ConcordInterface
     /**
      * Registers a helper
      *
-     * @param string    $name
-     * @param string    $moduleClass
+     * @param string $name
+     * @param string $class
      */
-    public function registerHelper($name, $moduleClass);
+    public function registerHelper($name, $class);
 
     /**
-     * Utility method for registering facades to Laravel's service container
+     * Utility method for registering aliases/facades to Laravel's service container
      *
-     * @param string    $alias
-     * @param string    $concrete
+     * @param string    $alias      The short name of the facade (eg. `Foo`)
+     * @param string    $concrete   The concrete implementation's class (eg. `Vendor\Chewbakka\Foo`)
      */
-    public function registerFacade($alias, $concrete);
+    public function registerAlias($alias, $concrete);
 
     /**
      * Returns the collection of available modules

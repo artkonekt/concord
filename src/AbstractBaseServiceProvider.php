@@ -13,14 +13,13 @@
 namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
-use Konekt\Concord\Contracts\ModuleConfigurationInterface;
-use Konekt\Concord\Contracts\ModuleInterface;
+use Konekt\Concord\Contracts\Module;
 use Konekt\Concord\Module\Manifest;
 use Konekt\Concord\Module\Kind;
 use ReflectionClass;
 
 
-class AbstractBaseServiceProvider extends ServiceProvider implements ModuleInterface
+class AbstractBaseServiceProvider extends ServiceProvider implements Module
 {
     /** @var  string */
     protected $basePath;

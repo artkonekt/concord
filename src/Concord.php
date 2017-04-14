@@ -17,10 +17,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
-use Konekt\Concord\Contracts\ConcordInterface;
-use Konekt\Concord\Module\Loader;
+use Konekt\Concord\Contracts\Concord as ConcordContract;
 
-class Concord implements ConcordInterface
+class Concord implements ConcordContract
 {
     /** @var Collection  */
     protected $modules;
@@ -55,7 +54,7 @@ class Concord implements ConcordInterface
     public function registerModule($moduleClass, $config = [])
     {
         $this->app['config']->set(concord_module_id($moduleClass), $config);
-        $module = $this->getLoader()->loadModule($moduleClass);
+        $module = $this->app->register($moduleClass);
 
         $this->modules->push($module);
         $implicit = isset($config['implicit']) ? $config['implicit'] : false;
@@ -68,10 +67,10 @@ class Concord implements ConcordInterface
     /**
      * @inheritdoc
      */
-    public function registerHelper($name, $moduleClass)
+    public function registerHelper($name, $class)
     {
         config([
-            sprintf('concord.helpers.%s', $name) => $moduleClass
+            sprintf('concord.helpers.%s', $name) => $class
         ]);
     }
 
@@ -94,7 +93,7 @@ class Concord implements ConcordInterface
     /**
      * @inheritdoc
      */
-    public function registerFacade($alias, $concrete)
+    public function registerAlias($alias, $concrete)
     {
         AliasLoader::getInstance()->alias($alias, $concrete);
     }
@@ -126,20 +125,6 @@ class Concord implements ConcordInterface
     public function getModelBindings() : Collection
     {
         return collect($this->models);
-    }
-
-    /**
-     * Returns the Module Loader instance (lazy load)
-     *
-     * @return Loader
-     */
-    protected function getLoader()
-    {
-        if (!$this->loader) {
-            $this->loader = new Loader($this->app);
-        }
-
-        return $this->loader;
     }
 
 }

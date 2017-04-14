@@ -6,14 +6,13 @@
  * @author      Attila Fulop
  * @license     MIT
  * @since       2017-01-18
- *
  */
 
 
 namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
-use Konekt\Concord\Exceptions\UnkownLaravelVersionException;
+use Konekt\Concord\Exceptions\UnknownLaravelVersionException;
 
 
 class MakeModuleCommand extends GeneratorCommand
@@ -101,7 +100,7 @@ class MakeModuleCommand extends GeneratorCommand
      *
      * @param string    $name
      *
-     * @throws UnkownLaravelVersionException
+     * @throws UnknownLaravelVersionException
      *
      * @return string
      */
@@ -112,7 +111,7 @@ class MakeModuleCommand extends GeneratorCommand
         } elseif (method_exists($this, 'parseName')) {
             return $this->parseName($name);
         } else {
-            throw new UnkownLaravelVersionException(
+            throw new UnknownLaravelVersionException(
                 sprintf(
                     "There's an incompatible parent class `%s` in your installed version of Laravel",
                     get_parent_class($this)

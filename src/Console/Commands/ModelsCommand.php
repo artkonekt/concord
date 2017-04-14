@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains class DebugContainerCommand
+ * Contains the Models Command class
  *
  * @copyright   Copyright (c) Lajos Fazakas
  * @author      Lajos Fazakas
@@ -12,7 +12,7 @@ namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Konekt\Concord\Contracts\ConcordInterface;
+use Konekt\Concord\Contracts\Concord;
 
 class ModelsCommand extends Command
 {
@@ -36,10 +36,11 @@ class ModelsCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param ConcordInterface $concord
+     * @param Concord $concord
+     *
      * @return mixed
      */
-    public function handle(ConcordInterface $concord)
+    public function handle(Concord $concord)
     {
         $bindings = $concord->getModelBindings();
 

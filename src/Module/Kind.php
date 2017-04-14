@@ -22,6 +22,7 @@ class Kind extends Enum
     const MODULE    = 'module';
     const BOX       = 'box';
 
+    /** @var array  The texts for displaying items on UI */
     protected static $displayTexts = [
         self::MODULE => 'Module',
         self::BOX    => 'Box'

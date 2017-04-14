@@ -1,12 +1,11 @@
 <?php
 /**
- * Contains the ListCommand.php class.
+ * Contains the Modules Command class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
  * @since       2016-08-14
- *
  */
 
 
@@ -15,7 +14,7 @@ namespace Konekt\Concord\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Konekt\Concord\AbstractModuleServiceProvider;
-use Konekt\Concord\Contracts\ConcordInterface;
+use Konekt\Concord\Contracts\Concord;
 
 class ModulesCommand extends Command
 {
@@ -31,11 +30,11 @@ class ModulesCommand extends Command
     /**
      * Execute the command.
      *
-     * @param ConcordInterface $concord
+     * @param Concord $concord
      *
      * @return mixed
      */
-    public function handle(ConcordInterface $concord)
+    public function handle(Concord $concord)
     {
         $modules = $concord->getModules($this->option('all'));
 

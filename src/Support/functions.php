@@ -8,7 +8,7 @@
  * @since       2016-09-25
  *
  */
-use Konekt\Concord\Contracts\ConcordInterface;
+use Konekt\Concord\Contracts\Concord;
 
 /**
  * Converts a fully qualified classname to a string (backslashes to dots, parts to snake case)
@@ -91,7 +91,7 @@ function helper($name, $arguments = [])
 /**
  * Returns the concord instance
  *
- * @return ConcordInterface
+ * @return Concord
  */
 function concord()
 {
