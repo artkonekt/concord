@@ -134,6 +134,18 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         return $this->namespaceRoot;
     }
 
+    /**
+     * Returns the short (abbreviated) name of the module
+     * E.g. Konekt\AppShell => app_shell
+     */
+    public function shortName()
+    {
+        $id = $this->getModuleId();
+        $p  = strrpos($id, '.');
+
+        return $p ? substr($id, $p + 1) : $id;
+    }
+
 
     /**
      * Returns a standard module name based on the module provider's classname
@@ -176,13 +188,13 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     }
 
     /**
-     * Register views folder in a box/module
+     * Register routes in a box/module
      *
      * @param array|null $only  if an array is passed, only the routes in the array will be registered
      */
-    protected function registerViews($only = null)
+    protected function registerRoutes($only = null)
     {
-        $path = $this->getBasePath() . '/' . $this->convention->viewsFolder();
+        $path = $this->getBasePath() . '/' . $this->convention->routesFolder();
 
         if (is_dir($path)) {
 
@@ -194,6 +206,20 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
                 Route::namespace($this->getNamespaceRoot())
                      ->group(sprintf('%s/%s.php', $path, $route));
             }
+        }
+    }
+
+    /**
+     * Register the views folder, in a separate namespace
+     */
+    protected function registerViews()
+    {
+        $path = $this->getBasePath() . '/' . $this->convention->viewsFolder();
+        $namespace = $this->config('views.namespace', $this->shortName());
+
+        if(is_dir($path)) {
+            $this->getModuleId();
+            $this->loadViewsFrom($path, $namespace);
         }
     }
 
