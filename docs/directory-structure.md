@@ -13,7 +13,11 @@ module-src/
 
 ## Full Stack Of Recommended File/Folder Structure
 
-> Note: the list below contains the folders for both boxes and modules, however it's recommended to only have parts, thus specific folders depending on its kind (module or box)
+> Note: the list below contains the folders for both [boxes](boxes.md) and [modules](modules.md) for the sake of being a single reference.
+
+> Boxes and modules should only have their recommended [parts](parts.md) (-> folders).
+
+The default locations are:
 
 ```
 module-src/
@@ -55,5 +59,7 @@ module-src/
         |-- manifest.php
     
 ```
+
+This folder layout is stored in the `ConcordDefault` [convention](conventions.md). You can customize this layout by overriding the default convention (class).
 
 #### Next: [Concord Rules &raquo;](rules.md)

@@ -50,7 +50,9 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
     {
         return [
             'implicit'   => true,
-            'migrations' => true
+            'migrations' => true,
+            'views'      => true,
+            'routes'     => true
         ];
     }
 

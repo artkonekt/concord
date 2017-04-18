@@ -4,18 +4,23 @@
 
 ## Main Goals
 
-- Provide an extensible PHP platform for business applications.
-- To establish the foundation for layered applications.
+- Provide a platform on top of Laravel for extensible business applications.
+- Establish the foundation for layered applications.
 - Provide a system for using/creating a plugin-like modular architecture.
 - Have a system that can embrace decoupled modules, so that we can get rid of duplications across projects.
-- One thing should be done one way.
-- Use all the goodness and best practices of Laravel 5.3+
-- Standardize usage of Eloquent models (entities) and their related design patterns (repositories, factories, etc).
-- DDD but ActiveRecord :)
 - Establish a framework where specific modules can be customized, or even replaced.
-- Avoid over-engineering.
-- Keep the developer's liberty so that it's not a nightmare to implement/customize things.
+- Standardize usage of Eloquent models (entities) and their related design patterns (repositories, factories, etc).
+
+## Main Considerations
+
+- Laravel 5.3+
 - Follow Laravel's standards and practices.
+- Never duplicate functionality that exists in Laravel
+- One thing should be done one way.
+- Avoid over-engineering.
+- DDD but ActiveRecord :)
+- Keep the developer's liberty so that it's not a nightmare to implement/customize things.
+
 
 ## Inspirations
 

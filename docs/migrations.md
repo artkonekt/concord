@@ -2,9 +2,9 @@
 
 The migrations within Concord are just plain Laravel migrations. Starting with v5.3, Laravel supports migrations distributed in various folders, Concord is utilizing this facility.
 
-Migrations are module and box level parts, since they belong to the model layer, are brothers and sisters with entities.
+Migrations are module and box level parts, since they belong to the model layer, are brothers and sisters with [entities](models.md).
 
-However customizations happen in the application layer, so migrations are naturally present there as well. Application level migrations should contain customizations that are **exclusively relevant** to the specific application/client.
+Customizations mostly happen in the application layer, so migrations are naturally present there as well. Application level migrations should contain customizations that are **exclusively relevant** to the specific application/client.
 
 ## Turn Migrations On/Off
 
@@ -27,4 +27,4 @@ return [
 ```
 By default, migrations are published.
 
-#### Next: [Entities &raquo;](entities.md)
+#### Next: [Models (Entities) &raquo;](models.md)

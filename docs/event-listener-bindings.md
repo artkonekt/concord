@@ -13,12 +13,12 @@ But the implementing app may want to omit sending these emails, so they can over
 So in case you want the module loader to register the module's EventServiceProvider (which it doesn't do by default) you should add this to the module's config file:
 
 ```php
+<?php
+
 return [
-    'concord' => [
-        'loader' => [
-            'register' => [
-                'events_provider' => true
-            ]
+    'modules' => [
+        Vendor\MyModule\Providers\ModuleServiceProvider::class => [
+            'event_listeners' => true
         ]
     ]
 ];

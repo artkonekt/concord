@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the AbstractModuleServiceProvider class.
+ * Contains the BaseModuleServiceProvider class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop

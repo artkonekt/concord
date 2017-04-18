@@ -13,7 +13,7 @@ You may have an in-house CMS module that can handle pages, posts in multiple lan
 
 #### Composing Parts
 
-Modules consist of different [parts](parts.md) like model classes, entities, controllers, config files, migrations, views, routes, middleware, frontend assets and so on.
+Modules consist of different [parts](parts.md) like models (entities), controllers, config files, migrations, views, routes, middleware, frontend assets and so on.
 
 Laravel itself solves many of these problems, so **whenever a solution in Laravel exists, it's being used**.
 
@@ -23,7 +23,7 @@ Modules are the de-coupled implementations of the business logic and they have t
 
 ## Boxes
 
-Boxes are optional. Think of them as "boilerplate" applications. They wrap several modules, and are subject to customization by the Application.
+Boxes are optional. Think of them as "boilerplate" applications. They wrap several modules, and are subject to customization by the final Application.
 
 ## Application
 
@@ -48,7 +48,7 @@ modules and/or boxes.
 
 Reading further you'll see that some [parts](parts.md) are advised to be kept in modules and others in boxes/application.
 
-The reason behind is that modules should be kept decoupled, so they most often should not be aware of other modules. In case they really depend on another module, this dependency should be expressed explicitely (via composer). Number of dependent modules should be kept as low as possible.
+The reason behind is that modules should be kept decoupled, so whenever it's possible, they should not be aware of other modules. In case they really depend on another module, this dependency should be expressed explicitely (via composer). Number of dependent modules should be kept as low as possible.
 
 Modules however need to be "glued" together, by pivot tables, aggregate classes, controllers, forms etc. Concord encourages these kinds of parts to be implemented either in boxes or in the application. Boxes are technically modules as well.
 

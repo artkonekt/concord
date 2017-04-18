@@ -70,6 +70,8 @@ The empty arrays in the example mean that everything from those modules will be 
 
 #### Suppressing Migrations
 
+You may decide to gather/modify/skip migrations from the underlying modules. In this case you can suppress migrations provided by the module:
+
 ```php
 <?php
 
@@ -84,6 +86,8 @@ return [
     ]
 ];
 ```
+
+> Make sure to provide a compatible replacement if you're suppressing a module's migration.
 
 ## Adding A Box The An Application
 

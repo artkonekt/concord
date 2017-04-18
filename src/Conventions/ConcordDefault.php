@@ -112,4 +112,20 @@ class ConcordDefault extends BaseConvention implements Convention
     {
         return 'resources/database/migrations';
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function viewsFolder(): string
+    {
+        return 'resources/views';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function routesFolder(): string
+    {
+        return 'resources/routes';
+    }
 }

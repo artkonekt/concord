@@ -1,8 +1,3 @@
----
-title: Boxes
-image: asd.jpg
----
-
 # Boxes
 
 > Boxes are optional parts of the ecosystem. You can completely omit them if you see no benefits.
@@ -54,8 +49,8 @@ both boxes**, and from the client's perspective they constitute **a single syste
 
 ## Parts To Be Included In Boxes
 
-- Boxes **should only** define entities, migrations that "glue" module parts together.
-- Boxes **may gather and publish** entities and migrations from underlying modules.
+- Boxes **should only** define models, migrations that "glue" module parts together.
+- Boxes **may gather and publish** models and migrations from underlying modules.
 - Boxes **should not** define new repositories but **may extend** existing ones.
 - Boxes **are expected to** define views, routes, resources, controllers, listeners, event bindings, request types.
 - Boxes **should** bind repository interfaces to implementations.

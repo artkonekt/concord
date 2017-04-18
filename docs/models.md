@@ -1,4 +1,4 @@
-# Entities (Eloquent Models)
+# Models (Entities)
 
 Entities are the *nouns* in your system (like product, order, customer, subscription, etc).
 
@@ -21,9 +21,9 @@ Obviously a module is only immutable from the application's perspective. As a mo
 
 Therefore another essential feature you want is to **be able to update the underlying modules in your application** without breaking your code. (Two words: [Semantic Versioning](http://semver.org/))
 
-From the Entities perspective our goal is to outsource basic functionality in modules, ie having basic versions of our *nouns* ready to be customized by the application. For this goal we need a well defined path for extending/overriding Eloquent model classes defined in *lower layers* (module).
+From the models (entities) perspective, our goal is to outsource basic functionality in modules, ie having basic versions of our *nouns* ready to be customized by the application. For this goal we need a well defined path for extending/overriding Eloquent model classes defined in *lower layers* (module).
 
-## Overriding Entites (Models)
+## Overriding Models
 
 [For tl;dr click here](#concords-solution)
 
@@ -75,21 +75,24 @@ Theoretically it's possible to also extend the `FavouriteItem` class and update 
 namespace Vendor\FavouriteModule;
 
 use Illuminate\Database\Eloquent\Model;
-use Vendor\ProductModule\Contracts\Product; // Note: this is an interface
+use Vendor\ProductModule\Models\ProductProxy;
 
 class FavouriteItem extends Model
 {
     public function product()
     {
         // Related class gets resolved later
-        return $this->hasOne(concord()->model(Product::class));        
+        return $this->hasOne(ProductProxy::modelClass());        
     }
 } 
 ```
+The concept of **model proxies** has been introduced.
 
-This way we need to have an interface `Product` and we can freely bind a concrete class to it using Concord's `useModel()` method. First `ModelProduct` class gets assigned within the module (consider it as a default). If the application wants to extend that class, it invokes `useModel()` again, and that's all.
+It requires to have an interface `Product` and this way it's possible to freely bind a concrete class to it using Concord's `registerModel()` method.
 
-The `useModel()` method also silently [binds the interface to the implementation with Laravel's service container](https://laravel.com/docs/5.4/container#binding-interfaces-to-implementations) so you can simply type hint the interface at any point where [automatic injection](https://laravel.com/docs/5.4/container#automatic-injection) happens.
+`ModelProduct` class gets registered within the module (consider it as a default). If the application wants to extend that class, it invokes `registerModel()` again, and that's all.
+
+The `registerModel()` method also silently [binds the interface to the implementation with Laravel's service container](https://laravel.com/docs/5.4/container#binding-interfaces-to-implementations) so you can simply type hint the interface at any point where [automatic injection](https://laravel.com/docs/5.4/container#automatic-injection) happens.
 
 ```php
 use Vendor\ProductModule\Contracts\Product; // Note that it's the Interface
@@ -120,7 +123,7 @@ With Eloquent, you can get fields like `$product->sku`, `$product->title`, etc.
 
 #### Adding Fields
 
-The most common thing is to add new fields to entities.
+The most common thing is to add new fields to models.
 
 How to do that? Add a migration that adds the fields to the underlying db table and you're done. Say we're adding the `is_active` field:
 
@@ -176,7 +179,7 @@ class SomeModel extends Model
 }
 ```
 
-If you want to extend the base `ProductStatus` type with new statuses, then you need to extend that status class and override the accessor/mutator of the Entity for accepting the extended variant.
+If you want to extend the base `ProductStatus` type with new statuses, then you need to extend that status class and override the accessor/mutator of the model for accepting the extended variant.
 
 #### Attribute Casting
 
@@ -200,13 +203,19 @@ In our reading, this is the **achilles heel** of the whole story. Read below to 
 
 ### Concord's Solution
 
-1. **Make an interface** for your entities in the *module layer*.
+1. **Make an interface** for your models (entities) in the *module layer*.
 2. Your **base model** must implement that interface.
-3. **Define the default** interface/entity binding in the module provider's register method with `$this->app->concord->useModel(EntityInterface::class, DefaultEntity::class);`.
-4. Set the related model class in **relationship definitions** with `concord()->model(EntityInterface::class)` using the interface.
-5. In upper layers (application) **override the model class** with `$this->app->concord->useModel(EntityInterface::class, ExtendedEntity::class);`.
-6. Always **type hint entities with their interface** (binding is also registered with the container).
-7. **Don't create entity objects with `new`**`Entity()`, let Laravel make it from the interface.
+3. **Define the models** in the module's service provider by listing the model classes in the `$models` property:
+    ```php
+        protected $models = [
+            Product::class,
+            Attribute::class
+        ];
+    ```
+4. Set the related model class in **relationship definitions** with `ConcreteModelProxy::realClass()` using the interface.
+5. In upper layers (application) **override the model class** with `$this->app->concord->registerModel(ModelContract::class, ExtendedModel::class);`.
+6. Always **type hint models with their interface** (binding is also registered with the container).
+7. **Don't create model objects with `new`**`Model()`, let Laravel make them from the interface.
 
 #### Solution With Code Examples
 
@@ -222,10 +231,10 @@ interface Product {}
 
 ##### 2) Your base model must *implement that interface*.
 
-`Vendor\ProductModule\Models\Entities\Product.php`:
+`Vendor\ProductModule\Models\Product.php`:
 
 ```php
-namespace Vendor\ProductModule\Models\Entities;
+namespace Vendor\ProductModule\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Vendor\ProductModule\Contracts\Product as ProductContract;
@@ -236,7 +245,7 @@ class Product extends Model implements ProductContract
 }
 ```
 
-##### 3) *Define the basic interface/entity binding* in module provider's register method.
+##### 3) *Define the basic interface/model binding* in module provider's register method.
 
 `Vendor\ProductModule\Providers\ModuleServiceProvider.php`:
 ```php
@@ -244,33 +253,32 @@ namespace Vendor\Module\Providers;
 
 use Konekt\Concord\AbstractModuleServiceProvider;
 use Vendor\ProductModule\Contracts\Product as ProductContract;
-use Vendor\ProductModule\Models\Entities\Product;
+use Vendor\ProductModule\Models\Product;
 
 class ModuleServiceProvider extends AbstractModuleServiceProvider
 {
-    public function register()
-    {
-        parent::register();
-
-        $this->app->concord->useModel(ProductContract::class, Product::class);
-    }
+    protected $models = [
+        // Simple variant, interface autodetected (recommended):
+        Product::class,
+        // or set interface/model explicitely:
+        ProductContract::class => Product::class
+    ];
 }
 ```
 
-##### 4) Set the model class in definitions of a *relationship with Concord's `model()` method and the interface*.
+##### 4) Set the model class in definitions of a *relationship with the concrete model proxy's `modelClass()` static method*.
 
-`Vendor\OrderModule\Models\Entities\OrderItem.php`:
+`Vendor\OrderModule\Models\OrderItem.php`:
 ```php
-namespace Vendor\OrderModule\Models\Entities;
+namespace Vendor\OrderModule\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Vendor\ProductModule\Contracts\Product;
 
 class OrderItem extends Model
 {
     public function product()
     {
-        return $this->hasOne(concord()->model(Product::class), 'product_id', 'id');        
+        return $this->hasOne(ProductProxy::modelClass(), 'product_id', 'id');        
     }
 }
 ```
@@ -289,7 +297,7 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->concord->useModel(ProductContract::class, Product::class);
+        $this->app->concord->registerModel(ProductContract::class, Product::class);
     }
 }
 ```
@@ -310,9 +318,9 @@ class ExampleController extends Controller
 }
 ```
 
-##### 7) *Don't create entity objects with* `new Entity()`, let Laravel make it from the interface.
+##### 7) *Don't create entity objects with* `new Model()`, let Laravel make it from the interface.
 
-Since entities are moving parts, it's generally unwanted to create entity (model) classes with the **`new`** keyword, let the Laravel container to make that class for you based on the interface.
+Since models are moving parts, it's generally unwanted to create entity (model) classes with the **`new`** keyword, let the Laravel container to make that class for you based on the interface.
 
 *Controller Actions*:
 
@@ -354,11 +362,11 @@ According to Laravel's conventions, this is the recommended solution for resolvi
 
 | Location                 | FQCN                            | Alias As           |
 |--------------------------|-----------------------------------------|--------------------|
-| Default Product *(module)*  | `Vendor\Module\Models\Contracts\Product` | **ProductContract** |
+| Default Product Model *(module)*  | `Vendor\Module\Models\Contracts\Product` | **ProductContract** |
 | ServiceProvider *(module, app)* | `Vendor\Module\Models\Contracts\Product` | **ProductContract** |
-| ServiceProvider *(module,app)* | `Vendor\Module\Models\Entities\Product`  | *as is*            |
-| Extended Product *(app)* | `Vendor\Module\Models\Contracts\Product` | **ProductContract** |
-| Extended Product *(app)* | `Vendor\Module\Models\Entities\Product`  | **BaseProduct**     |
+| ServiceProvider *(module,app)* | `Vendor\Module\Models\Product`  | *as is*            |
+| Extended Product Model *(app)* | `Vendor\Module\Models\Contracts\Product` | **ProductContract** |
+| Extended Product Model *(app)* | `Vendor\Module\Models\Product`  | **BaseProduct**     |
 
 
 

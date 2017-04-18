@@ -12,7 +12,9 @@
 
 namespace Konekt\Concord;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Contracts\Module;
@@ -171,6 +173,28 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             $this->concord->registerModel($contract, $model);
         }
 
+    }
+
+    /**
+     * Register views folder in a box/module
+     *
+     * @param array|null $only  if an array is passed, only the routes in the array will be registered
+     */
+    protected function registerViews($only = null)
+    {
+        $path = $this->getBasePath() . '/' . $this->convention->viewsFolder();
+
+        if (is_dir($path)) {
+
+            $routes = is_array($only) ? $only : collect(File::glob($path . '/*.php')->map(function ($file) {
+                return File::name($file);
+            })->all());
+
+            foreach ($routes as $route) {
+                Route::namespace($this->getNamespaceRoot())
+                     ->group(sprintf('%s/%s.php', $path, $route));
+            }
+        }
     }
 
 }

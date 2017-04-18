@@ -24,7 +24,7 @@
 
 1. [Configuration](configuration.md)
 2. [Migrations](migrations.md)
-3. [Entities](entities.md)
+3. [Models (Entities)](models.md)
 4. [Repositories](repositories.md)
 5. [Events](events.md)
 6. [Listeners](listeners.md)

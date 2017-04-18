@@ -56,6 +56,20 @@ interface Convention
     public function migrationsFolder() : string;
 
     /**
+     * Returns the base folder name for views
+     *
+     * @return string
+     */
+    public function viewsFolder() : string;
+
+    /**
+     * Returns the folder name for route files
+     *
+     * @return string
+     */
+    public function routesFolder() : string;
+
+    /**
      * Returns the path + filename to the manifest file relative to the module
      *
      * @return string

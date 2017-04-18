@@ -31,7 +31,7 @@ In the `config/app.php` configuration file, add to the provider array:
     // Other Service Providers
 
     Konekt\Concord\ConcordServiceProvider::class,
-]
+];
 ```
 
 Optionally, you can register facade aliases in `config/app.php`:
