@@ -36,7 +36,7 @@ In our interpretation, good platforms:
 
 As an example there is the `Product` model. It's defined in a *lower* layer, in the product **module**. *Upper* layers, like the final **application** will want to alter/extend it so that it doesn't break the basic functionality of the module.
 
-Possible modifications can be:
+Possible modifications:
 
 - Adding fields,
 - Removing fields,
@@ -46,7 +46,7 @@ Possible modifications can be:
 
 Most of these can be done by adding migrations and extending the original Model class using simple OOP inheritance. The essence of the problem is **how will your lower level modules know that the system is using an extended class** for that entity?
 
-The most trivial scenario of this kind appears when you define an [Eloquent relationship](https://laravel.com/docs/5.4/eloquent-relationships). Say you have `ModuleProduct` and `AppProduct` (which extends ModuleProduct). You also have a `FavoriteItem` class defined outside your application which has a relationship to the product.
+The most trivial scenario of this kind appears when you define an [Eloquent relationship](https://laravel.com/docs/5.4/eloquent-relationships). Say you have `Product` model (defined in the lowest, module layer) and `AppProduct` (which extends `Product`). You also have a `FavoriteItem` class (defined in the module layer) which has a relationship to the product.
 
 **Traditional approach**:
 
@@ -54,18 +54,18 @@ The most trivial scenario of this kind appears when you define an [Eloquent rela
 namespace Vendor\FavouriteModule;
 
 use Illuminate\Database\Eloquent\Model;
-use Vendor\ProductModule\Product as ModuleProduct;
+use Vendor\ProductModule\Product;
 
 class FavouriteItem extends Model
 {
     public function product()
     {
-        // Related class `ModuleProduct` gets carved in stone
-        return $this->hasOne(ModuleProduct::class);        
+        // Related class `Product` gets carved in stone
+        return $this->hasOne(Product::class);        
     }
 } 
 ```
-The product relationship will always return `ModuleProduct` instead of `AppProduct` because it knows nothing about the fact you've extended it in your application.
+The product relationship will always return `Product` instead of `App\Product` because it knows nothing about the fact you've extended it in your application.
 
 Theoretically it's possible to also extend the `FavouriteItem` class and update the `product` relationship, but then you'd need to check every reference to products and do the same, which is utterly stupid.
 
@@ -81,27 +81,52 @@ class FavouriteItem extends Model
 {
     public function product()
     {
-        // Related class gets resolved later
+        // Related class gets resolved by a proxy class
         return $this->hasOne(ProductProxy::modelClass());        
     }
 } 
 ```
-The concept of **model proxies** has been introduced.
+The concept of **model proxies** has been introduced. Proxies as their name state, will drive you to the actual model class.
 
-It requires to have an interface `Product` and this way it's possible to freely bind a concrete class to it using Concord's `registerModel()` method.
+Concord's concept also requires to have an interface `Product` and this way it's possible to freely bind a concrete class to it using Concord's `registerModel()` method.
 
-`ModelProduct` class gets registered within the module (consider it as a default). If the application wants to extend that class, it invokes `registerModel()` again, and that's all.
+`Models\Product` class gets bound to the `Contracts\Product` interface within the module (consider it as a default). If the application wants to extend that class, it invokes Concord's `registerModel()` again, and that's all.
 
 The `registerModel()` method also silently [binds the interface to the implementation with Laravel's service container](https://laravel.com/docs/5.4/container#binding-interfaces-to-implementations) so you can simply type hint the interface at any point where [automatic injection](https://laravel.com/docs/5.4/container#automatic-injection) happens.
 
+**Overriding Model class in application:**
+
 ```php
-use Vendor\ProductModule\Contracts\Product; // Note that it's the Interface
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Vendor\ProductModule\Contracts\Product as ProductContract;
+
+class AppServiceProvider extends ServiceProvider
+{
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->app->concord->registerModel(
+            ProductContract::class, \App\Product::class
+        );
+    }
+}
+```
+
+```php
+use Vendor\ProductModule\Contracts\Product; // <- it's the Interface
 
 class ProductController extends Controller
 {
     public function show(Product $product)
     {
-        dd($product); // <- this will be AppProduct
+        dd($product); // <- this will be App\Product
     }
 }
 ```
@@ -110,7 +135,7 @@ class ProductController extends Controller
 
 You'll be guided through an example, that demonstrates the possible modifications of an entity across layers.
 
-Say whe have a **product** module, that contains the `Product` class (an eloquent model) which has the following attributes (fields):
+Example above continued, we have a **product** module, that contains the `Product` class (an eloquent model) which has the following attributes (fields):
 
 - id
 - sku
@@ -159,7 +184,11 @@ So you need to extend the model class. Keep reading to see how.
 Imagine you have this [accessor/mutator](https://laravel.com/docs/5.4/eloquent-mutators) pair in your model:
 
 ```php
-class SomeModel extends Model
+namespace App;
+
+use Vendor\ProductModule\Models\Product as BaseProduct;
+
+class Product extends BaseProduct
 {
     /**
      * @return ProductStatus
@@ -212,8 +241,8 @@ In our reading, this is the **achilles heel** of the whole story. Read below to 
             Attribute::class
         ];
     ```
-4. Set the related model class in **relationship definitions** with `ConcreteModelProxy::realClass()` using the interface.
-5. In upper layers (application) **override the model class** with `$this->app->concord->registerModel(ModelContract::class, ExtendedModel::class);`.
+4. Set the related model class in **relationship definitions** with the proxy class eg. `ProductProxy::realClass()`.
+5. In upper layers (application) **override the model class** with Concord's `registerModel()` method eg. `$this->app->concord->registerModel(ProductContract::class, App\Product::class);`.
 6. Always **type hint models with their interface** (binding is also registered with the container).
 7. **Don't create model objects with `new`**`Model()`, let Laravel make them from the interface.
 
@@ -283,13 +312,12 @@ class OrderItem extends Model
 }
 ```
 
-##### 5) In upper layers (application, box) *override the model* class with Concord's `useModel()` method.
+##### 5) In upper layers (application, box) *override the model* class with Concord's `registerModel()` method.
 
 `App\Providers\AppServiceProvider.php`:
 ```php
 namespace App\Providers;
 
-use App\Product;
 use Illuminate\Support\ServiceProvider;
 use Vendor\ProductModule\Contracts\Product as ProductContract;
 
@@ -297,7 +325,7 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->concord->registerModel(ProductContract::class, Product::class);
+        $this->app->concord->registerModel(ProductContract::class, \App\Product::class);
     }
 }
 ```
@@ -368,6 +396,25 @@ According to Laravel's conventions, this is the recommended solution for resolvi
 | Extended Product Model *(app)* | `Vendor\Module\Models\Contracts\Product` | **ProductContract** |
 | Extended Product Model *(app)* | `Vendor\Module\Models\Product`  | **BaseProduct**     |
 
+### Model Proxy Has Even More
 
+Model Proxies, other than offering the `modelClass()` method are also serve as static proxies to the actual eloquent model classes. So that you have access to methods like `::find()`, `::where()`, `::create()`, etc.
+
+Invoking these methods statically you can keep using the well known interface for accessing various Eloquent functionalities.
+
+**Example:**
+
+```php
+
+use Vendor\ProductModule\Models\ProductProxy;
+use Vendor\ProductModule\Contracts\Product as ProductContract;
+
+ProductProxy::find(1); // Returns Vendor\ProductModule\Models\Product instance
+// Use App\Product instead:
+app('concord')->registerModel(ProductContract::class, \App\Product::class);
+ProductProxy::find(1); // Returns App\Product
+```
+
+> Model Proxy classes shouldn't be instantiated, use them as static gateways
 
 #### Next: [Repositories &raquo;](repositories.md)

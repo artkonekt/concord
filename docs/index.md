@@ -2,7 +2,7 @@
 
 ## Table Of Contents
 
-#### Introduction
+#### I. Introduction
 
 1. [Prologue](prologue.md)
 2. [Overview](overview.md)
@@ -10,17 +10,14 @@
 4. [Concord Rules](rules.md)
 5. [Application](application.md)
 
-#### Modules
+#### II. Modules
 
 1. [Modules Explained](modules.md)
 2. [Creating Modules](creating-modules.md)
+3. [Boxes Explained](boxes.md)
+4. [Creating Boxes](creating-boxes.md)
 
-#### Boxes
-
-1. [Boxes Explained](boxes.md)
-2. [Creating Boxes](creating-boxes.md)
-
-#### Parts
+#### III. Parts
 
 1. [Configuration](configuration.md)
 2. [Migrations](migrations.md)
