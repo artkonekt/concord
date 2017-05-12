@@ -33,19 +33,5 @@ abstract class BaseModuleServiceProvider extends BaseServiceProvider
         }
 
     }
-    
-    /**
-     * @inheritdoc
-     */
-    public function boot()
-    {
-        if ($this->config('migrations', true)) {
-            $this->registerMigrations();
-        }
-
-        if ($this->config('models', true)) {
-            $this->registerModels();
-        }
-    }
 
 }

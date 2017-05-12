@@ -63,6 +63,28 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     }
 
     /**
+     * @inheritdoc
+     */
+    public function boot()
+    {
+        if ($this->config('migrations', true)) {
+            $this->registerMigrations();
+        }
+
+        if ($this->config('models', true)) {
+            $this->registerModels();
+        }
+
+        if ($this->config('views', true)) {
+            $this->registerViews();
+        }
+
+        if ($this->config('routes', true)) {
+            $this->registerRoutes();
+        }
+    }
+
+    /**
      * @inheritDoc
      */
     public function getId(): string
@@ -218,7 +240,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         $namespace = $this->config('views.namespace', $this->shortName());
 
         if(is_dir($path)) {
-            $this->getModuleId();
+            //$this->getModuleId();
             $this->loadViewsFrom($path, $namespace);
         }
     }

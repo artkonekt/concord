@@ -29,7 +29,7 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
 
         foreach ($modules as $module => $configuration) {
             if (is_int($module) && is_string($configuration)) { // means no configuration was set for module
-                $module = $configuration;
+                $module        = $configuration;
                 $configuration = $this->getDefaultModuleConfiguration();
             } else {
                 $configuration = array_merge($this->getDefaultModuleConfiguration(),
