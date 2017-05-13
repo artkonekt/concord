@@ -220,9 +220,9 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
 
         if (is_dir($path)) {
 
-            $routes = is_array($only) ? $only : collect(File::glob($path . '/*.php')->map(function ($file) {
+            $routes = is_array($only) ? $only : collect(File::glob($path . '/*.php'))->map(function ($file) {
                 return File::name($file);
-            })->all());
+            })->all();
 
             foreach ($routes as $route) {
                 Route::namespace($this->getNamespaceRoot())
