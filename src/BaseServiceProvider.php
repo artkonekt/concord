@@ -225,8 +225,15 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             })->all();
 
             foreach ($routes as $route) {
-                Route::namespace($this->getNamespaceRoot())
-                     ->group(sprintf('%s/%s.php', $path, $route));
+                Route::group(
+                    [
+                        'namespace'  => $this->config('routes.namespace', $this->getDefaultRouteNamespace()),
+                        'prefix'     => $this->config('routes.prefix', $this->shortName()),
+                        'as'         => $this->config('routes.as', $this->shortName() . '.'),
+                        'middleware' => $this->config('routes.middleware', ['web'])
+                    ],
+                    sprintf('%s/%s.php', $path, $route)
+                );
             }
         }
     }
@@ -236,13 +243,25 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
      */
     protected function registerViews()
     {
-        $path = $this->getBasePath() . '/' . $this->convention->viewsFolder();
+        $path      = $this->getBasePath() . '/' . $this->convention->viewsFolder();
         $namespace = $this->config('views.namespace', $this->shortName());
 
         if(is_dir($path)) {
-            //$this->getModuleId();
             $this->loadViewsFrom($path, $namespace);
         }
+    }
+
+    /**
+     * Returns the default namespace for routes/controllers within a box/module
+     *
+     * @return string
+     */
+    protected function getDefaultRouteNamespace()
+    {
+        return sprintf('%s\\%s',
+            $this->getNamespaceRoot(),
+            str_replace('/', '\\', $this->convention->controllersFolder())
+        );
     }
 
 }

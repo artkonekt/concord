@@ -48,6 +48,15 @@ class ConcordDefault extends BaseConvention implements Convention
     /**
      * @inheritDoc
      */
+    public function controllersFolder(): string
+    {
+        return 'Http/Controllers';
+    }
+
+
+    /**
+     * @inheritDoc
+     */
     public function contractForModel(string $modelClass) : string
     {
         return sprintf(

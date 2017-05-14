@@ -42,6 +42,13 @@ interface Convention
     public function contractsFolder() : string;
 
     /**
+     * Returns the folder name for Controllers
+     *
+     * @return string
+     */
+    public function controllersFolder() : string;
+
+    /**
      * Returns the folder name for config files
      *
      * @return string
