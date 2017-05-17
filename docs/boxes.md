@@ -91,11 +91,10 @@ box-src/
         |-- Feature
         |-- Unit
     resources/
+        |-- assets/
         |-- config/
             |-- box.php
         |-- lang/
-        |-- public/
-            |-- assets/
         |-- routes/
             |-- api.php
             |-- web.php

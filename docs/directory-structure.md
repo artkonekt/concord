@@ -43,6 +43,7 @@ module-src/
         |-- Feature
         |-- Unit
     resources/
+        |-- assets/
         |-- config/
             |-- module.php
             |-- box.php
@@ -50,8 +51,6 @@ module-src/
             |-- migrations/
             |-- seeds/
         |-- lang/
-        |-- public/
-            |-- assets/
         |-- routes/
             |-- api.php
             |-- web.php
