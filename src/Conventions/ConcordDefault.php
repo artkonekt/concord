@@ -137,4 +137,14 @@ class ConcordDefault extends BaseConvention implements Convention
     {
         return 'resources/routes';
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function providersFolder(): string
+    {
+        return 'Providers';
+    }
+
+
 }

@@ -23,15 +23,6 @@ namespace Konekt\Concord;
  */
 abstract class BaseModuleServiceProvider extends BaseServiceProvider
 {
-
-    public function register()
-    {
-        $cfgFile = sprintf('%s/module.php', $this->getConfigPath());
-
-        if (file_exists($cfgFile)) {
-            $this->mergeConfigFrom($cfgFile, $this->getId());
-        }
-
-    }
+    protected $configFileName = 'module.php';
 
 }

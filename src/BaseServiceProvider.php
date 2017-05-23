@@ -58,8 +58,23 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         $this->concord       = $app->make(ConcordContract::class); // retrieve the concord singleton
         $this->convention    = $this->concord->getConvention(); // storing to get rid of train wrecks
         $this->basePath      = dirname(dirname((new ReflectionClass(static::class))->getFileName()));
-        $this->namespaceRoot = str_replace('\\Providers\\ModuleServiceProvider', '', static::class);
+        $this->namespaceRoot = str_replace(
+                                    sprintf('\\%s\\ModuleServiceProvider',
+                                        str_replace('/', '\\', $this->convention->providersFolder())
+                                    ),
+                                    '', static::class
+                                );
         $this->id            = $this->getModuleId();
+    }
+
+    public function register()
+    {
+        $this->loadConfiguration();
+
+        if ($this->config('event_listeners') === true) {
+            $this->registerEventServiceProvider();
+        }
+
     }
 
     /**
@@ -249,6 +264,30 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
 
         if(is_dir($path)) {
             $this->loadViewsFrom($path, $namespace);
+        }
+    }
+
+    /**
+     * Registers the event service provider of the module/config (ie. event-listener bindings)
+     */
+    protected function registerEventServiceProvider()
+    {
+        $eventServiceProviderClass = sprintf('%s\\%s\\EventServiceProvider',
+            $this->namespaceRoot,
+            str_replace('/', '\\', $this->convention->providersFolder())
+        );
+
+        if (class_exists($eventServiceProviderClass)) {
+            $this->app->register($eventServiceProviderClass);
+        }
+    }
+
+    protected function loadConfiguration()
+    {
+        $cfgFile = sprintf('%s/%s', $this->getConfigPath(), $this->configFileName);
+
+        if (file_exists($cfgFile)) {
+            $this->mergeConfigFrom($cfgFile, $this->getId());
         }
     }
 

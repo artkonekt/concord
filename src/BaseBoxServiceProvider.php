@@ -15,14 +15,11 @@ namespace Konekt\Concord;
 
 abstract class BaseBoxServiceProvider extends BaseServiceProvider
 {
+    protected $configFileName = 'box.php';
 
     public function register()
     {
-        $cfgFile = sprintf('%s/box.php', $this->getConfigPath());
-
-        if (file_exists($cfgFile)) {
-            $this->mergeConfigFrom($cfgFile, $this->getId());
-        }
+        parent::register();
 
         $modules = $this->config("modules");
         $modules = $modules ?: [];

@@ -1,6 +1,6 @@
 <?php
 
-namespace DummyNamespace\DummyClass\Providers;
+namespace DummyNamespace\DummyClass\DummyProviderFolder;
 
 use Konekt\Concord\AbstractModuleServiceProvider;
 

@@ -63,6 +63,13 @@ interface Convention
     public function migrationsFolder() : string;
 
     /**
+     * Returns the folder name for Provider classes
+     *
+     * @return string
+     */
+    public function providersFolder() : string;
+
+    /**
      * Returns the base folder name for views
      *
      * @return string

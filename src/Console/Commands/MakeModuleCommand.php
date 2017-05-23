@@ -54,9 +54,23 @@ class MakeModuleCommand extends GeneratorCommand
             return;
         }
 
+        $providerFileName = $this->getPath($this->qualifyClass($this->getNameInput()));
+        $this->files->put(//Replace the
+            $providerFileName,
+            str_replace(
+                'DummyProviderFolder',
+                str_replace('/', '\\', $this->convention->providersFolder()),
+                $this->files->get($providerFileName)
+            )
+        );
+
         $name = $this->getNameInput();
-        $manifestPath = str_replace('Providers/ModuleServiceProvider', 'resources/mainfest',
-            $this->getPath($this->getFQCNComp($name)));
+        $manifestPath = str_replace(
+                sprintf('%s/ModuleServiceProvider.php', $this->convention->providersFolder()),
+                $this->convention->manifestFile(),
+                $this->getPath($this->getFQCNComp($name)
+            )
+        );
 
         if (!$this->files->exists($manifestPath)) {
             $this->makeDirectory($manifestPath);
@@ -97,7 +111,12 @@ class MakeModuleCommand extends GeneratorCommand
     {
         $name = str_replace_first($this->laravel->getNamespace(), '', $name);
 
-        return $this->laravel['path'].'/'.str_replace('\\', '/', $name) . '/Providers/ModuleServiceProvider.php';
+        return sprintf('%s/%s/%s/%s',
+            $this->laravel['path'],
+            str_replace('\\', '/', $name),
+            $this->convention->providersFolder(),
+            'ModuleServiceProvider.php'
+        );
     }
 
     protected function buildManifest($name)
