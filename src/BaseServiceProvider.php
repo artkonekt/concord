@@ -80,7 +80,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         }
 
         if ($this->config('routes', true)) {
-            $this->registerRoutes();
+            $this->registerRoutes($this->config('routes.files'));
         }
     }
 
@@ -212,15 +212,16 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     /**
      * Register routes in a box/module
      *
-     * @param array|null $only  if an array is passed, only the routes in the array will be registered
+     * @param array|string $files Pass '*' to register all the route files in routes/ folder
+     *                            or an array with the list of route files to register
      */
-    protected function registerRoutes($only = null)
+    protected function registerRoutes($files = null)
     {
         $path = $this->getBasePath() . '/' . $this->convention->routesFolder();
 
         if (is_dir($path)) {
 
-            $routes = is_array($only) ? $only : collect(File::glob($path . '/*.php'))->map(function ($file) {
+            $routes = is_array($files) ? $files : collect(File::glob($path . '/*.php'))->map(function ($file) {
                 return File::name($file);
             })->all();
 
