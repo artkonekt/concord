@@ -35,6 +35,13 @@ interface Convention
     public function modelsFolder() : string;
 
     /**
+     * Returns the folder name for Enum classes
+     *
+     * @return string
+     */
+    public function enumsFolder() : string;
+
+    /**
      * Returns the folder name for Contracts (interfaces)
      *
      * @return string
@@ -100,6 +107,15 @@ interface Convention
     public function contractForModel(string $modelClass) : string;
 
     /**
+     * Return the contract class (interface) for the given enum class according to the convention
+     *
+     * @param string $enumClass
+     *
+     * @return string
+     */
+    public function contractForEnum(string $enumClass) : string;
+
+    /**
      * Return the model class for the given repository according to the convention
      *
      * @param string $repositoryClass
@@ -134,6 +150,24 @@ interface Convention
      * @return mixed
      */
     public function proxyForModel(string $modelClass) : string;
+
+    /**
+     * Returns the proxy class for a given enum according to the convention
+     *
+     * @param string $enumClass
+     *
+     * @return mixed
+     */
+    public function proxyForEnum(string $enumClass) : string;
+
+    /**
+     * Return the enum class for the given proxy according to the convention
+     *
+     * @param string $proxyClass
+     *
+     * @return string
+     */
+    public function enumForProxy(string $proxyClass) : string;
 
 
 }

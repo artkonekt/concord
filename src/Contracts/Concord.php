@@ -79,6 +79,32 @@ interface Concord
     public function getModelBindings() : Collection;
 
     /**
+     * Register/overwrite an enum for a specific abstract/interface
+     *
+     * @param string    $abstract
+     * @param string    $concrete
+     *
+     * @return void
+     */
+    public function registerEnum(string $abstract, string $concrete);
+
+    /**
+     * Return the Enum class for a specific abstract class
+     *
+     * @param string    $abstract
+     *
+     * @return string
+     */
+    public function enum(string $abstract);
+
+    /**
+     * Returns all enum bindings
+     *
+     * @return Collection
+     */
+    public function getEnumBindings() : Collection;
+
+    /**
      * Returns the the current convention
      *
      * @return Convention

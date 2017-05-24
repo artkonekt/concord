@@ -77,9 +77,9 @@ class ConcordDefault extends BaseConvention implements Convention
     /**
      * @inheritDoc
      */
-    public function modelForProxy(string $repositoryClass): string
+    public function modelForProxy(string $proxyClass): string
     {
-        return str_replace_last('Proxy', '', $repositoryClass);
+        return str_replace_last('Proxy', '', $proxyClass);
     }
 
     /**
@@ -147,4 +147,38 @@ class ConcordDefault extends BaseConvention implements Convention
     }
 
 
+    /**
+     * @inheritDoc
+     */
+    public function enumsFolder(): string
+    {
+        return 'Models';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function contractForEnum(string $enumClass): string
+    {
+        // Enums are in the same folder as models, so we use the existing method
+        return $this->contractForModel($enumClass);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function proxyForEnum(string $enumClass): string
+    {
+        // Identical with model proxies
+        return $this->proxyForModel($enumClass);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function enumForProxy(string $proxyClass): string
+    {
+        // Identical with model proxies
+        return $this->modelForProxy($proxyClass);
+    }
 }

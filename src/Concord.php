@@ -28,6 +28,9 @@ class Concord implements ConcordContract
     /** @var array */
     protected $models = [];
 
+    /** @var array */
+    protected $enums = [];
+
     /** @var  array */
     protected $implicitModules = [];
 
@@ -139,5 +142,34 @@ class Concord implements ConcordContract
     public function getConvention(): Convention
     {
         return $this->convention;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function registerEnum(string $abstract, string $concrete)
+    {
+        if (!is_subclass_of($concrete, $abstract, true)) {
+            throw new InvalidArgumentException("Class {$concrete} must extend or implement {$abstract}. ");
+        }
+
+        $this->enums[$abstract] = $concrete;
+        $this->app->alias($concrete, $abstract);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function enum(string $abstract)
+    {
+        return array_get($this->enums, $abstract);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getEnumBindings(): Collection
+    {
+        return collect($this->enums);
     }
 }

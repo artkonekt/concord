@@ -1,22 +1,21 @@
 <?php
 /**
- * Contains the Repository class.
+ * Contains the BaseProxy class.
  *
  * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
- * @since       2017-04-08
+ * @since       2017-05-24
  *
  */
 
 
-namespace Konekt\Concord\Database;
-
+namespace Konekt\Concord\Proxies;
 
 use Konekt\Concord\Contracts\Concord;
 use LogicException;
 
-abstract class ModelProxy
+abstract class BaseProxy
 {
     /** @var string */
     protected $contract;
@@ -42,7 +41,7 @@ abstract class ModelProxy
 
         if (!interface_exists($this->contract)) {
             throw new LogicException(
-                sprintf('The repository %s has a non-existent contract class: `%s`',
+                sprintf('The proxy %s has a non-existent contract class: `%s`',
                     static::class, $this->contract
                 )
             );
@@ -52,7 +51,7 @@ abstract class ModelProxy
     /**
      * This is a method where the dark word 'static' has 7 occurrences
      *
-     * @return ModelProxy
+     * @return BaseProxy
      */
     public static function getInstance()
     {
@@ -71,34 +70,21 @@ abstract class ModelProxy
      */
     public static function __callStatic($method, $parameters)
     {
-        return call_user_func(static::getInstance()->modelClass() . '::' . $method, ...$parameters);
+        return call_user_func(static::getInstance()->targetClass() . '::' . $method, ...$parameters);
     }
 
     /**
-     * Returns the real model class FQCN
+     * Try guessing the associated contract class for a concrete proxy class
      *
      * @return string
      */
-    public static function modelClass()
-    {
-        $instance = static::getInstance();
-
-        return $instance->concord->model($instance->contract);
-    }
+    abstract protected function guessContract();
 
     /**
-     * Try guessing the associated contract class for actual repository
-     * Depends on the convention used by concord, default pattern is
-     * 'UserRepository' => entity = 'User' => '../Contracts/User'
+     * Returns the resolved class
      *
      * @return string
      */
-    private function guessContract()
-    {
-        return $this->concord->getConvention()->contractForModel(
-            $this->concord->getConvention()->modelForProxy(static::class)
-        );
-    }
+    abstract protected function targetClass() : string;
 
 }
-
