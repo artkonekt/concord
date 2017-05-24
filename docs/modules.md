@@ -1,7 +1,7 @@
 # Concord Modules
 
 Modules are decoupled components and are glued together by the
-[application](application.md) (or by a [box](boxes.md)). Technically they're a bunch of classes and files wired into the Laravel Application with their own dedicated [Service Provider](https://laravel.com/docs/5.3/providers).
+[application](application.md) (or by a [box](boxes.md)). Technically they're a bunch of classes and files wired into the Laravel Application with their own dedicated [Service Provider](https://laravel.com/docs/5.4/providers).
 
 Modules can be situated in two ways:
 

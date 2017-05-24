@@ -4,7 +4,7 @@ _Concord is a Laravel Extension that serves as a foundation to build **Modules f
 
 > **Note**: Concord is still in an early, work-in-progress phase. (Apr 2017).
 
-Concord at first is a Laravel 5.3+ [package](https://laravel.com/docs/5.3/packages) (Service Provider). Concord also defines a set of rules and recommendations that help you to better structure complex systems.
+Concord at first is a Laravel 5.3+ [package](https://laravel.com/docs/5.4/packages) (Service Provider). Concord also defines a set of rules and recommendations that help you to better structure complex systems.
 
 ## Basics
 
