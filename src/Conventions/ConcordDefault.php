@@ -53,6 +53,26 @@ class ConcordDefault extends BaseConvention implements Convention
         return 'Http/Controllers';
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function requestsFolder(): string
+    {
+        return 'Http/Requests';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function contractForRequest(string $requestClass): string
+    {
+        return sprintf(
+            '%s\\Contracts\\Requests\\%s',
+            $this->oneLevelUp($this->oneLevelUp($this->getNamespace($requestClass))),
+            class_basename($requestClass)
+        );
+    }
+
 
     /**
      * @inheritDoc

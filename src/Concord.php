@@ -31,6 +31,9 @@ class Concord implements ConcordContract
     /** @var array */
     protected $enums = [];
 
+    /** @var array */
+    protected $requests = [];
+
     /** @var  array */
     protected $implicitModules = [];
 
@@ -154,6 +157,19 @@ class Concord implements ConcordContract
         }
 
         $this->enums[$abstract] = $concrete;
+        $this->app->alias($concrete, $abstract);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function registerRequest(string $abstract, string $concrete)
+    {
+        if (!is_subclass_of($concrete, $abstract, true)) {
+            throw new InvalidArgumentException("Class {$concrete} must extend or implement {$abstract}. ");
+        }
+
+        $this->requests[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
     }
 

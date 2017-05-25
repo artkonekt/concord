@@ -43,6 +43,9 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     /** @var  array */
     protected $enums = [];
 
+    /** @var  array */
+    protected $requests = [];
+
     /** @var  ConcordContract */
     protected $concord;
 
@@ -92,6 +95,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         if ($this->config('models', true)) {
             $this->registerModels();
             $this->registerEnums();
+            $this->registerRequestTypes();
         }
 
         if ($this->config('views', true)) {
@@ -236,6 +240,18 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         foreach ($this->enums as $key => $enum) {
             $contract = is_string($key) ? $key : $this->convention->contractForEnum($enum);
             $this->concord->registerEnum($contract, $enum);
+        }
+
+    }
+
+    /**
+     * Register request types in a box/module
+     */
+    protected function registerRequestTypes()
+    {
+        foreach ($this->requests as $key => $requestType) {
+            $contract = is_string($key) ? $key : $this->convention->contractForRequest($requestType);
+            $this->concord->registerRequest($contract, $requestType);
         }
 
     }

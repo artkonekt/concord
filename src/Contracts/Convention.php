@@ -56,6 +56,13 @@ interface Convention
     public function controllersFolder() : string;
 
     /**
+     * Returns the folder name for Requests
+     *
+     * @return string
+     */
+    public function requestsFolder() : string;
+
+    /**
      * Returns the folder name for config files
      *
      * @return string
@@ -114,6 +121,15 @@ interface Convention
      * @return string
      */
     public function contractForEnum(string $enumClass) : string;
+
+    /**
+     * Return the contract class (interface) for the given request class according to the convention
+     *
+     * @param string $requestClass
+     *
+     * @return string
+     */
+    public function contractForRequest(string $requestClass) : string;
 
     /**
      * Return the model class for the given repository according to the convention

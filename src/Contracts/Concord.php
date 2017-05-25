@@ -89,6 +89,16 @@ interface Concord
     public function registerEnum(string $abstract, string $concrete);
 
     /**
+     * Register/overwrite a request for a specific abstract/interface
+     *
+     * @param string    $abstract
+     * @param string    $concrete
+     *
+     * @return void
+     */
+    public function registerRequest(string $abstract, string $concrete);
+
+    /**
      * Return the Enum class for a specific abstract class
      *
      * @param string    $abstract
