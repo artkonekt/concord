@@ -64,17 +64,27 @@ function slug_to_classpath($str)
 /**
  * Returns a standard module name based on the module provider's classname
  *
- * Eg.: '\Vendor\Module\Services\ModuleServiceProvider' -> 'vendor.module'
+ * Eg.: '\Vendor\Module\Providers\ModuleServiceProvider' -> 'vendor.module'
+ *      'App\Modules\Billing' -> 'billing'
  *
- * @param string    $classname
+ * @param string $classname
+ * @param null|\Konekt\Concord\Contracts\Convention   $convention
  *
  * @return string
  */
-function concord_module_id($classname)
+function concord_module_id($classname, $convention = null)
 {
-    $parts = explode('\\', $classname);
-
-    $vendorAndModule = empty($parts[0]) ? array_only($parts, [1,2]) : array_only($parts, [0,1]);
+    $convention = $convention ?: concord()->getConvention();
+    $modulesFolder = $convention->modulesFolder();
+    // Check if 'App\Modules' is part of the namespace
+    $p = strrpos($classname, $modulesFolder);
+    if (false !== $p) {
+        $parts = explode('\\', substr($classname, $p + strlen($modulesFolder)));
+        $vendorAndModule = empty($parts[0]) ? array_only($parts, 1) : array_only($parts, 0);
+    } else {
+        $parts = explode('\\', $classname);
+        $vendorAndModule = empty($parts[0]) ? array_only($parts, [1,2]) : array_only($parts, [0,1]);
+    }
 
     array_walk($vendorAndModule, function(&$part) {
         $part = snake_case($part);

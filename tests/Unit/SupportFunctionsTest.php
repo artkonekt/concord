@@ -12,15 +12,17 @@
 
 namespace Konekt\Concord\Tests\Unit;
 
+use Konekt\Concord\Conventions\ConcordDefault;
 use PHPUnit\Framework\TestCase as PHPUnitBaseTestCase;
 
 class SupportFunctionsTest extends PHPUnitBaseTestCase
 {
 
-    public function testClassSlugifiers()
+    public function testFunctionsExist()
     {
         $this->assertTrue(function_exists('classpath_to_slug'), 'classpath_to_slug function should exist');
         $this->assertTrue(function_exists('slug_to_classpath'), 'slug_to_classpath function should exist');
+        $this->assertTrue(function_exists('concord_module_id'), 'concord_module_id function should exist');
     }
 
     /**
@@ -37,6 +39,14 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
     public function testClasspathToSlug($classPath, $slug)
     {
         $this->assertEquals($slug, classpath_to_slug($classPath));
+    }
+
+    /**
+     * @dataProvider moduleIdProvider
+     */
+    public function testConcordModuleId($class, $id)
+    {
+        $this->assertEquals($id, concord_module_id($class, new ConcordDefault()));
     }
 
     public function classpathProvider()
@@ -60,6 +70,20 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
             ['BamBamService', 'bam_bam_service'],
             ['Vendor\WTF\Models\Blah', 'vendor.w_t_f.models.blah'],
         ];
+    }
+
+    public function moduleIdProvider()
+    {
+        return [
+            ['Konekt\Acl\Providers\ModuleServiceProvider', 'konekt.acl'],
+            ['\Konekt\Acl\Providers\ModuleServiceProvider', 'konekt.acl'],
+            ['VenDor\WTF\Providers\ModuleServiceProvider', 'ven_dor.w_t_f'],
+            ['App\Modules\Billing\Providers\ModuleServiceProvider', 'billing'],
+            ['\App\Modules\Order\Providers\ModuleServiceProvider', 'order'],
+            ['\App\Modules\coyote\Providers\ModuleServiceProvider', 'coyote'],
+            ['App\Modules\WordPress\Providers\ModuleServiceProvider', 'word_press']
+        ];
+
     }
 
 }
