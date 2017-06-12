@@ -19,10 +19,22 @@
         "illuminate/console": "~5.3",
         "konekt/enum": "~1.2"
     },
+    "require-dev": {
+        "orchestra/testbench": "~3.4.2",
+        "phpunit/phpunit" : "^6.0"
+    },
     "autoload": {
         "psr-4": { "Konekt\\Concord\\": "src"},
         "files": [
             "src/Support/functions.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Konekt\\Concord\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
