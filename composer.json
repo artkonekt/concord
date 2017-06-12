@@ -2,7 +2,7 @@
     "name": "konekt/concord",
     "description": "Concord is a Laravel Extension for building modular Laravel Applications",
     "type": "library",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {

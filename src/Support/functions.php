@@ -22,6 +22,14 @@ use Konekt\Concord\Contracts\Concord;
 function classpath_to_slug($classname)
 {
     $parts = explode('\\', $classname);
+    // Remove first part if empty ie. begins with \
+    if (empty($parts[0])) {
+        $parts = array_except($parts, 0);
+    }
+    // Remove last part if empty ie. ends to \
+    if (empty($parts[count($parts) - 1])) {
+        $parts = array_except($parts, count($parts) - 1);
+    }
 
     array_walk($parts, function(&$part) {
         $part = snake_case($part);
