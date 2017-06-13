@@ -13,6 +13,7 @@
 namespace Konekt\Concord\Tests;
 
 use Konekt\Concord\ConcordServiceProvider;
+use Konekt\Concord\Tests\Modules\Minimal\Providers\ModuleServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -62,6 +63,18 @@ abstract class TestCase extends OrchestraTestCase
 //            $table->increments('id');
 //            $table->string('email');
 //        });
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function resolveApplicationConfiguration($app)
+    {
+        parent::resolveApplicationConfiguration($app);
+
+        $app['config']->set('concord.modules', [
+            ModuleServiceProvider::class
+        ]);
     }
 
 }
