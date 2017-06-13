@@ -76,10 +76,12 @@ function concord_module_id($classname, $convention = null)
 {
     $convention = $convention ?: concord()->getConvention();
     $modulesFolder = $convention->modulesFolder();
-    // Check if 'App\Modules' is part of the namespace
-    $p = strrpos($classname, $modulesFolder);
+    // Check if '\Modules\' is part of the namespace
+    $p = strrpos($classname, "\\$modulesFolder\\");
+    // if no \Modules\, but starts with 'Modules\' that's also a match
+    $p = false === $p ? strpos($classname, "$modulesFolder\\") : $p;
     if (false !== $p) {
-        $parts = explode('\\', substr($classname, $p + strlen($modulesFolder)));
+        $parts = explode('\\', substr($classname, $p + strlen($modulesFolder) + 1));
         $vendorAndModule = empty($parts[0]) ? array_only($parts, 1) : array_only($parts, 0);
     } else {
         $parts = explode('\\', $classname);
@@ -103,7 +105,7 @@ function concord_module_id($classname, $convention = null)
  */
 function helper($name, $arguments = [])
 {
-    return App::make('concord.helper')->get($name, $arguments);
+    return app('concord.helper')->get($name, $arguments);
 }
 
 /**
@@ -113,7 +115,7 @@ function helper($name, $arguments = [])
  */
 function concord()
 {
-    return App::make('concord');
+    return app('concord');
 }
 
 if (!function_exists('__')) {

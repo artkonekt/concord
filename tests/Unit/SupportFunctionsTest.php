@@ -81,7 +81,13 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
             ['App\Modules\Billing\Providers\ModuleServiceProvider', 'billing'],
             ['\App\Modules\Order\Providers\ModuleServiceProvider', 'order'],
             ['\App\Modules\coyote\Providers\ModuleServiceProvider', 'coyote'],
-            ['App\Modules\WordPress\Providers\ModuleServiceProvider', 'word_press']
+            ['App\Modules\WordPress\Providers\ModuleServiceProvider', 'word_press'],
+            ['App\Modules\GreatModules\Providers\ModuleServiceProvider', 'great_modules'],
+            ['Modules\StartModules\Providers\ModuleServiceProvider', 'start_modules'],
+            ['\Modules\StartModules\Providers\ModuleServiceProvider', 'start_modules'],
+            ['Modules\Modulestar\Providers\ModuleServiceProvider', 'modulestar'],
+            ['\Modules\Modulestar\Providers\ModuleServiceProvider', 'modulestar'],
+            ['App\Modules\Moduleshit\Providers\ModuleServiceProvider', 'moduleshit']
         ];
 
     }
