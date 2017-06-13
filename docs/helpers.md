@@ -21,7 +21,7 @@ concord()->registerHelper('helper_name', HelperClass::class);
 
 You can access this helper via `helper('helper_name')->someMethod()`, which gives you short access to `HelperClass`'s `someMethod()`.
 
-> Registering helpers actually adds the class name as a config entry under the `concord.helpers.helper_name` key.
+> Registering helpers actually adds the class name as a singleton in the container as `concord.helpers.helper_name` key. Thus accessible via `app('concord.helpers.helper_name')` as well.
 
 
 Helpers need to be registered either in a module's `ModuleServiceProvider` or in the `AppServiceProvider` classes `boot()` method:
