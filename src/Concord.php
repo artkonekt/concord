@@ -59,7 +59,6 @@ class Concord implements ConcordContract
         $this->convention = $convention;
     }
 
-
     /**
      * @inheritdoc
      */
@@ -81,9 +80,7 @@ class Concord implements ConcordContract
      */
     public function registerHelper($name, $class)
     {
-        config([
-            sprintf('concord.helpers.%s', $name) => $class
-        ]);
+        $this->app->singleton('concord.helpers.' . $name, $class);
     }
 
     /**
@@ -188,4 +185,14 @@ class Concord implements ConcordContract
     {
         return collect($this->enums);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function helper($name, $arguments = [])
+    {
+        return $this->app->make('concord.helpers.' . $name, $arguments);
+    }
+
+
 }

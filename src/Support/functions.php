@@ -101,11 +101,11 @@ function concord_module_id($classname, $convention = null)
  * @param string    $name       The name of the helper
  * @param array     $arguments  Optional arguments to pass to the helper class
  *
- * @return
+ * @return object|null
  */
 function helper($name, $arguments = [])
 {
-    return app('concord.helper')->get($name, $arguments);
+    return concord()->helper($name, $arguments);
 }
 
 /**
@@ -116,29 +116,4 @@ function helper($name, $arguments = [])
 function concord()
 {
     return app('concord');
-}
-
-if (!function_exists('__')) {
-
-    /**
-     * Gettext fallback function, so that it doesn't break functionality
-     * Note: xinax/laravel-gettext should be used
-     *
-     * @todo: make sure it doesn't hit the loader earlier than laravel-gettext does
-     *
-     * @param      $message
-     * @param null $args
-     *
-     * @return string
-     */
-    function __($message, $args = null)
-    {
-        if (!empty($args) && !is_array($args)) {
-            $args = array_slice(func_get_args(), 1);
-        }
-
-        $message = vsprintf($message, $args);
-
-        return $message;
-    }
 }

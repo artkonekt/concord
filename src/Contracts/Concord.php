@@ -120,4 +120,14 @@ interface Concord
      * @return Convention
      */
     public function getConvention() : Convention;
+
+    /**
+     * Returns a helper instance for the specified helper name
+     *
+     * @param string    $name       The name of the helper
+     * @param array     $arguments  Optional arguments to pass to the helper class
+     *
+     * @return object|null
+     */
+    public function helper($name, $arguments = []);
 }

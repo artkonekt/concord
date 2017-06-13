@@ -20,7 +20,6 @@ use Konekt\Concord\Console\Commands\MakeModuleCommand;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Conventions\ConcordDefault;
-use Konekt\Concord\Helper\HelperFactory;
 
 
 class ConcordServiceProvider extends ServiceProvider
@@ -52,10 +51,6 @@ class ConcordServiceProvider extends ServiceProvider
         $concordInstance = $this->app->make(ConcordContract::class);
         // And make it available as the 'concord' service
         $this->app->instance('concord', $concordInstance);
-
-        $this->app->singleton('concord.helper', function ($app) {
-            return new HelperFactory($app->config->get('concord.helpers'), $app);
-        });
 
         $this->registerCommands();
 
