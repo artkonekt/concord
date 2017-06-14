@@ -17,6 +17,7 @@ use InvalidArgumentException;
 use Konekt\Concord\Console\Commands\ModelsCommand;
 use Konekt\Concord\Console\Commands\ModulesCommand;
 use Konekt\Concord\Console\Commands\MakeModuleCommand;
+use Konekt\Concord\Console\Commands\VersionCommand;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Conventions\ConcordDefault;
@@ -83,7 +84,8 @@ class ConcordServiceProvider extends ServiceProvider
             $this->commands([
                 ModulesCommand::class,
                 ModelsCommand::class,
-                MakeModuleCommand::class
+                MakeModuleCommand::class,
+                VersionCommand::class
             ]);
         }
 

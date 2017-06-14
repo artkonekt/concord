@@ -130,4 +130,11 @@ interface Concord
      * @return object|null
      */
     public function helper($name, $arguments = []);
+
+    /**
+     * Returns the Concord version (the library itself)
+     *
+     * @return string
+     */
+    public function getVersion() : string;
 }

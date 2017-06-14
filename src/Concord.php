@@ -22,6 +22,8 @@ use Konekt\Concord\Contracts\Convention;
 
 class Concord implements ConcordContract
 {
+    const VERSION = '0.9.0';
+
     /** @var Collection  */
     protected $modules;
 
@@ -192,6 +194,11 @@ class Concord implements ConcordContract
     public function helper($name, $arguments = [])
     {
         return $this->app->make('concord.helpers.' . $name, $arguments);
+    }
+
+    public function getVersion(): string
+    {
+        return self::VERSION;
     }
 
 
