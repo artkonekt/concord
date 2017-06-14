@@ -10,13 +10,13 @@
  */
 
 
-namespace Konekt\Concord\Tests\Unit;
+namespace Konekt\Concord\Tests\Feature;
 
 
 use Konekt\Concord\Contracts\Concord;
 use Konekt\Concord\Tests\TestCase;
-use Konekt\Concord\Tests\Unit\Helpers\HelloHelper;
-use Konekt\Concord\Tests\Unit\Helpers\KeyValueStoreHelper;
+use Konekt\Concord\Tests\Feature\Helpers\HelloHelper;
+use Konekt\Concord\Tests\Feature\Helpers\KeyValueStoreHelper;
 
 class HelpersTest extends TestCase
 {

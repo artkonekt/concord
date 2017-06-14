@@ -10,7 +10,7 @@
  */
 
 
-namespace Konekt\Concord\Tests\Unit;
+namespace Konekt\Concord\Tests\Feature;
 
 
 use Konekt\Concord\Module\Kind;

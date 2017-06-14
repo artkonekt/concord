@@ -10,7 +10,7 @@
  */
 
 
-namespace Konekt\Concord\Tests\Unit\Helpers;
+namespace Konekt\Concord\Tests\Feature\Helpers;
 
 
 class HelloHelper

@@ -18,13 +18,6 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->setUpDatabase($this->app);
-    }
-
     /**
      * @param \Illuminate\Foundation\Application $app
      *
@@ -50,19 +43,6 @@ abstract class TestCase extends OrchestraTestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-    }
-
-    /**
-     * Set up the database.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     */
-    protected function setUpDatabase($app)
-    {
-//        $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
-//            $table->increments('id');
-//            $table->string('email');
-//        });
     }
 
     /**
