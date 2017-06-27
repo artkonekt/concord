@@ -57,8 +57,10 @@ class ConcordServiceProvider extends ServiceProvider
 
         $modules = config("concord.modules") ?: [];
 
-        foreach ($modules as $module) {
-            $concordInstance->registerModule($module);
+        foreach ($modules as $key => $value) {
+            $module = is_string($key) ? $key : $value;
+            $config = is_array($value) ? $value : [];
+            $concordInstance->registerModule($module, $config);
         }
     }
 
