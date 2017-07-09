@@ -22,7 +22,7 @@
 1. [Configuration](configuration.md)
 2. [Migrations](migrations.md)
 3. [Models (Entities)](models.md)
-4. [Repositories](repositories.md)
+4. [Enums](enums.md)
 5. [Events](events.md)
 6. [Listeners](listeners.md)
 7. [Event-Listener Bindings](event-listener-bindings.md)

@@ -22,7 +22,7 @@ use Konekt\Concord\Contracts\Convention;
 
 class Concord implements ConcordContract
 {
-    const VERSION = '0.9.0';
+    const VERSION = '0.9.1';
 
     /** @var Collection  */
     protected $modules;
@@ -44,6 +44,9 @@ class Concord implements ConcordContract
 
     /** @var  Application */
     protected $app;
+
+    /** @var  array */
+    protected $shorts = [];
 
     /** @var Convention */
     private $convention;
@@ -120,6 +123,7 @@ class Concord implements ConcordContract
 
         $this->models[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
+        $this->registerShort($abstract, 'model');
     }
 
     /**
@@ -157,6 +161,7 @@ class Concord implements ConcordContract
 
         $this->enums[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
+        $this->registerShort($abstract, 'enum');
     }
 
     /**
@@ -170,6 +175,7 @@ class Concord implements ConcordContract
 
         $this->requests[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
+        $this->registerShort($abstract, 'request');
     }
 
     /**
@@ -196,9 +202,35 @@ class Concord implements ConcordContract
         return $this->app->make('concord.helpers.' . $name, $arguments);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getVersion(): string
     {
         return self::VERSION;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function short($name): string
+    {
+        return array_get($this->shorts, "$name.class");
+    }
+
+
+    /**
+     * Register a model/enum/request shorthand
+     *
+     * @param string    $abstract
+     * @param string    $type
+     */
+    protected function registerShort($abstract, $type)
+    {
+        $this->shorts[shorten($abstract)] = [
+            'type'  => $type,
+            'class' => $abstract
+        ];
     }
 
 

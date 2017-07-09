@@ -137,4 +137,13 @@ interface Concord
      * @return string
      */
     public function getVersion() : string;
+
+    /**
+     * Returns the complete abstract class/interface name for a short name
+     *
+     * @param string    $name   The short name
+     *
+     * @return string
+     */
+    public function short($name) : string;
 }
