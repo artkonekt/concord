@@ -2,6 +2,14 @@
 
 ## 0.9 Series
 
+### 0.9.1
+##### 2017-07-09
+
+- Laravel 5.5 auto-discovery support
+- fixes, doc updates
+- Support for model/enum/request shorts,
+- `enum('short_name')` helper
+
 ### 0.9.0
 ##### 2017-06-14
 

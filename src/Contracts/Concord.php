@@ -55,12 +55,13 @@ interface Concord
     /**
      * Register/overwrite a model for a specific abstract/interface
      *
-     * @param string    $abstract
-     * @param string    $concrete
+     * @param string $abstract
+     * @param string $concrete
+     * @param bool   $registerRouteModel    Whether or not to register with Route::model()
      *
      * @return void
      */
-    public function registerModel(string $abstract, string $concrete);
+    public function registerModel(string $abstract, string $concrete, $registerRouteModel = true);
 
     /**
      * Return the Model class for a specific abstract class
