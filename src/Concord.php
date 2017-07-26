@@ -23,7 +23,7 @@ use Route;
 
 class Concord implements ConcordContract
 {
-    const VERSION = '0.9.2-dev';
+    const VERSION = '0.9.2';
 
     /** @var Collection  */
     protected $modules;

@@ -2,6 +2,11 @@
 
 ## 0.9 Series
 
+### 0.9.2
+##### 2017-07-26
+
+- On concord model registration route models are registered by default (with short name)
+
 ### 0.9.1
 ##### 2017-07-09
 
