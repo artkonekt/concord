@@ -46,4 +46,4 @@ and then use it as:
 If not specified explicitely, default namespace is the module's folder name converted to snake case, eg.: `Vendor\SuperBox` => 'super_box'
 
 
-#### Next: [Routes &raquo;](routes.md)
+**Next**: [Routes &raquo;](routes.md)

@@ -104,4 +104,4 @@ return [
     ];
     ```
 
-#### Next: [Configuration &raquo;](configuration.md)
+**Next**: [Configuration &raquo;](configuration.md)

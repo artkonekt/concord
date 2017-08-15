@@ -18,4 +18,4 @@ return [
 ];
 ```
 
-#### Next: [Resources &raquo;](resources.md)
+**Next**: [Resources &raquo;](resources.md)

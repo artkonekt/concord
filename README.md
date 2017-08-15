@@ -6,7 +6,7 @@ _Concord is a Laravel Extension that serves as a foundation to build **Modules f
 [![Total Downloads](https://poser.pugx.org/konekt/concord/downloads.png)](https://packagist.org/packages/konekt/concord)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 
-> **Note**: Concord is still in a work-in-progress phase, first stable release expected in June 2017.
+> **Note**: Concord's first stable release is scheduled to September 2017.
 
 Concord at first is a Laravel 5.3+ [package](https://laravel.com/docs/5.4/packages) (Service Provider). Concord also defines a set of rules and recommendations that help you to better structure complex systems.
 
@@ -72,4 +72,4 @@ In order to activate the module add it to the `config/concord.php` file:
 
 ## Documenatation
 
-See the [documentation](docs/index.md) in the `docs` folder of this repo.
+See the [documentation](docs/README.md) in the `docs` folder of this repo.

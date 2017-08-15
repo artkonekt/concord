@@ -72,4 +72,4 @@ Recommended reading: [10 Modern Software Over-Engineering Mistakes](https://medi
 
 OK, you've been warned :)
 
-#### Next: [Overview &raquo;](overview.md)
+**Next**: [Overview &raquo;](overview.md)

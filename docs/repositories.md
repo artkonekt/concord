@@ -6,4 +6,4 @@ Since Eloquent is ActiveRecord, it already works as repository, so Concord repos
 
 
 
-#### Next: [Events &raquo;](events.md)
+**Next**: [Events &raquo;](events.md)

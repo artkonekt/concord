@@ -41,4 +41,4 @@ Helpers need to be registered either in a module's `ModuleServiceProvider` or in
 This makes you possible using `helper('product')->someMethod()`.
 
 
-#### Next: [Blade Components &raquo;](blade-components.md)
+**Next**: [Blade Components &raquo;](blade-components.md)

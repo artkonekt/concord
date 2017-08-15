@@ -33,8 +33,6 @@ complies with its rules.
 The application defines it's own logic and incorporates Concord
 modules and/or boxes.
 
-
-
 ### Simple Layout (Modules Only)
 
 ![Simple Layout (Modules Only)](img/layers-simple.png)
@@ -54,4 +52,4 @@ Modules however need to be "glued" together, by pivot tables, aggregate classes,
 
 Concord has a [recommendation](map.md) of which part should be implemented where. For example it's possible to define controllers in modules, but it is recommended that you rather implement controllers in boxes or in the application.
 
-#### Next: [Directory Structure &raquo;](directory-structure.md)
+**Next**: [Installation &raquo;](installation.md)

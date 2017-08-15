@@ -53,7 +53,7 @@ Now if you run the `php artisan concord:list` command it shows the newly added m
 1. Init a git repo in an empty folder: `git init .`
 2. Add composer.json:
 
-    ```
+    ```json
     {
         "name": "vendor/mymodule",
         "description": "My Module Rulez",
@@ -106,4 +106,4 @@ Now if you run the `php artisan concord:list` command it shows the newly added m
 
 You're done.
 
-#### Next: [Boxes Explained &raquo;](boxes.md)
+**Next**: [Boxes Explained &raquo;](boxes.md)

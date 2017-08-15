@@ -2,4 +2,4 @@
 
 Laravel notifications; box or app level.
 
-#### Next: [Map Of Parts &raquo;](map.md)
+**Next**: [Map Of Parts &raquo;](map.md)

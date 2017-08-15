@@ -24,4 +24,4 @@ return [
 ];
 ```
 
-#### Next: [Helpers &raquo;](helpers.md)
+**Next**: [Helpers &raquo;](helpers.md)

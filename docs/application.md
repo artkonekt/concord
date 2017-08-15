@@ -27,4 +27,4 @@ It's done, you can start adding modules/boxes to your app in `config/concord.php
     ];
 ```
 
-#### Next: [Modules Explained &raquo;](modules.md)
+**Next**: [Modules Explained &raquo;](modules.md)

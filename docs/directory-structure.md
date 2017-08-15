@@ -61,4 +61,4 @@ module-src/
 
 This folder layout is stored in the `ConcordDefault` [convention](conventions.md). You can customize this layout by overriding the default convention (class).
 
-#### Next: [Concord Rules &raquo;](rules.md)
+**Next**: [Concord Rules &raquo;](rules.md)

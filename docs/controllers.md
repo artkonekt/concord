@@ -15,4 +15,4 @@ In case an app wants to extend a boxes controller AND wants to use the boxes bui
     );
 ```
 
-#### Next: [Commands &raquo;](commands.md)
+**Next**: [Commands &raquo;](commands.md)
