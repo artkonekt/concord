@@ -2,6 +2,11 @@
 
 ## 0.9 Series
 
+### 0.9.3
+##### 2017-08-15
+
+- Documentation updated + converted from jekyll to docsify
+
 ### 0.9.2
 ##### 2017-07-26
 
