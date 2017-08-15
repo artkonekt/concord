@@ -19,10 +19,11 @@ use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
+use Route;
 
 class Concord implements ConcordContract
 {
-    const VERSION = '0.9.0';
+    const VERSION = '0.9.2';
 
     /** @var Collection  */
     protected $modules;
@@ -44,6 +45,9 @@ class Concord implements ConcordContract
 
     /** @var  Application */
     protected $app;
+
+    /** @var  array */
+    protected $shorts = [];
 
     /** @var Convention */
     private $convention;
@@ -112,7 +116,7 @@ class Concord implements ConcordContract
     /**
      * @inheritDoc
      */
-    public function registerModel(string $abstract, string $concrete)
+    public function registerModel(string $abstract, string $concrete, $registerRouteModel = true)
     {
         if (!is_subclass_of($concrete, $abstract, true)) {
             throw new InvalidArgumentException("Class {$concrete} must extend or implement {$abstract}. ");
@@ -120,6 +124,13 @@ class Concord implements ConcordContract
 
         $this->models[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
+        $this->registerShort($abstract, 'model');
+
+        // Route models can't resolve models by interface
+        // so we're registering them explicitly
+        if ($registerRouteModel) {
+            Route::model(shorten($abstract), $concrete);
+        }
     }
 
     /**
@@ -157,6 +168,7 @@ class Concord implements ConcordContract
 
         $this->enums[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
+        $this->registerShort($abstract, 'enum');
     }
 
     /**
@@ -170,6 +182,7 @@ class Concord implements ConcordContract
 
         $this->requests[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
+        $this->registerShort($abstract, 'request');
     }
 
     /**
@@ -196,9 +209,35 @@ class Concord implements ConcordContract
         return $this->app->make('concord.helpers.' . $name, $arguments);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getVersion(): string
     {
         return self::VERSION;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function short($name): string
+    {
+        return array_get($this->shorts, "$name.class");
+    }
+
+
+    /**
+     * Register a model/enum/request shorthand
+     *
+     * @param string    $abstract
+     * @param string    $type
+     */
+    protected function registerShort($abstract, $type)
+    {
+        $this->shorts[shorten($abstract)] = [
+            'type'  => $type,
+            'class' => $abstract
+        ];
     }
 
 

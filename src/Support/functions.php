@@ -117,3 +117,32 @@ function concord()
 {
     return app('concord');
 }
+
+/**
+ * Returns the classname shortened (no namespace, base class name only, snake_case
+ *
+ * @param string $classname
+ *
+ * @return string
+ */
+function shorten($classname)
+{
+    return snake_case(class_basename($classname));
+}
+
+
+/**
+ * Shorthand function for returning an enum object by it's short name
+ *
+ * @param string    $shortname  The short name of the enum
+ * @param mixed     $value      The value to create the enum with
+ *
+ * @return mixed
+ */
+function enum($shortname, $value = null)
+{
+    $abstract = concord()->short($shortname);
+    if ($abstract && $class = concord()->enum($abstract)) {
+        return new $class($value);
+    }
+}
