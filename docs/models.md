@@ -417,4 +417,4 @@ ProductProxy::find(1); // Returns App\Product
 
 > Model Proxy classes shouldn't be instantiated, use them as static gateways
 
-**Next**: [Repositories &raquo;](repositories.md)
+**Next**: [Enums &raquo;](enums.md)

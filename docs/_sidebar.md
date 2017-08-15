@@ -16,7 +16,7 @@
     - [Configuration](configuration.md)
     - [Migrations](migrations.md)
     - [Models (Entities)](models.md)
-    - [Repositories](repositories.md)
+    - [Enums](enums.md)
     - [Events](events.md)
     - [Listeners](listeners.md)
     - [Event-Listener Bindings](event-listener-bindings.md)

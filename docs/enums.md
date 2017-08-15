@@ -49,4 +49,4 @@ It's also possible to provide the value of the enum:
 $male = enum('gender', 'm');
 ```
 
-#### Next: [Events &raquo;](https://github.com/artkonekt/concord/blob/master/docs/events.md)
+**Next**: [Events &raquo;](https://github.com/artkonekt/concord/blob/master/docs/events.md)
