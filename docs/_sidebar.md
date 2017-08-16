@@ -15,6 +15,7 @@
 - III. Parts
     - [Configuration](configuration.md)
     - [Migrations](migrations.md)
+    - [Seeds](seeds.md)
     - [Models (Entities)](models.md)
     - [Enums](enums.md)
     - [Events](events.md)
@@ -31,3 +32,7 @@
     - [Request Types](request-types.md)
     - [Notifications](notifications.md)
     - [Map Of Parts](map.md)
+
+- IV. Digging Deeper
+    - [Short Names](short-names.md)
+    - [Proxies](proxies.md)

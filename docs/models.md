@@ -25,7 +25,7 @@ From the models (entities) perspective, our goal is to outsource basic functiona
 
 ## Overriding Models
 
-[For tl;dr click here](#concords-solution)
+[For tl;dr click here](#concord39s-solution)
 
 ### The Problem
 
@@ -241,7 +241,7 @@ In our reading, this is the **achilles heel** of the whole story. Read below to 
             Attribute::class
         ];
     ```
-4. Set the related model class in **relationship definitions** with the proxy class eg. `ProductProxy::realClass()`.
+4. Set the related model class in **relationship definitions** with the proxy class eg. `ProductProxy::modelClass()`.
 5. In upper layers (application) **override the model class** with Concord's `registerModel()` method eg. `$this->app->concord->registerModel(ProductContract::class, App\Product::class);`.
 6. Always **type hint models with their interface** (binding is also registered with the container).
 7. **Don't create model objects with `new`**`Model()`, let Laravel make them from the interface.

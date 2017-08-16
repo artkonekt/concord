@@ -27,4 +27,4 @@ return [
 ```
 By default, migrations are published.
 
-**Next**: [Models (Entities) &raquo;](models.md)
+**Next**: [Seeds &raquo;](seeds.md)
