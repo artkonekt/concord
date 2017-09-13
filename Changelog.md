@@ -2,8 +2,8 @@
 
 ## 0.9 Series
 
-### Unreleased
-##### 2017-xx-xx
+### 0.9.4
+##### 2017-09-13
 
 - Konekt Enum requirement bumped to v2.0
 
