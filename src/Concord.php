@@ -19,6 +19,10 @@ use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
+use Konekt\Concord\Events\EnumWasRegistered;
+use Konekt\Concord\Events\HelperWasRegistered;
+use Konekt\Concord\Events\ModelWasRegistered;
+use Konekt\Concord\Events\RequestWasRegistered;
 use Route;
 
 class Concord implements ConcordContract
@@ -87,6 +91,8 @@ class Concord implements ConcordContract
     public function registerHelper($name, $class)
     {
         $this->app->singleton('concord.helpers.' . $name, $class);
+
+        event(new HelperWasRegistered($name, $class));
     }
 
     /**
@@ -131,6 +137,8 @@ class Concord implements ConcordContract
         if ($registerRouteModel) {
             Route::model(shorten($abstract), $concrete);
         }
+
+        event(new ModelWasRegistered($abstract, $concrete, $registerRouteModel));
     }
 
     /**
@@ -169,6 +177,8 @@ class Concord implements ConcordContract
         $this->enums[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
         $this->registerShort($abstract, 'enum');
+
+        event(new EnumWasRegistered($abstract, $concrete));
     }
 
     /**
@@ -183,6 +193,8 @@ class Concord implements ConcordContract
         $this->requests[$abstract] = $concrete;
         $this->app->alias($concrete, $abstract);
         $this->registerShort($abstract, 'request');
+
+        event(new RequestWasRegistered($abstract, $concrete));
     }
 
     /**

@@ -71,4 +71,4 @@ Invoking explicitely with artisan:
 php artisan db:seed --class=YourSeeder
 ```
 
-**Next**: [Models (Entities) &raquo;](https://github.com/artkonekt/concord/blob/master/docs/models.md)
+**Next**: [Models (Entities) &raquo;](models.md)

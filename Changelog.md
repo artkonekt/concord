@@ -6,6 +6,7 @@
 ##### 2017-09-15
 
 - Doc updates
+- Concord Events have been introduced
 
 ### 0.9.4
 ##### 2017-09-13

@@ -25,3 +25,5 @@ enum('gender')->choices();
 //     "f" => "Female",
 //   ]
 ```
+
+**Next**: [Proxies &raquo;](proxies.md)

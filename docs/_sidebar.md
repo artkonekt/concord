@@ -18,8 +18,6 @@
     - [Seeds](seeds.md)
     - [Models (Entities)](models.md)
     - [Enums](enums.md)
-    - [Events](events.md)
-    - [Listeners](listeners.md)
     - [Event-Listener Bindings](event-listener-bindings.md)
     - [Helpers](helpers.md)
     - [Blade Components](blade-components.md)
@@ -36,3 +34,4 @@
 - IV. Digging Deeper
     - [Short Names](short-names.md)
     - [Proxies](proxies.md)
+    - [Concord Events](concord-events.md)
