@@ -26,6 +26,72 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
 }
 ```
 
+## Extending Enums
+
+In case you want to extend an enum that was registered by another module these are the steps to do so:
+
+1. Extend the class
+2. Define new const values
+3. Register your class with Concord for the Enum's interface
+
+**Example:**
+
+```php
+// The original enum class in an underlying module:
+namespace Vendor\Module\Models;
+
+class OriginalEnum extends \Konekt\Enum\Enum
+{
+    const FUBANG = 'fubang';
+    const ZDOINK = 'zdoink';
+}
+```
+
+```php
+// Extend the class and define new const values
+namespace App;
+
+class YourEnum extends \Vendor\Module\Models\OriginalEnum
+{
+    const SPLASH  = 'splash';
+}
+```
+Register with concord:
+```php
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        $this->app->concord->registerEnum(
+            \Vendor\Module\Contracts\OriginalEnum::class,
+            \App\YourEnum::class
+        );
+    }
+}
+```
+
+This way:
+1. all the underlying models using the original enum will use your enum instead
+2. The enum proxy will resolve to your enum class.
+
+```php
+use Vendor\Module\Models\OriginalEnumProxy;
+
+echo OriginalEnumProxy::enumClass();
+// output: App\YourEnum
+
+$fubang = OriginalEnumProxy::create('fubang');
+
+echo get_class($fubang);
+// output: App\YourEnum
+echo $fubang->value();
+// output: fubang
+
+$splash = OriginalEnumProxy::create('splash');
+echo $splash->value();
+// output: splash
+```
+
 ## Enum Proxies
 
 Using this technique you can define the basic variant of your enum in your module and it can be extended later.
