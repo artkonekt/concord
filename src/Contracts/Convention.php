@@ -186,4 +186,23 @@ interface Convention
     public function enumForProxy(string $proxyClass) : string;
 
 
+    /**
+     * Returns the proxy class for a given enum contract (interface) according to the convention
+     *
+     * @param string $enumContract
+     *
+     * @return string
+     */
+    public function proxyForEnumContract(string $enumContract);
+
+    /**
+     * Returns the proxy class for a given model contract (interface) according to the convention
+     *
+     * @param string $modelContract
+     *
+     * @return string
+     */
+    public function proxyForModelContract(string $modelContract) : string;
+
+
 }

@@ -201,4 +201,56 @@ class ConcordDefault extends BaseConvention implements Convention
         // Identical with model proxies
         return $this->modelForProxy($proxyClass);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function proxyForEnumContract(string $enumContract)
+    {
+        return $this->proxyForEnum(
+                    $this->defaultEnumClassForContract($enumContract)
+                );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function proxyForModelContract(string $modelContract): string
+    {
+        return $this->proxyForModel(
+            $this->defaultModelClassForContract($modelContract)
+        );
+    }
+
+    /**
+     * Returns the convention's default enum class for an enum contract
+     *
+     * @param $enumContract
+     *
+     * @return string
+     */
+    protected function defaultEnumClassForContract($enumContract)
+    {
+        return
+            $this->oneLevelUp($this->getNamespace($enumContract))
+            . '\\' . $this->enumsFolder()
+            . '\\' . class_basename($enumContract);
+    }
+
+    /**
+     * Returns the convention's default model class for a model contract
+     *
+     * @param $modelContract
+     *
+     * @return string
+     */
+    protected function defaultModelClassForContract($modelContract)
+    {
+        return
+            $this->oneLevelUp($this->getNamespace($modelContract))
+            . '\\' . $this->modelsFolder()
+            . '\\' . class_basename($modelContract);
+    }
+
+
 }

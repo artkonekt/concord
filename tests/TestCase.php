@@ -13,11 +13,21 @@
 namespace Konekt\Concord\Tests;
 
 use Konekt\Concord\ConcordServiceProvider;
-use Konekt\Concord\Tests\Modules\Minimal\Providers\ModuleServiceProvider;
+use Konekt\Concord\Contracts\Concord;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
+    /** @var  Concord   This was added only to help IDE auto-completion */
+    protected $concord;
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->concord = $this->app->make('concord');
+    }
+
     /**
      * @param \Illuminate\Foundation\Application $app
      *
@@ -42,18 +52,6 @@ abstract class TestCase extends OrchestraTestCase
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function resolveApplicationConfiguration($app)
-    {
-        parent::resolveApplicationConfiguration($app);
-
-        $app['config']->set('concord.modules', [
-            ModuleServiceProvider::class
         ]);
     }
 

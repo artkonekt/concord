@@ -77,7 +77,7 @@ class Concord implements ConcordContract
         $this->app['config']->set(concord_module_id($moduleClass), $config);
         $module = $this->app->register($moduleClass);
 
-        $this->modules->push($module);
+        $this->modules->put($module->getId(), $module);
         $implicit = isset($config['implicit']) ? $config['implicit'] : false;
 
         if ($implicit) {
@@ -138,6 +138,7 @@ class Concord implements ConcordContract
             Route::model(shorten($abstract), $concrete);
         }
 
+        $this->resetProxy($this->getConvention()->proxyForModelContract($abstract));
         event(new ModelWasRegistered($abstract, $concrete, $registerRouteModel));
     }
 
@@ -178,6 +179,7 @@ class Concord implements ConcordContract
         $this->app->alias($concrete, $abstract);
         $this->registerShort($abstract, 'enum');
 
+        $this->resetProxy($this->getConvention()->proxyForEnumContract($abstract));
         event(new EnumWasRegistered($abstract, $concrete));
     }
 
@@ -232,9 +234,19 @@ class Concord implements ConcordContract
     /**
      * @inheritdoc
      */
-    public function short($name): string
+    public function short($name)
     {
         return array_get($this->shorts, "$name.class");
+    }
+
+    /**
+     * Resets the proxy class to ensure no stale instance gets stuck
+     *
+     * @param string $proxyClass
+     */
+    protected function resetProxy($proxyClass)
+    {
+        $proxyClass::__reset();
     }
 
 

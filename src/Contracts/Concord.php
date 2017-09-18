@@ -144,7 +144,7 @@ interface Concord
      *
      * @param string    $name   The short name
      *
-     * @return string
+     * @return string|null
      */
-    public function short($name) : string;
+    public function short($name);
 }

@@ -24,7 +24,7 @@ abstract class BaseProxy
     protected static $instances = [];
 
     /** @var Concord */
-    protected $concord;
+    public $concord;
 
     /**
      * Repository constructor.
@@ -33,7 +33,7 @@ abstract class BaseProxy
      */
     public function __construct(Concord $concord = null)
     {
-        $this->concord = $concord ?: app(Concord::class);
+        $this->concord = $concord ?: app('concord');
 
         if (empty($this->contract)) {
             $this->contract = $this->guessContract();
@@ -60,6 +60,21 @@ abstract class BaseProxy
         }
 
         return static::$instances[static::class];
+    }
+
+    /**
+     * Resets the proxy by removing the class instance.
+     * Shouldn't be used in application code.
+     *
+     */
+    public static function __reset()
+    {
+        // This is only needed to ensure that in the rare case when
+        // the app instance gets replaced along with the Concord
+        // singleton in runtime, no stale concord survives it
+        if (isset(static::$instances[static::class])) {
+            unset(static::$instances[static::class]);
+        }
     }
 
     /**

@@ -137,7 +137,7 @@ function shorten($classname)
  * @param string    $shortname  The short name of the enum
  * @param mixed     $value      The value to create the enum with
  *
- * @return mixed
+ * @return \Konekt\Enum\Enum
  */
 function enum($shortname, $value = null)
 {

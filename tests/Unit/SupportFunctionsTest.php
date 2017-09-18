@@ -18,7 +18,10 @@ use PHPUnit\Framework\TestCase as PHPUnitBaseTestCase;
 class SupportFunctionsTest extends PHPUnitBaseTestCase
 {
 
-    public function testFunctionsExist()
+    /**
+     * @test
+     */
+    public function helper_functions_exist()
     {
         $this->assertTrue(function_exists('classpath_to_slug'), 'classpath_to_slug function should exist');
         $this->assertTrue(function_exists('slug_to_classpath'), 'slug_to_classpath function should exist');
@@ -26,25 +29,28 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
     }
 
     /**
+     * @test
      * @dataProvider slugProvider
      */
-    public function testSlugToClasspath($classPath, $slug)
+    public function slug_to_classpath_properly_converts_back_to_fqcn($classPath, $slug)
     {
         $this->assertEquals($classPath, slug_to_classpath($slug));
     }
 
     /**
+     * @test
      * @dataProvider classpathProvider
      */
-    public function testClasspathToSlug($classPath, $slug)
+    public function classpath_to_slug_converts_fqcn_to_snake_case_with_backslashes_to_dots($classPath, $slug)
     {
         $this->assertEquals($slug, classpath_to_slug($classPath));
     }
 
     /**
+     * @test
      * @dataProvider moduleIdProvider
      */
-    public function testConcordModuleId($class, $id)
+    public function concord_module_is_being_properly_obtained($class, $id)
     {
         $this->assertEquals($id, concord_module_id($class, new ConcordDefault()));
     }
