@@ -2,9 +2,11 @@
 
 ## 0.9 Series
 
-### Unreleased
-##### 2017-09-15
+### 0.9.5
+##### 2017-09-18
 
+- Fixed stale concord instance in proxies (only happened during tests)
+- Modules collection is now stored with module id as key
 - Doc updates
 - Concord Events have been introduced
 
