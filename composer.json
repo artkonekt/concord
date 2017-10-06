@@ -17,11 +17,12 @@
         "php": ">=7.0.0",
         "illuminate/support": "~5.3",
         "illuminate/console": "~5.3",
-        "konekt/enum": "~2.0"
+        "konekt/enum": "^2.0.2",
+        "konekt/enum-eloquent": "~1.0"
     },
     "require-dev": {
         "orchestra/testbench": "~3.4.2",
-        "phpunit/phpunit" : "^6.0"
+        "phpunit/phpunit" : "~6.0"
     },
     "autoload": {
         "psr-4": { "Konekt\\Concord\\": "src"},
