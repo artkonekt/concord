@@ -2,6 +2,11 @@
 
 ## 0.9 Series
 
+### 0.9.6
+##### 2017-10-06
+
+- The [enum-eloquent](https://github.com/artkonekt/enum-eloquent) package has been added
+
 ### 0.9.5
 ##### 2017-09-18
 
