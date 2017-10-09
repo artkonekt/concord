@@ -45,7 +45,11 @@
         "laravel": {
             "providers": [
                 "Konekt\\Concord\\ConcordServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Concord": "Konekt\\Concord\\Facades\\Concord",
+                "Helper": "Konekt\\Concord\\Facades\\Helper"
+            }
         }
     }
 }

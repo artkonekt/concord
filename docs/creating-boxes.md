@@ -13,7 +13,8 @@
         "description": "My Box Rulez",
         "type": "library",
         "require": {
-            "php": ">=7.0.0"
+            "php": ">=7.0.0",
+            "konekt/concord": "dev-master"
         },
         "autoload": {
             "psr-4": { "Vendor\\MyBox\\": "src/" }

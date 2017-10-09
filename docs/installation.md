@@ -4,6 +4,8 @@ Add the dependency with composer: `composer require konekt/concord`
 
 #### Register The Provider
 
+> This step is only necessary for Laravel 5.3 and 5.4. For v5.5+ [Package Auto Discovery](https://laravel.com/docs/5.5/packages#package-discovery) does this automatically.
+
 In the `config/app.php` configuration file, add to the provider array:
 
 ```php

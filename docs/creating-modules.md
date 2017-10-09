@@ -59,7 +59,8 @@ Now if you run the `php artisan concord:list` command it shows the newly added m
         "description": "My Module Rulez",
         "type": "library",
         "require": {
-            "php": ">=7.0.0"
+            "php": ">=7.0.0",
+            "konekt/concord": "dev-master"
         },
         "autoload": {
             "psr-4": { "Vendor\\MyModule\\": "src/" }
