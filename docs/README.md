@@ -2,7 +2,7 @@
 
 > Concord is a Laravel Extension that serves as a foundation to build **Modules for Laravel Applications** on top of Laravel's built in Service Providers.
 
-!> **Note**: Concord's first stable release is scheduled to September 2017.
+!> **Note**: Concord's first stable release is scheduled to October 2017.
 
 ## Start Here:
 

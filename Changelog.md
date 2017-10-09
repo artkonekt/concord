@@ -2,6 +2,12 @@
 
 ## 0.9 Series
 
+### 0.9.7
+##### 2017-10-09
+
+- Laravel 5.3 support has been dropped
+- Full Laravel 5.5 support
+
 ### 0.9.6
 ##### 2017-10-06
 
