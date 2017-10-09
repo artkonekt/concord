@@ -2,11 +2,13 @@
 
 _Concord is a Laravel Extension that serves as a foundation to build **Modules for Laravel Applications** on top of Laravel's built in Service Providers._
 
-[![Latest Stable Version](https://poser.pugx.org/konekt/concord/version.png)](https://packagist.org/packages/konekt/concord)
-[![Total Downloads](https://poser.pugx.org/konekt/concord/downloads.png)](https://packagist.org/packages/konekt/concord)
-[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![Travis](https://img.shields.io/travis/artkonekt/concord.svg?style=flat-square)](https://travis-ci.org/artkonekt/concord)
+[![Packagist version](https://img.shields.io/packagist/vpre/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
+[![Packagist downloads](https://img.shields.io/packagist/dt/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
+[![StyleCI](https://styleci.io/repos/65661796/shield?branch=master)](https://styleci.io/repos/65661796)
+[![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
-> **Note**: Concord's first stable release is scheduled to September 2017.
+> **Note**: Concord's first stable release (1.0) is scheduled to Concord 2017.
 
 Concord at first is a Laravel 5.3+ [package](https://laravel.com/docs/5.4/packages) (Service Provider). Concord also defines a set of rules and recommendations that help you to better structure complex systems.
 
@@ -72,4 +74,4 @@ In order to activate the module add it to the `config/concord.php` file:
 
 ## Documenatation
 
-See the [documentation](docs/README.md) in the `docs` folder of this repo.
+See the [Concord Documentation](https://artkonekt.github.io/concord) or the [docs folder](docs/README.md) in this repo.
