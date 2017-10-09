@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Tests\Feature;
 
-
 use Konekt\Concord\Tests\Modules\ModuleWithEnum\Contracts\WeatherStatus as WeatherStatusContract;
 use Konekt\Concord\Tests\Modules\ModuleWithEnum\Models\WeatherStatus;
 use Konekt\Concord\Tests\Modules\ModuleWithEnum\Models\WeatherStatusProxy;
@@ -96,5 +95,4 @@ class EnumTest extends TestCase
             ModuleWithEnum::class
         ]);
     }
-
 }

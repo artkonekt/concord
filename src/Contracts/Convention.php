@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Contracts;
 
-
 /**
  * Convention is the layout of folders, files, namespaces used by Concord
  *
@@ -203,6 +202,4 @@ interface Convention
      * @return string
      */
     public function proxyForModelContract(string $modelContract) : string;
-
-
 }

@@ -63,8 +63,8 @@ class ModelsCommand extends Command
         $bindings->map(function ($item, $key) {
             return [
                 'shortName' => substr(strrchr($key, '\\'), 1),
-                'abstract' => $key,
-                'concrete' => $item
+                'abstract'  => $key,
+                'concrete'  => $item
             ];
         })->sort(function ($a, $b) {
             return $a['shortName'] > $b['shortName'];

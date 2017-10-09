@@ -22,7 +22,6 @@ use Konekt\Concord\Module\Manifest;
 use Konekt\Concord\Module\Kind;
 use ReflectionClass;
 
-
 abstract class BaseServiceProvider extends ServiceProvider implements Module
 {
     /** @var  string */
@@ -80,7 +79,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         if ($this->config('event_listeners') === true) {
             $this->registerEventServiceProvider();
         }
-
     }
 
     /**
@@ -166,7 +164,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     public function getConfigPath(): string
     {
         return $this->getBasePath() . '/' . $this->convention->configFolder();
-
     }
 
     /**
@@ -229,7 +226,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             $contract = is_string($key) ? $key : $this->convention->contractForModel($model);
             $this->concord->registerModel($contract, $model);
         }
-
     }
 
     /**
@@ -241,7 +237,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             $contract = is_string($key) ? $key : $this->convention->contractForEnum($enum);
             $this->concord->registerEnum($contract, $enum);
         }
-
     }
 
     /**
@@ -253,7 +248,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             $contract = is_string($key) ? $key : $this->convention->contractForRequest($requestType);
             $this->concord->registerRequest($contract, $requestType);
         }
-
     }
 
     /**
@@ -267,7 +261,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         $path = $this->getBasePath() . '/' . $this->convention->routesFolder();
 
         if (is_dir($path)) {
-
             $routes = is_array($files) ? $files : collect(File::glob($path . '/*.php'))->map(function ($file) {
                 return File::name($file);
             })->all();
@@ -294,7 +287,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         $path      = $this->getBasePath() . '/' . $this->convention->viewsFolder();
         $namespace = $this->config('views.namespace', $this->shortName());
 
-        if(is_dir($path)) {
+        if (is_dir($path)) {
             $this->loadViewsFrom($path, $namespace);
         }
     }
@@ -335,5 +328,4 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             str_replace('/', '\\', $this->convention->controllersFolder())
         );
     }
-
 }

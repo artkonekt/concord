@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Tests\Feature\Enums;
 
-
 use Konekt\Concord\Tests\Modules\ModuleWithEnum\Models\WeatherStatus;
 
 class ExtWeatherStatus extends WeatherStatus

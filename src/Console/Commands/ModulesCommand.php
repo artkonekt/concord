@@ -71,6 +71,4 @@ class ModulesCommand extends Command
 
         $this->table($this->headers, $table);
     }
-
-
 }

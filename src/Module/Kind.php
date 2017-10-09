@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Module;
 
-
 use Konekt\Enum\Enum;
 
 class Kind extends Enum
@@ -26,5 +25,4 @@ class Kind extends Enum
         self::MODULE => 'Module',
         self::BOX    => 'Box'
     ];
-
 }

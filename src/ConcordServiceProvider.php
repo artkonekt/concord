@@ -22,7 +22,6 @@ use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Conventions\ConcordDefault;
 
-
 class ConcordServiceProvider extends ServiceProvider
 {
     /**
@@ -74,7 +73,6 @@ class ConcordServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/config.php' => config_path('concord.php')
         ], 'config');
-
     }
 
     /**
@@ -90,7 +88,6 @@ class ConcordServiceProvider extends ServiceProvider
                 VersionCommand::class
             ]);
         }
-
     }
 
 
@@ -113,6 +110,4 @@ class ConcordServiceProvider extends ServiceProvider
             sprintf('%s is not a valid convention class', $name)
         );
     }
-
-
 }

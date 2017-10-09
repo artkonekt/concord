@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord;
 
-
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Collection;
@@ -106,7 +105,7 @@ class Concord implements ConcordContract
 
         $implicitModules = $this->implicitModules;
 
-        return $this->modules->reject(function($module) use ($implicitModules) {
+        return $this->modules->reject(function ($module) use ($implicitModules) {
             return array_key_exists(get_class($module), $implicitModules);
         });
     }
@@ -263,6 +262,4 @@ class Concord implements ConcordContract
             'class' => $abstract
         ];
     }
-
-
 }

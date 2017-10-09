@@ -31,7 +31,7 @@ function classpath_to_slug($classname)
         $parts = array_except($parts, count($parts) - 1);
     }
 
-    array_walk($parts, function(&$part) {
+    array_walk($parts, function (&$part) {
         $part = snake_case($part);
     });
 
@@ -53,12 +53,11 @@ function slug_to_classpath($str)
 {
     $parts = explode('.', $str);
 
-    array_walk($parts, function(&$part) {
+    array_walk($parts, function (&$part) {
         $part = studly_case($part);
     });
 
     return implode('\\', $parts);
-
 }
 
 /**
@@ -74,21 +73,21 @@ function slug_to_classpath($str)
  */
 function concord_module_id($classname, $convention = null)
 {
-    $convention = $convention ?: concord()->getConvention();
+    $convention    = $convention ?: concord()->getConvention();
     $modulesFolder = $convention->modulesFolder();
     // Check if '\Modules\' is part of the namespace
     $p = strrpos($classname, "\\$modulesFolder\\");
     // if no \Modules\, but starts with 'Modules\' that's also a match
     $p = false === $p ? strpos($classname, "$modulesFolder\\") : $p;
     if (false !== $p) {
-        $parts = explode('\\', substr($classname, $p + strlen($modulesFolder) + 1));
+        $parts           = explode('\\', substr($classname, $p + strlen($modulesFolder) + 1));
         $vendorAndModule = empty($parts[0]) ? array_only($parts, 1) : array_only($parts, 0);
     } else {
-        $parts = explode('\\', $classname);
+        $parts           = explode('\\', $classname);
         $vendorAndModule = empty($parts[0]) ? array_only($parts, [1,2]) : array_only($parts, [0,1]);
     }
 
-    array_walk($vendorAndModule, function(&$part) {
+    array_walk($vendorAndModule, function (&$part) {
         $part = snake_case($part);
     });
 

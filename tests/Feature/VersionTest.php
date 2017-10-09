@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Tests\Feature;
 
-
 use Artisan;
 use Konekt\Concord\Concord;
 use Konekt\Concord\Tests\TestCase;
@@ -25,5 +24,4 @@ class VersionTest extends TestCase
 
         $this->assertEquals(Concord::VERSION, rtrim(Artisan::output()));
     }
-
 }

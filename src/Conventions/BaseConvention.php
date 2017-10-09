@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Conventions;
 
-
 /**
  * Contains some utility classes to be used by concrete convention classes
  */
@@ -46,5 +45,4 @@ abstract class BaseConvention
 
         return '';
     }
-
 }

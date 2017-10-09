@@ -12,8 +12,6 @@
 
 namespace Konekt\Concord\Tests\Modules\ModuleWithEnum\Contracts;
 
-
 interface WeatherStatus
 {
-
 }

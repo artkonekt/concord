@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Facades;
 
-
 use Illuminate\Support\Facades\Facade;
 
 class Concord extends Facade
@@ -27,5 +26,4 @@ class Concord extends Facade
     {
         return 'concord';
     }
-
 }
