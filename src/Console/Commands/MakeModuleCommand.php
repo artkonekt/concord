@@ -17,7 +17,6 @@ use Konekt\Concord\Contracts\Concord;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Exceptions\UnknownLaravelVersionException;
 
-
 class MakeModuleCommand extends GeneratorCommand
 {
     /** @var string  */
@@ -64,7 +63,7 @@ class MakeModuleCommand extends GeneratorCommand
             )
         );
 
-        $name = $this->getNameInput();
+        $name         = $this->getNameInput();
         $manifestPath = str_replace(
                 sprintf('%s/ModuleServiceProvider.php', $this->convention->providersFolder()),
                 $this->convention->manifestFile(),
@@ -77,7 +76,6 @@ class MakeModuleCommand extends GeneratorCommand
 
             $this->files->put($manifestPath, $this->buildManifest($name));
         }
-
     }
 
     /**
@@ -150,7 +148,5 @@ class MakeModuleCommand extends GeneratorCommand
                 )
             );
         }
-
     }
-
 }

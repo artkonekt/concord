@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Events;
 
-
 class ModelWasRegistered
 {
     /** @var  string */
@@ -30,5 +29,4 @@ class ModelWasRegistered
         $this->concrete                = $concrete;
         $this->routeModelWasRegistered = $routeModelWasRegistered;
     }
-
 }

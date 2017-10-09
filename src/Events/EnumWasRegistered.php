@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Events;
 
-
 /**
  * Event that gets fired in case an enum gets registered
  */
@@ -29,6 +28,4 @@ class EnumWasRegistered
         $this->abstract = $abstract;
         $this->concrete = $concrete;
     }
-
-
 }

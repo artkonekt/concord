@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Console\Commands;
 
-
 use Illuminate\Console\Command;
 use Konekt\Concord\Contracts\Concord;
 
@@ -33,5 +32,4 @@ class VersionCommand extends Command
     {
         $this->info($concord->getVersion());
     }
-
 }

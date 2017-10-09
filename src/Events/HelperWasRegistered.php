@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Events;
 
-
 class HelperWasRegistered
 {
     /** @var  string */
@@ -26,5 +25,4 @@ class HelperWasRegistered
         $this->name      = $name;
         $this->className = $class;
     }
-
 }

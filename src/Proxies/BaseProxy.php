@@ -101,5 +101,4 @@ abstract class BaseProxy
      * @return string
      */
     abstract protected function targetClass() : string;
-
 }

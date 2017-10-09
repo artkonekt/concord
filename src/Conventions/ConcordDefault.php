@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Conventions;
 
-
 use Konekt\Concord\Contracts\Convention;
 
 /**
@@ -251,6 +250,4 @@ class ConcordDefault extends BaseConvention implements Convention
             . '\\' . $this->modelsFolder()
             . '\\' . class_basename($modelContract);
     }
-
-
 }

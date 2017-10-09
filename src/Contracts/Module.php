@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Contracts;
 
-
 use Konekt\Concord\Module\Manifest;
 
 interface Module
@@ -45,5 +44,4 @@ interface Module
      * @return string
      */
     public function getNamespaceRoot(): string;
-
 }

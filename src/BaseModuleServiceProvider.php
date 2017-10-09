@@ -12,8 +12,6 @@
 
 namespace Konekt\Concord;
 
-
-
 /**
  * Class AbstractModuleServiceProvider is the abstract class all concord modules have to extend.
  *
@@ -24,5 +22,4 @@ namespace Konekt\Concord;
 abstract class BaseModuleServiceProvider extends BaseServiceProvider
 {
     protected $configFileName = 'module.php';
-
 }
