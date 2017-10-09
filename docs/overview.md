@@ -27,7 +27,7 @@ Boxes are optional. Think of them as "boilerplate" applications. They wrap sever
 
 ## Application
 
-Any Laravel 5.3+ application can be a Concord compliant application that
+Any Laravel 5.4+ application can be a Concord compliant application that
 complies with its rules.
 
 The application defines it's own logic and incorporates Concord

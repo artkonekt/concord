@@ -13,7 +13,7 @@
 
 ## Main Considerations
 
-- Laravel 5.3+
+- Laravel 5.4+
 - Follow Laravel's standards and practices.
 - Never duplicate functionality that exists in Laravel
 - One thing should be done one way.
