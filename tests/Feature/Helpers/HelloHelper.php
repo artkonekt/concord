@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Tests\Feature\Helpers;
 
-
 class HelloHelper
 {
     /**
@@ -24,5 +23,4 @@ class HelloHelper
     {
         return 'hello';
     }
-
 }

@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Tests\Feature;
 
-
 use Konekt\Concord\Module\Kind;
 use Konekt\Concord\Tests\Modules\Minimal\Providers\ModuleServiceProvider as MinimalModule;
 use Konekt\Concord\Tests\TestCase;
@@ -29,7 +28,7 @@ class ModuleTest extends TestCase
         $this->assertTrue($modules->has('minimal'), 'Module `minimal` should be registered');
 
         $minimalModule = $modules->get('minimal');
-        $manifest = $minimalModule->getManifest();
+        $manifest      = $minimalModule->getManifest();
         $this->assertEquals('2.3.0', $manifest->getVersion());
         $this->assertEquals('Minimal', $manifest->getName());
         $this->assertTrue($manifest->getKind()->equals(Kind::MODULE()));
@@ -46,5 +45,4 @@ class ModuleTest extends TestCase
             MinimalModule::class
         ]);
     }
-
 }

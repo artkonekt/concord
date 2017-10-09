@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Tests\Feature\Helpers;
 
-
 class KeyValueStoreHelper
 {
     private $registry = [];
@@ -26,5 +25,4 @@ class KeyValueStoreHelper
     {
         return isset($this->registry[$key]) ? $this->registry[$key] : null;
     }
-
 }

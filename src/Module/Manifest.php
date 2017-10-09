@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Module;
 
-
 class Manifest
 {
     /** @var  string */
@@ -67,5 +66,4 @@ class Manifest
     {
         return $this->kind;
     }
-
 }

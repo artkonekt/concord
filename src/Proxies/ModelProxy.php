@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Proxies;
 
-
 abstract class ModelProxy extends BaseProxy
 {
     /**
@@ -48,6 +47,4 @@ abstract class ModelProxy extends BaseProxy
             $this->concord->getConvention()->modelForProxy(static::class)
         );
     }
-
 }
-

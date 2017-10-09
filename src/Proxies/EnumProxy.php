@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Proxies;
 
-
 class EnumProxy extends BaseProxy
 {
     /**
@@ -48,5 +47,4 @@ class EnumProxy extends BaseProxy
             $this->concord->getConvention()->enumForProxy(static::class)
         );
     }
-
 }

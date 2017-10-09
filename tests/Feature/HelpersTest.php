@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Tests\Feature;
 
-
 use Konekt\Concord\Contracts\Concord;
 use Konekt\Concord\Tests\TestCase;
 use Konekt\Concord\Tests\Feature\Helpers\HelloHelper;
@@ -54,5 +53,4 @@ class HelpersTest extends TestCase
         helper('registry')->set('ach ja', 'nisch-nisch');
         $this->assertEquals('nisch-nisch', $this->app->concord->helper('registry')->get('ach ja'));
     }
-
 }

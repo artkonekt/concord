@@ -11,7 +11,6 @@
 
 namespace Konekt\Concord\Contracts;
 
-
 use Illuminate\Support\Collection;
 
 interface Concord

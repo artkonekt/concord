@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Events;
 
-
 class RequestWasRegistered
 {
     /** @var  string */
@@ -26,5 +25,4 @@ class RequestWasRegistered
         $this->abstract = $abstract;
         $this->concrete = $concrete;
     }
-
 }

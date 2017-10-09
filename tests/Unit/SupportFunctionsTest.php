@@ -95,7 +95,5 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
             ['\Modules\Modulestar\Providers\ModuleServiceProvider', 'modulestar'],
             ['App\Modules\Moduleshit\Providers\ModuleServiceProvider', 'moduleshit']
         ];
-
     }
-
 }

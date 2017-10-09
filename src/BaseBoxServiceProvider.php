@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord;
 
-
 abstract class BaseBoxServiceProvider extends BaseServiceProvider
 {
     protected $configFileName = 'box.php';
@@ -35,7 +34,6 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
 
             $this->concord->registerModule($module, $configuration);
         }
-
     }
 
     /**
@@ -52,5 +50,4 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
             'routes'     => true
         ];
     }
-
 }

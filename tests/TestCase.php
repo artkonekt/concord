@@ -54,5 +54,4 @@ abstract class TestCase extends OrchestraTestCase
             'prefix'   => '',
         ]);
     }
-
 }

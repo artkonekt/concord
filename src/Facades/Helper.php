@@ -26,5 +26,4 @@ class Helper extends Facade
     {
         return 'concord.helper';
     }
-
 }
