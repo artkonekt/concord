@@ -46,9 +46,9 @@ modules and/or boxes.
 
 Reading further you'll see that some [parts](parts.md) are advised to be kept in modules and others in boxes/application.
 
-The reason behind is that modules should be kept decoupled, so whenever it's possible, they should not be aware of other modules. In case they really depend on another module, this dependency should be expressed explicitely (via composer). Number of dependent modules should be kept as low as possible.
+The reason behind is that modules should be kept decoupled, so whenever it's possible, they should not be aware of other modules. In case they really depend on another module, this dependency should be expressed explicitly (via composer). Number of dependent modules should be kept as low as possible.
 
-Modules however need to be "glued" together, by pivot tables, aggregate classes, controllers, forms etc. Concord encourages these kinds of parts to be implemented either in boxes or in the application. Boxes are technically modules as well.
+Modules however need to be "glued" together, by pivot tables, aggregate classes, controllers, forms, event-listeners, etc. Concord encourages these kinds of parts to be implemented either in boxes or in the application. Boxes are technically modules as well.
 
 Concord has a [recommendation](map.md) of which part should be implemented where. For example it's possible to define controllers in modules, but it is recommended that you rather implement controllers in boxes or in the application.
 

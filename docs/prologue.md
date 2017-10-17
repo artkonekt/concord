@@ -9,18 +9,17 @@
 - Provide a system for using/creating a plugin-like modular architecture.
 - Have a system that can embrace decoupled modules, so that we can get rid of duplications across projects.
 - Establish a framework where specific modules can be customized, or even replaced.
-- Standardize usage of Eloquent models (entities) and their related design patterns (repositories, factories, etc).
+- Standardize usage of Eloquent models and so that they can easily be extended/customized in final applications.
 
 ## Main Considerations
 
 - Laravel 5.4+
 - Follow Laravel's standards and practices.
-- Never duplicate functionality that exists in Laravel
+- Don't duplicate functionality that exists in Laravel
+- Keep the developer's liberty so that it's not a nightmare to implement/customize things.
 - One thing should be done one way.
 - Avoid over-engineering.
 - DDD but ActiveRecord :)
-- Keep the developer's liberty so that it's not a nightmare to implement/customize things.
-
 
 ## Inspirations
 
@@ -39,27 +38,24 @@
 
 Concord adds some features **and therefore additional complexity** to the Laravel Framework. So think twice if you really need it.
 
-#### Concord is _not_ for you if
+#### Concord _is not_ for you if
 most of these apply to you:
 
-- "_I'm writing a simple application._"
+- "_I'm writing one simple application._"
 - "_I have no need of code reuse in multiple applications._"
 - "_My code is organized enough._"
 - "_I know how to write my stuff, and I'm OK with it._"
 - "_The amount I'm copypasting is fine._"
-- "_I'm fed up with interfaces and abstractions._"
-- "_Applications I develop are pretty different from each other._"
+- "_Applications I develop have not too much in common._"
 - "_I prefer to complete tasks as quickly as possible._"
-- "_Code beauty is bullshit._"
 
-#### Concord is for you if
+#### Concord _is_ for you if
 most of these apply to you:
 
 - "_I **need** reusable business functionality._"
 - "_I'm fed up with writing the same stuff over and over again._"
 - "_My code organization isn't always consistent. One day a class of `Foo` might be a `Bar` the and the other day a `Baz`._"
 - "_I often think about where to put a class._"
-- "_The way I'm using abstracts, traits and interfaces is not solid._"
 - "_Sometimes I look for code design advice on the net, but everything turns out to be relative._"
 - "_Sometimes I'd be happy to have some guides on code organization and design._"
 - "_I rather spend time **now** for creating something solid than to pay the price later._"

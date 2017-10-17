@@ -3,7 +3,7 @@
     - [Overview](overview.md)
     - [Installation](installation.md)
     - [Directory Structure](directory-structure.md)
-    - [Concord Rules](rules.md)
+    - [Rules & Recommendations](rules.md)
     - [Application](application.md)
 
 - II. Modules
@@ -35,3 +35,4 @@
     - [Short Names](short-names.md)
     - [Proxies](proxies.md)
     - [Concord Events](concord-events.md)
+    - [Conventions](conventions.md)

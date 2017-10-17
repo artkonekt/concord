@@ -6,3 +6,5 @@ Concord emits several events which applications may want to listen to:
 - HelperWasRegistered
 - ModelWasRegistered
 - RequestWasRegistered
+
+**Next**: [Conventions &raquo;](conventions.md)
