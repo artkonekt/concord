@@ -2,6 +2,12 @@
 
 ## 0.9 Series
 
+### 0.9.8
+##### 2017-11-24
+
+- Enum version bumped to 2.1+ and enum-eloquent to 1.1.2+
+
+
 ### 0.9.7
 ##### 2017-10-09
 
