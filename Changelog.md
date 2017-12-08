@@ -2,6 +2,12 @@
 
 ## 0.9 Series
 
+### 0.9.9
+##### 2017-12-08
+
+- Enum-eloquent bumped to 1.1.3+ (bugfix)
+- PHP 7.2 is supported
+
 ### 0.9.8
 ##### 2017-11-24
 
