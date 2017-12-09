@@ -18,7 +18,7 @@ class EnumsCommand extends Command
 {
     protected $signature = 'concord:enums';
 
-    protected $description = 'List Registered Enums';
+    protected $description = 'List Enums';
 
     protected $headers = ['Shorthand', 'Contract', 'Concrete'];
 

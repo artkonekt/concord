@@ -18,7 +18,7 @@ class RequestsCommand extends Command
 {
     protected $signature = 'concord:requests';
 
-    protected $description = 'List Registered Request Types';
+    protected $description = 'List Form Requests';
 
     protected $headers = ['Name', 'Contract', 'Concrete'];
 
