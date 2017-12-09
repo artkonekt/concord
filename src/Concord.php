@@ -217,6 +217,14 @@ class Concord implements ConcordContract
     /**
      * @inheritdoc
      */
+    public function getRequestBindings(): Collection
+    {
+        return collect($this->requests);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function helper($name, $arguments = [])
     {
         return $this->app->make('concord.helpers.' . $name, $arguments);

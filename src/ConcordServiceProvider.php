@@ -18,6 +18,7 @@ use Konekt\Concord\Console\Commands\EnumsCommand;
 use Konekt\Concord\Console\Commands\ModelsCommand;
 use Konekt\Concord\Console\Commands\ModulesCommand;
 use Konekt\Concord\Console\Commands\MakeModuleCommand;
+use Konekt\Concord\Console\Commands\RequestsCommand;
 use Konekt\Concord\Console\Commands\VersionCommand;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
@@ -86,6 +87,7 @@ class ConcordServiceProvider extends ServiceProvider
                 ModulesCommand::class,
                 ModelsCommand::class,
                 EnumsCommand::class,
+                RequestsCommand::class,
                 MakeModuleCommand::class,
                 VersionCommand::class
             ]);

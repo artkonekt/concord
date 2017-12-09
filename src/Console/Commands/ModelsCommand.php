@@ -28,7 +28,7 @@ class ModelsCommand extends Command
      *
      * @var string
      */
-    protected $description = 'List registered models';
+    protected $description = 'List Registered Models';
 
     /** @var array */
     protected $headers = ['Entity', 'Contract', 'Model'];

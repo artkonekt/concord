@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the Enums Command class
+ * Contains the Requests Command class
  *
  * @copyright   Copyright (c) Attila Fulop
  * @author      Attila Fulop
@@ -14,22 +14,22 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Konekt\Concord\Contracts\Concord;
 
-class EnumsCommand extends Command
+class RequestsCommand extends Command
 {
-    protected $signature = 'concord:enums';
+    protected $signature = 'concord:requests';
 
-    protected $description = 'List Registered Enums';
+    protected $description = 'List Registered Request Types';
 
-    protected $headers = ['Shorthand', 'Contract', 'Concrete'];
+    protected $headers = ['Name', 'Contract', 'Concrete'];
 
     public function handle(Concord $concord)
     {
-        $bindings = $concord->getEnumBindings();
+        $bindings = $concord->getRequestBindings();
 
         if ($bindings->count()) {
             $this->showBindings($bindings);
         } else {
-            $this->line('No enums have been registered.');
+            $this->line('No requests have been registered.');
         }
     }
 

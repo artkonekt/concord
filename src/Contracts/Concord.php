@@ -115,6 +115,13 @@ interface Concord
     public function getEnumBindings() : Collection;
 
     /**
+     * Returns all request bindings
+     *
+     * @return Collection
+     */
+    public function getRequestBindings() : Collection;
+
+    /**
      * Returns the the current convention
      *
      * @return Convention
