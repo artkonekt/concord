@@ -14,6 +14,7 @@ namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
 use InvalidArgumentException;
+use Konekt\Concord\Console\Commands\EnumsCommand;
 use Konekt\Concord\Console\Commands\ModelsCommand;
 use Konekt\Concord\Console\Commands\ModulesCommand;
 use Konekt\Concord\Console\Commands\MakeModuleCommand;
@@ -84,6 +85,7 @@ class ConcordServiceProvider extends ServiceProvider
             $this->commands([
                 ModulesCommand::class,
                 ModelsCommand::class,
+                EnumsCommand::class,
                 MakeModuleCommand::class,
                 VersionCommand::class
             ]);
