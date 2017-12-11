@@ -2,6 +2,12 @@
 
 ## 0.9 Series
 
+### 0.9.10
+##### 2017-12-1
+
+- List enums and requests commands have been added
+
+
 ### 0.9.9
 ##### 2017-12-08
 
