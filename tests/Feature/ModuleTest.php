@@ -28,10 +28,12 @@ class ModuleTest extends TestCase
         $this->assertTrue($modules->has('minimal'), 'Module `minimal` should be registered');
 
         $minimalModule = $modules->get('minimal');
+        $this->assertTrue($minimalModule->getKind()->equals(Kind::MODULE()));
+
         $manifest      = $minimalModule->getManifest();
         $this->assertEquals('2.3.0', $manifest->getVersion());
         $this->assertEquals('Minimal', $manifest->getName());
-        $this->assertTrue($manifest->getKind()->equals(Kind::MODULE()));
+
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the AbstractBoxServiceProvider class.
+ * Contains the BaseBoxServiceProvider class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
@@ -15,6 +15,8 @@ namespace Konekt\Concord;
 abstract class BaseBoxServiceProvider extends BaseServiceProvider
 {
     protected $configFileName = 'box.php';
+
+    protected static $_kind = 'box';
 
     public function register()
     {

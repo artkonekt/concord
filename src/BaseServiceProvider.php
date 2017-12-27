@@ -51,6 +51,9 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     /** @var  Convention */
     protected $convention;
 
+    /** @var  Kind */
+    protected $kind;
+
     /**
      * ModuleServiceProvider class constructor
      *
@@ -62,6 +65,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
 
         $this->concord       = $app->make(ConcordContract::class); // retrieve the concord singleton
         $this->convention    = $this->concord->getConvention(); // storing to get rid of train wrecks
+        $this->kind          = Kind::create(static::$_kind);
         $this->basePath      = dirname(dirname((new ReflectionClass(static::class))->getFileName()));
         $this->namespaceRoot = str_replace(
                                     sprintf('\\%s\\ModuleServiceProvider',
@@ -137,10 +141,10 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         if (!$this->manifest) {
             $data = include($this->basePath . '/' . $this->convention->manifestFile());
 
-            extract($data);
-            $kind = isset($kind) ? $kind : Kind::MODULE();
+            $name    = $data['name'] ?? 'N/A';
+            $version = $data['version'] ?? 'n/a';
 
-            $this->manifest = new Manifest($name, $version, $kind);
+            $this->manifest = new Manifest($name, $version);
         }
 
         return $this->manifest;
@@ -154,6 +158,14 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     public function getBasePath(): string
     {
         return $this->basePath;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getKind(): Kind
+    {
+        return $this->kind;
     }
 
     /**

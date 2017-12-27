@@ -12,6 +12,7 @@
 
 namespace Konekt\Concord\Contracts;
 
+use Konekt\Concord\Module\Kind;
 use Konekt\Concord\Module\Manifest;
 
 interface Module
@@ -44,4 +45,11 @@ interface Module
      * @return string
      */
     public function getNamespaceRoot(): string;
+
+    /**
+     * Returns the kind of the module (box/module)
+     *
+     * @return Kind
+     */
+    public function getKind(): Kind;
 }

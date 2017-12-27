@@ -2,8 +2,17 @@
 
 ## 0.9 Series
 
+### Unreleased
+##### 2017-12-XX
+
+- Module kind gets obtained from the module not from the manifest. As a
+  consequence it's no more needed (and has no effect) to specify the module kind
+  in the manifest file
+- Dist-type zipballs no more contain test, docs and other files that aren't
+  needed for production
+
 ### 0.9.10
-##### 2017-12-1
+##### 2017-12-11
 
 - List enums and requests commands have been added
 

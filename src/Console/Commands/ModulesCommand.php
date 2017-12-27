@@ -62,7 +62,7 @@ class ModulesCommand extends Command
             $table[] = [
                 'no'        => sprintf('%d.', $i),
                 'name'      => $module->getManifest()->getName(),
-                'kind'      => $module->getManifest()->getKind()->label(),
+                'kind'      => $module->getKind()->label(),
                 'version'   => $module->getManifest()->getVersion(),
                 'id'        => $module->getId(),
                 'namespace' => $module->getNamespaceRoot()

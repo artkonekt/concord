@@ -20,21 +20,17 @@ class Manifest
     /** @var  string */
     protected $version;
 
-    /** @var  Kind */
-    protected $kind;
 
     /**
      * Manifest constructor.
      *
      * @param string $name
      * @param string $version
-     * @param Kind   $kind
      */
-    public function __construct(string $name, string $version, Kind $kind)
+    public function __construct(string $name, string $version)
     {
         $this->name    = $name;
         $this->version = $version;
-        $this->kind    = $kind;
     }
 
     /**
@@ -55,15 +51,5 @@ class Manifest
     public function getVersion()
     {
         return $this->version;
-    }
-
-    /**
-     * Returns what kind of module this is (module or box)
-     *
-     * @return Kind
-     */
-    public function getKind()
-    {
-        return $this->kind;
     }
 }

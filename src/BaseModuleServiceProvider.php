@@ -22,4 +22,6 @@ namespace Konekt\Concord;
 abstract class BaseModuleServiceProvider extends BaseServiceProvider
 {
     protected $configFileName = 'module.php';
+
+    protected static $_kind = 'module';
 }
