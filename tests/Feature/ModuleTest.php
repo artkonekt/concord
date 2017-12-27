@@ -33,7 +33,6 @@ class ModuleTest extends TestCase
         $manifest      = $minimalModule->getManifest();
         $this->assertEquals('2.3.0', $manifest->getVersion());
         $this->assertEquals('Minimal', $manifest->getName());
-
     }
 
     /**
