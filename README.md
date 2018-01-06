@@ -71,7 +71,7 @@ In order to activate the module add it to the `config/concord.php` file:
 
 ```php
 'modules' => [
-        App\Module\ShinyModule\Providers\ModuleServiceProvider::class
+        App\Modules\ShinyModule\Providers\ModuleServiceProvider::class
     ]
 ```
 

@@ -38,7 +38,7 @@
     ];
     ```
     
-Now if you run the `php artisan concord:list` command it shows the newly added module:
+Now if you run the `php artisan concord:modules` command it shows the newly added module:
 
 ```
 +----+-----------------+---------+------------------+

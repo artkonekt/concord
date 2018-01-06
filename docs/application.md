@@ -23,7 +23,7 @@ It's done, you can start adding modules/boxes to your app in `config/concord.php
 
 ```php
 'modules' => [
-        App\Module\ShinyModule\Providers\ModuleServiceProvider::class
+        App\Modules\ShinyModule\Providers\ModuleServiceProvider::class
     ];
 ```
 
