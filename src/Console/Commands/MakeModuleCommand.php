@@ -47,9 +47,9 @@ class MakeModuleCommand extends GeneratorCommand
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
-        if (parent::fire() === false) {
+        if (parent::handle() === false) {
             return;
         }
 
