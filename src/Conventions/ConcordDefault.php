@@ -63,6 +63,14 @@ class ConcordDefault extends BaseConvention implements Convention
     /**
      * @inheritDoc
      */
+    public function resourcesFolder(): string
+    {
+        return 'Http/Resources';
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function contractForRequest(string $requestClass): string
     {
         return sprintf(

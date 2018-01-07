@@ -62,6 +62,13 @@ interface Convention
     public function requestsFolder() : string;
 
     /**
+     * Returns the folder name for API Resources
+     *
+     * @return string
+     */
+    public function resourcesFolder() : string;
+
+    /**
      * Returns the folder name for config files
      *
      * @return string

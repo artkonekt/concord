@@ -13,9 +13,8 @@ module-src/
 
 ## Full Stack Of Recommended File/Folder Structure
 
-> Note: the list below contains the folders for both [boxes](boxes.md) and [modules](modules.md) for the sake of being a single reference.
-
-> Boxes and modules should only have their recommended [parts](parts.md) (-> folders).
+> Note: the list below contains the folders for both [boxes](boxes.md) and
+> [modules](modules.md) for the sake of being a single reference.
 
 The default locations are:
 
@@ -26,15 +25,16 @@ module-src/
     Contracts/
     Events/
     Exceptions/
+    Factories/
     Helpers/
     Http/
         |-- Controllers/
         |-- Middleware/
         |-- Requests/
+        |-- Resources/
     Jobs/
     Listeners/
-    Models/
-        |-- Factories/
+    Models/ 
     Providers/
         |-- ModuleServiceProvider.php
         |-- EventServiceProvider.php
@@ -59,6 +59,8 @@ module-src/
     
 ```
 
-This folder layout is stored in the `ConcordDefault` [convention](conventions.md). You can customize this layout by overriding the default convention (class).
+This folder layout is stored in the `ConcordDefault`
+[convention](conventions.md). You can customize this layout by overriding the
+default convention (class).
 
 **Next**: [Concord Rules &raquo;](rules.md)
