@@ -14,7 +14,7 @@
         "type": "library",
         "require": {
             "php": ">=7.0.0",
-            "konekt/concord": "dev-master"
+            "konekt/concord": ">=0.9.10"
         },
         "autoload": {
             "psr-4": { "Vendor\\MyBox\\": "src/" }
@@ -27,9 +27,9 @@
     ```php
     namespace Vendor\MyBox\Providers;
     
-    use Konekt\Concord\AbstractBoxServiceProvider;
+    use Konekt\Concord\BaseBoxServiceProvider;
     
-    class ModuleServiceProvider extends AbstractBoxServiceProvider
+    class ModuleServiceProvider extends BaseBoxServiceProvider
     {
     }
     ```
@@ -39,12 +39,9 @@
     ```php
     <?php
     
-    use Konekt\Concord\Module\Kind;
-    
     return [
        'name'    => 'My Box',
-       'version' => '1.0.0',
-       'kind'    => Kind::BOX()
+       'version' => '1.0.0'
     ];
     ```
 
@@ -52,7 +49,8 @@
 
 ## Adding Modules To The Box
 
-Boxes have their primary config file located in (`src/`)`resources/config/box.php`. Modules need to be added here:
+Boxes have their primary config file located in `resources/config/box.php`.
+Modules need to be added here:
 
 ```php
 <?php
@@ -88,7 +86,7 @@ return [
 ];
 ```
 
-> Make sure to provide a compatible replacement if you're suppressing a module's migration.
+!> Make sure to provide a compatible replacement if you're suppressing a module's migration.
 
 ## Adding A Box The An Application
 

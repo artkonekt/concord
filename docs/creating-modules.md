@@ -41,11 +41,11 @@
 Now if you run the `php artisan concord:modules` command it shows the newly added module:
 
 ```
-+----+-----------------+---------+------------------+
-| #  | Name            | Version | Namespace        |
-+----+-----------------+---------+------------------+
-| 1. | Demo App Module | 1.3.9   | App\Modules\Demo |
-+----+-----------------+---------+------------------+
++----+------------------+--------+---------+------+-------------------+
+| #  | Name             | Kind   | Version | Id   | Namespace         |
++----+------------------+--------+---------+------+-------------------+
+| 1. | Demo App Module  | Module | 1.3.9   | demo | App\Modules\Demo  |
++----+------------------+--------+---------+------+-------------------+
 ```
 
 ## Creating An External Module (With Git And Composer)
@@ -60,7 +60,7 @@ Now if you run the `php artisan concord:modules` command it shows the newly adde
         "type": "library",
         "require": {
             "php": ">=7.0.0",
-            "konekt/concord": "dev-master"
+            "konekt/concord": ">=0.9.10"
         },
         "autoload": {
             "psr-4": { "Vendor\\MyModule\\": "src/" }
@@ -73,9 +73,9 @@ Now if you run the `php artisan concord:modules` command it shows the newly adde
     ```php
     namespace Vendor\MyModule\Providers;
     
-    use Konekt\Concord\AbstractModuleServiceProvider;
+    use Konekt\Concord\BaseModuleServiceProvider;
     
-    class ModuleServiceProvider extends AbstractModuleServiceProvider
+    class ModuleServiceProvider extends BaseModuleServiceProvider
     {
     }
     ```

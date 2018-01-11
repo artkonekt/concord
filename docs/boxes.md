@@ -51,9 +51,9 @@ both boxes**, and from the client's perspective they constitute **a single syste
 
 - Boxes **should only** define models, migrations that "glue" module parts together.
 - Boxes **may gather and publish** models and migrations from underlying modules.
-- Boxes **should not** define new repositories but **may extend** existing ones.
-- Boxes **are expected to** define views, routes, resources, controllers, listeners, event bindings, request types.
-- Boxes **should** bind repository interfaces to implementations.
+- Boxes **should not** define new models but **may extend** existing ones.
+- Boxes **are expected to** define views, routes, resources, controllers,
+  listeners, event bindings, request types.
 - Boxes **may define** commands, middlewares, helpers and notifications.
 
 ## Module Folder Structure
@@ -80,6 +80,7 @@ box-src/
         |-- Controllers/
         |-- Middleware/
         |-- Requests/
+        |-- Resources/
     Jobs/
     Listeners/
     Models/
