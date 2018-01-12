@@ -73,7 +73,8 @@ class Concord implements ConcordContract
      */
     public function registerModule($moduleClass, $config = [])
     {
-        $this->app['config']->set(concord_module_id($moduleClass), $config);
+        $this->mergeModuleConfig(concord_module_id($moduleClass), $config);
+
         $module = $this->app->register($moduleClass);
 
         $this->modules->put($module->getId(), $module);
@@ -269,5 +270,23 @@ class Concord implements ConcordContract
             'type'  => $type,
             'class' => $abstract
         ];
+    }
+
+    /**
+     * Merge the module's config with the existing config
+     *
+     * @param string $key
+     * @param array  $config
+     */
+    protected function mergeModuleConfig(string $key, array $config)
+    {
+        if (!empty($config)) {
+            $current = $this->app['config']->get($key);
+            if (is_array($current)) {
+                $this->app['config']->set($key, array_merge($current, $config));
+            } else {
+                $this->app['config']->set($key, $config);
+            }
+        }
     }
 }
