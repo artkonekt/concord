@@ -1,16 +1,20 @@
 # Event-Listener Bindings
 
-Modules should not bind events to listeners. Boxes and apps are expected to do so.
+Modules should not bind events to listeners, but boxes and apps are expected to do so.
 
-Boxes may define their default event-listener bindings in their own `Providers/EventServiceProvider.php` file.
+Boxes may define their default event-listener bindings in their own
+`Providers/EventServiceProvider.php` file.
 
-An app however, may want to override these bindings.
+The application may want to override these bindings.
 
-As an example a forum module defines that a `CommentWasPosted` event is being listened by `SendEmailToThreadSubscribers` and `IncreaseUserPostCount` listeners.
+As an example a forum box defines that a `CommentWasPosted` event is being
+listened by `SendEmailToThreadSubscribers` and `IncreaseUserPostCount` listeners.
+But the implementing app may want to omit sending these emails, so it can
+override these bindings.
 
-But the implementing app may want to omit sending these emails, so they can override these module bindings.
-
-So in case you want the module loader to register the module's EventServiceProvider (which it doesn't do by default) you should add this to the module's config file:
+In case you want the module loader to register the module's
+`EventServiceProvider` (which it doesn't do by default) you need add this to
+the module's config file:
 
 ```php
 <?php

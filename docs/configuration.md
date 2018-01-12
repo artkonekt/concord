@@ -37,12 +37,13 @@ config('konekt.app_shell.ui.name');
 
 There are several directives with you can influence the module loading:
 
-| Directive  | Default Value | Meaning                                                                                                             |
-|:-----------|:--------------|:--------------------------------------------------------------------------------------------------------------------|
-| migrations | true          | If false, module's [migrations](migrations.md) won't be published                                                   |
-| models     | true          | If false, module's [models](models.md), [enums](enums.md) and [request types](request-types.md) won't be registered |
-| views      | true          | If false, module's [views](views.md) won't be available                                                             |
-| routes     | true          | If false, module's [routes](routes.md) won't be registered                                                          |
+| Directive       | Default Value | Meaning                                                                                                             |
+|:----------------|:--------------|:--------------------------------------------------------------------------------------------------------------------|
+| migrations      | true          | If false, module's [migrations](migrations.md) won't be published                                                   |
+| models          | true          | If false, module's [models](models.md), [enums](enums.md) and [request types](request-types.md) won't be registered |
+| views           | true          | If false, module's [views](views.md) won't be available                                                             |
+| routes          | true          | If false, module's [routes](routes.md) won't be registered                                                          |
+| event_listeners | NULL          | If true, the module's [event-listener bindings](event-listener-bindings.md) will be registered                      |
 
 ## Using Config Files
 
