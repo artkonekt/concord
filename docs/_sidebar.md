@@ -20,7 +20,6 @@
     - [Enums](enums.md)
     - [Event-Listener Bindings](event-listener-bindings.md)
     - [Helpers](helpers.md)
-    - [Blade Components](blade-components.md)
     - [Views](views.md)
     - [Routes](routes.md)
     - [Resources](resources.md)

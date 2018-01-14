@@ -21,7 +21,7 @@ the module's config file:
 
 return [
     'modules' => [
-        Vendor\MyModule\Providers\ModuleServiceProvider::class => [
+        Vendor\MyBox\Providers\ModuleServiceProvider::class => [
             'event_listeners' => true
         ]
     ]

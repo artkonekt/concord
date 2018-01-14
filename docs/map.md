@@ -10,7 +10,6 @@ It shows, where specific parts should be placed, implemented or customized
 | Configuration                 |   D    |  G,P  |      O      |
 | Migrations                    |   D    |  G,P  |     D,I     |
 | Entities                      |   D    |  G,P  |     D,O     |
-| Repositories                  |   D    |  E,B  |    E,O,B    |
 | Events                        |   D    |   D   |      D      |
 | Listeners                     |   -    |   D   |      D      |
 | Event-Listener Bindings       |   -    |   D   |    D,O,I    |
@@ -21,6 +20,7 @@ It shows, where specific parts should be placed, implemented or customized
 | Resources (assets, lang, etc) |   -    |  D,P  |    D,O,I    |
 | Controllers                   |   -    |   D   |    D,B,O    |
 | Commands                      |   -    |   D   |     D,O     |
+| API Resources                 |   D    |  D,O  |     D,O     |
 | Middlewares                   |   -    |   D   |     D,O     |
 | Requests (specific)           |   A    | D,O,I |      O      |
 | Notifications                 |   -    |   D   |     D,O     |

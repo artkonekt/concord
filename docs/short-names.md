@@ -6,7 +6,7 @@ Short name is the class's base name converted to snake case:
 
 | Full Class Name                       | Short Name   |
 |---------------------------------------|--------------|
-| Konekt\Address\Contracts\AddressType" | address_type |
+| Konekt\Address\Contracts\AddressType  | address_type |
 | Konekt\Address\Contracts\Gender       | gender       |
 | App\Modules\Booking\Models\BedType    | bed_type     |
 

@@ -45,7 +45,33 @@ There are several directives with you can influence the module loading:
 | routes          | true          | If false, module's [routes](routes.md) won't be registered                                                          |
 | event_listeners | NULL          | If true, the module's [event-listener bindings](event-listener-bindings.md) will be registered                      |
 
-## Using Config Files
+### Default Module Configuration
+
+External modules and boxes are encouraged to set their own config defaults.
+These are plain php files as well, containing arrays.
+They have to be located in:
+
+- `resources/config/module.php` for [modules](modules.md)
+- `resources/config/box.php` for [boxes](boxes.md)
+
+This is the location where boxes can list the modules they incorporate:
+
+**Example:**
+
+```php
+// resources/config/box.php
+return [
+    'modules' => [
+        Konekt\Address\Providers\ModuleServiceProvider::class => [],
+        Konekt\Customer\Providers\ModuleServiceProvider::class => [],
+        Konekt\User\Providers\ModuleServiceProvider::class => [],
+        Konekt\Acl\Providers\ModuleServiceProvider::class => []
+    ],
+    'event_listeners' => true,
+];
+```
+
+## Using Application Config Files
 
 Your modules can also use
 [package config files](https://laravel.com/docs/5.5/packages#configuration) (in
