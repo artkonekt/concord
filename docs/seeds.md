@@ -1,6 +1,6 @@
 # Seeders
 
-Seeders are just normal [Laravel seeders](https://laravel.com/docs/5.4/seeding). The default (recommended) folder for db seeds is `<module_root>/resources/database/seeds`
+Seeders are just normal [Laravel seeders](https://laravel.com/docs/5.5/seeding). The default (recommended) folder for db seeds is `<module_root>/resources/database/seeds`
 
 The only difference compared to seeders placed in your project's `database/seeds` folder is that app seeders use no namespace.
 

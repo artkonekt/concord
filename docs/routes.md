@@ -17,7 +17,7 @@ return [
     ]
 ];
 ```
-All routes will be included in a [route group](https://laravel.com/docs/5.4/routing#route-groups) whose parameters can also be configured:
+All routes will be included in a [route group](https://laravel.com/docs/5.5/routing#route-groups) whose parameters can also be configured:
 
 ```php
 return [
