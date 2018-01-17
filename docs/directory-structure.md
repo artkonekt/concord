@@ -34,7 +34,8 @@ module-src/
         |-- Resources/
     Jobs/
     Listeners/
-    Models/ 
+    Models/
+    Notifications/ 
     Providers/
         |-- ModuleServiceProvider.php
         |-- EventServiceProvider.php
