@@ -1,15 +1,19 @@
 # Concord Changelog
 
-## 0.9 Series
+## 1.0 Series
 
-### Unreleased
-##### 2017-12-XX
+### 1.0.0
+##### 2018-01-17
 
+- Documentation finished for 1.0.
+- `BaseRequest` contract has been added (for form requests);
 - Module kind gets obtained from the module not from the manifest. As a
   consequence it's no more needed (and has no effect) to specify the module kind
   in the manifest file
 - Dist-type zipballs no more contain test, docs and other files that aren't
   needed for production
+
+## 0.9 Series
 
 ### 0.9.10
 ##### 2017-12-11
