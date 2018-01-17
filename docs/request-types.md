@@ -39,6 +39,10 @@ namespace Konekt\AppShell\Contracts\Requests;
 interface CreateCustomer extends Konekt\Concord\Contracts\BaseRequest {}
 ```
 
+> Concord provides the `Konekt\Concord\Contracts\BaseRequest` interface as a
+> boilerplate that can be used by any request contract. Its absolutely optional,
+> but is useful as it complies with the Laravel `FormRequest` requirements.
+
 *The Request Type:*
 ```php
 // Http/Requests/CreateCustomer.php
