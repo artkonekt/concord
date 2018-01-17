@@ -12,7 +12,6 @@
 
 namespace Konekt\Concord\Contracts;
 
-
 interface BaseRequest
 {
     /**
