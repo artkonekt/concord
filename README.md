@@ -8,11 +8,10 @@ _Concord is a Laravel Extension that serves as a foundation to build **Modules f
 [![StyleCI](https://styleci.io/repos/65661796/shield?branch=master)](https://styleci.io/repos/65661796)
 [![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
-> **Note**: Concord's first stable release (1.0) is scheduled to December 2017.
-
 Concord at first is a Laravel 5.4+
 [package](https://laravel.com/docs/5.4/packages) (Service Provider).
-Concord also defines a set of rules and recommendations that help you to
+
+Concord also defines ome conventions and recommendations that help you to
 better structure complex systems.
 
 ## Basics
