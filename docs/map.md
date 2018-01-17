@@ -22,7 +22,7 @@ It shows, where specific parts should be placed, implemented or customized
 | Commands                      |   -    |   D   |     D,O     |
 | API Resources                 |   D    |  D,O  |     D,O     |
 | Middlewares                   |   -    |   D   |     D,O     |
-| Requests (specific)           |   A    | D,O,I |      O      |
+| Form Request Types            |   A    | D,O,I |      O      |
 | Notifications                 |   -    |   D   |     D,O     |
 
 
