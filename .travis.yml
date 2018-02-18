@@ -14,10 +14,14 @@ matrix:
       env: L5_VER=4
     - php: 7.1
       env: L5_VER=5
+    - php: 7.1
+      env: L5_VER=6
     - php: 7.2
       env: L5_VER=4
     - php: 7.2
       env: L5_VER=5
+    - php: 7.2
+      env: L5_VER=6
 
 script:
 - vendor/bin/phpunit -c phpunit.xml.dist tests/
