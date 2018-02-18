@@ -12,6 +12,8 @@ Concord at first is a Laravel 5.4+
 [package](https://laravel.com/docs/5.4/packages). It also offers some
 conventions that help you to better structure complex systems.
 
+> Laravel 5.6 is supported from v1.1.0 upwards
+
 ## Basics
 
 > Modular Architecture is exactly what you think it is - a way to manage the
