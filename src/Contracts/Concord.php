@@ -72,6 +72,15 @@ interface Concord
     public function model(string $abstract);
 
     /**
+     * Returns a module by its id
+     *
+     * @param string    $id
+     *
+     * @return Module|null
+     */
+    public function module(string $id);
+
+    /**
      * Returns all model bindings
      *
      * @return Collection

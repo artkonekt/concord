@@ -151,6 +151,14 @@ class Concord implements ConcordContract
     }
 
     /**
+     * @inheritDoc
+     */
+    public function module(string $id)
+    {
+        return $this->modules->get($id);
+    }
+
+    /**
      * @inheritdoc
      */
     public function getModelBindings() : Collection
