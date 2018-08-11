@@ -2,6 +2,11 @@
 
 ## 1.0 Series
 
+### 1.2.0
+##### 2018-08-11
+
+- Modules can be retrieved by id
+
 ### 1.1.0
 ##### 2018-02-18
 
