@@ -68,5 +68,23 @@ Concord automatically calculates the module id based on the module's namespace.
 | Vanilo\Order\Providers\ModuleServiceProvider  | vanilo.order   | external |
 | Konekt\Acl\Providers\ModuleServiceProvider    | konekt.acl     | external |
 
+### Retrieve Modules From Concord By ID:
+
+**Using the facade:**
+
+```php
+use Konekt\Concord\Facades\Concord;
+
+$cartModule = Concord::module('vanilo.cart');
+```
+
+**Using the service from the container:**
+
+```php
+$billingModule = app('concord')->module('billing');
+
+// or if you have an app instance available:
+$billingModule = $this->app['concord']->module('billing');
+```
 
 **Next**: [Creating Modules &raquo;](creating-modules.md)
