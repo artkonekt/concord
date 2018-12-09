@@ -78,3 +78,22 @@ return [
 
 See the [Concord Documentation](https://artkonekt.github.io/concord) for all the
 nasty details ;)
+
+## Plans For Version 2.0
+
+- Artisan Console command names will be de-branded (eg. `concord:modules` -> `module:list`)
+- The central `config/concord.php` file will be eliminated, or split:
+    - modules can specify their own config file name (like normal Laravel packages);
+    - therefore several modules can share config files (see vanilo.php);
+    - if we keep concord.php, then it'll contain concord specific settings.
+- Modules will be loaded as normal packages, using auto-discovery instead of listing modules with concord.
+- Custom names for service providers eg. CartServiceProvider instead of ModuleServiceProvider.
+- Question to the prior item is how to do the same with in-app modules.
+- Re-think the concept of boxes vs. modules.
+- Remove surplus items from Documentation.
+- Remove helpers (?).
+- Remove custom view namespace support.
+- Will we ever use Controller overriding?
+- Add make:request, make:model, make:enum commands that scaffold with interface, proxy etc.
+- Fix AddressType -> address_type kind of style problem in route parameters
+- 
