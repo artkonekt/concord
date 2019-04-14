@@ -21,7 +21,7 @@ abstract class TestCase extends OrchestraTestCase
     /** @var  Concord   This was added only to help IDE auto-completion */
     protected $concord;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

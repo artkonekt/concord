@@ -6,10 +6,6 @@ cache:
 
 matrix:
   include:
-    - php: 7.0
-      env: L5_VER=4
-    - php: 7.0
-      env: L5_VER=5
     - php: 7.1
       env: L5_VER=4
     - php: 7.1

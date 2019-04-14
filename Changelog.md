@@ -2,6 +2,13 @@
 
 ## 1.0 Series
 
+### 1.3.0
+##### Unreleased
+
+- Dropped PHP 7.0 support
+- Added PHP 7.3 support
+- Added Laravel 5.7 and 5.8 support
+
 ### 1.2.0
 ##### 2018-08-11
 
