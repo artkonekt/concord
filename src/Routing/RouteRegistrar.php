@@ -27,7 +27,7 @@ class RouteRegistrar
 
     public function __construct(Module $module, Convention $convention)
     {
-        $this->module = $module;
+        $this->module     = $module;
         $this->convention = $convention;
     }
 
