@@ -35,7 +35,7 @@ return [
 ];
 ```
 
-To register routes with different settings:
+To register routes with different settings (**v1.3+**):
 
 ```php
 return [
