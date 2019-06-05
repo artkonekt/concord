@@ -12,14 +12,13 @@
 
 namespace Konekt\Concord;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Route;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Contracts\Module;
 use Konekt\Concord\Module\Manifest;
 use Konekt\Concord\Module\Kind;
+use Konekt\Concord\Routing\RouteRegistrar;
 use ReflectionClass;
 
 abstract class BaseServiceProvider extends ServiceProvider implements Module
@@ -104,8 +103,17 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             $this->registerViews();
         }
 
-        if ($this->config('routes', true)) {
-            $this->registerRoutes($this->config('routes.files'));
+        if ($routes = $this->config('routes', true)) {
+            $routeRegistrar = new RouteRegistrar($this, $this->convention);
+            if (true === $routes) {
+                $routeRegistrar->registerAllRoutes();
+            } elseif (isset($routes['files'])) {
+                $routeRegistrar->registerRoutes($this->config('routes.files'), $this->config('routes'));
+            } elseif (isset($routes[0]) && is_array($routes[0])) {
+                foreach ($routes as $route) {
+                    $routeRegistrar->registerRoutes($route['files'], $route);
+                }
+            }
         }
     }
 
@@ -263,35 +271,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     }
 
     /**
-     * Register routes in a box/module
-     *
-     * @param array|string $files Pass '*' to register all the route files in routes/ folder
-     *                            or an array with the list of route files to register
-     */
-    protected function registerRoutes($files = null)
-    {
-        $path = $this->getBasePath() . '/' . $this->convention->routesFolder();
-
-        if (is_dir($path)) {
-            $routes = is_array($files) ? $files : collect(File::glob($path . '/*.php'))->map(function ($file) {
-                return File::name($file);
-            })->all();
-
-            foreach ($routes as $route) {
-                Route::group(
-                    [
-                        'namespace'  => $this->config('routes.namespace', $this->getDefaultRouteNamespace()),
-                        'prefix'     => $this->config('routes.prefix', $this->shortName()),
-                        'as'         => $this->config('routes.as', $this->shortName() . '.'),
-                        'middleware' => $this->config('routes.middleware', ['web'])
-                    ],
-                    sprintf('%s/%s.php', $path, $route)
-                );
-            }
-        }
-    }
-
-    /**
      * Register the views folder, in a separate namespace
      */
     protected function registerViews()
@@ -326,18 +305,5 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         if (file_exists($cfgFile)) {
             $this->mergeConfigFrom($cfgFile, $this->getId());
         }
-    }
-
-    /**
-     * Returns the default namespace for routes/controllers within a box/module
-     *
-     * @return string
-     */
-    protected function getDefaultRouteNamespace()
-    {
-        return sprintf('%s\\%s',
-            $this->getNamespaceRoot(),
-            str_replace('/', '\\', $this->convention->controllersFolder())
-        );
     }
 }

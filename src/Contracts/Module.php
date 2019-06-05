@@ -52,4 +52,20 @@ interface Module
      * @return Kind
      */
     public function getKind(): Kind;
+
+    /**
+     * Returns module configuration value(s)
+     *
+     * @param string $key If left empty, the entire module configuration gets retrieved
+     * @param null   $default
+     *
+     * @return mixed
+     */
+    public function config(string $key = null, $default = null);
+
+    /**
+     * Returns the short (abbreviated) name of the module
+     * E.g. Konekt\AppShell => app_shell
+     */
+    public function shortName();
 }

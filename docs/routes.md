@@ -11,13 +11,13 @@ return [
             'routes' => [
                 'files'=> ['web', 'api']
             ], // register specific routes
-            'routes' => true, // register all routes provided
+            'routes' => true, // register all routes in the folder (*.php) 
             'routes' => false // don't register any routes
         ]
     ]
 ];
 ```
-All routes will be included in a [route group](https://laravel.com/docs/5.5/routing#route-groups) whose parameters can also be configured:
+All routes will be included in a [route group](https://laravel.com/docs/5.8/routing#route-groups) whose parameters can also be configured:
 
 ```php
 return [
@@ -29,6 +29,31 @@ return [
                 'prefix'    => 'url_prefix', // Defaults to the module's short name
                 'as'        => 'route.prefix.', // default is module's short name and a dot ('.') at the end
                 'middleware'=> ['web', 'auth', 'acl'] // defaults to ['web']
+            ]
+        ]
+    ]
+];
+```
+
+To register routes with different settings:
+
+```php
+return [
+    'modules' => [
+        Vendor\MyBox\Providers\BoxServiceProvider::class => [
+            'routes' => [
+                [
+                    'files'     => ['acl'],
+                    'prefix'    => '/admin',
+                    'as'        => 'admin.',
+                    'middleware'=> ['web', 'auth', 'acl']
+                ],
+                [
+                    'files'     => ['nonacl'],
+                    'prefix'    => '/admin',
+                    'as'        => 'admin.',
+                    'middleware'=> ['web', 'auth']
+                ]
             ]
         ]
     ]
