@@ -35,6 +35,8 @@ return [
 ];
 ```
 
+## Multiple Route Groups
+
 To register routes with different settings (**v1.3+**):
 
 ```php
