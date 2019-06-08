@@ -2,6 +2,12 @@
 
 ## 1.0 Series
 
+### 1.3.1
+##### 2019-06-08
+
+- Annotations have been added to ModelProxy (for IDE autocompletion)
+
+
 ### 1.3.0
 ##### 2019-06-05
 
