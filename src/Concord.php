@@ -9,11 +9,11 @@
  *
  */
 
-
 namespace Konekt\Concord;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
@@ -147,7 +147,7 @@ class Concord implements ConcordContract
      */
     public function model(string $abstract)
     {
-        return array_get($this->models, $abstract);
+        return Arr::get($this->models, $abstract);
     }
 
     /**
@@ -212,7 +212,7 @@ class Concord implements ConcordContract
      */
     public function enum(string $abstract)
     {
-        return array_get($this->enums, $abstract);
+        return Arr::get($this->enums, $abstract);
     }
 
     /**
@@ -252,7 +252,7 @@ class Concord implements ConcordContract
      */
     public function short($name)
     {
-        return array_get($this->shorts, "$name.class");
+        return Arr::get($this->shorts, "$name.class");
     }
 
     /**

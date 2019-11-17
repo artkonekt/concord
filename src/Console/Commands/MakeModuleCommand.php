@@ -42,11 +42,6 @@ class MakeModuleCommand extends GeneratorCommand
         $this->convention = $concord->getConvention();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return void
-     */
     public function handle()
     {
         if (parent::handle() === false) {

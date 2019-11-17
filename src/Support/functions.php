@@ -8,6 +8,9 @@
  * @since       2016-09-25
  *
  */
+
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Konekt\Concord\Contracts\Concord;
 
 /**
@@ -24,15 +27,15 @@ function classpath_to_slug($classname)
     $parts = explode('\\', $classname);
     // Remove first part if empty ie. begins with \
     if (empty($parts[0])) {
-        $parts = array_except($parts, 0);
+        $parts = Arr::except($parts, 0);
     }
     // Remove last part if empty ie. ends to \
     if (empty($parts[count($parts) - 1])) {
-        $parts = array_except($parts, count($parts) - 1);
+        $parts = Arr::except($parts, count($parts) - 1);
     }
 
     array_walk($parts, function (&$part) {
-        $part = snake_case($part);
+        $part = Str::snake($part);
     });
 
     return implode('.', $parts);
@@ -54,7 +57,7 @@ function slug_to_classpath($str)
     $parts = explode('.', $str);
 
     array_walk($parts, function (&$part) {
-        $part = studly_case($part);
+        $part = Str::studly($part);
     });
 
     return implode('\\', $parts);
@@ -81,14 +84,14 @@ function concord_module_id($classname, $convention = null)
     $p = false === $p ? strpos($classname, "$modulesFolder\\") : $p;
     if (false !== $p) {
         $parts           = explode('\\', substr($classname, $p + strlen($modulesFolder) + 1));
-        $vendorAndModule = empty($parts[0]) ? array_only($parts, 1) : array_only($parts, 0);
+        $vendorAndModule = empty($parts[0]) ? Arr::only($parts, 1) : Arr::only($parts, 0);
     } else {
         $parts           = explode('\\', $classname);
-        $vendorAndModule = empty($parts[0]) ? array_only($parts, [1,2]) : array_only($parts, [0,1]);
+        $vendorAndModule = empty($parts[0]) ? Arr::only($parts, [1,2]) : Arr::only($parts, [0,1]);
     }
 
     array_walk($vendorAndModule, function (&$part) {
-        $part = snake_case($part);
+        $part = Str::snake($part);
     });
 
     return implode('.', $vendorAndModule);
@@ -126,7 +129,7 @@ function concord()
  */
 function shorten($classname)
 {
-    return snake_case(class_basename($classname));
+    return Str::snake(class_basename($classname));
 }
 
 
