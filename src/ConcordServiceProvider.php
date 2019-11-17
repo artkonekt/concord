@@ -25,11 +25,6 @@ use Konekt\Concord\Conventions\ConcordDefault;
 
 class ConcordServiceProvider extends ServiceProvider
 {
-    /**
-     * Register bindings in the container.
-     *
-     * @return void
-     */
     public function register()
     {
         // Set convention to use

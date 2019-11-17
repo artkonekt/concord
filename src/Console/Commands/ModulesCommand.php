@@ -26,16 +26,9 @@ class ModulesCommand extends Command
     /** @var array  */
     protected $headers = ['#', 'Name', 'Kind', 'Version', 'Id', 'Namespace'];
 
-    /**
-     * Execute the command.
-     *
-     * @param Concord $concord
-     *
-     * @return mixed
-     */
     public function handle(Concord $concord)
     {
-        $modules = $concord->getModules($this->option('all'));
+        $modules = $concord->getModules((bool) $this->option('all'));
 
         if ($modules->count()) {
             $this->showModules($modules);

@@ -128,7 +128,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
      * Returns module configuration value(s)
      *
      * @param string $key If left empty, the entire module configuration gets retrieved
-     * @param null   $default
+     * @param mixed  $default
      *
      * @return mixed
      */

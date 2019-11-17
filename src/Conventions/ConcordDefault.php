@@ -11,6 +11,7 @@
 
 namespace Konekt\Concord\Conventions;
 
+use Illuminate\Support\Str;
 use Konekt\Concord\Contracts\Convention;
 
 /**
@@ -95,7 +96,7 @@ class ConcordDefault extends BaseConvention implements Convention
      */
     public function modelForRepository(string $repositoryClass): string
     {
-        return str_replace_last('Repository', '', $repositoryClass);
+        return Str::replaceLast('Repository', '', $repositoryClass);
     }
 
     /**
@@ -103,7 +104,7 @@ class ConcordDefault extends BaseConvention implements Convention
      */
     public function modelForProxy(string $proxyClass): string
     {
-        return str_replace_last('Proxy', '', $proxyClass);
+        return Str::replaceLast('Proxy', '', $proxyClass);
     }
 
     /**

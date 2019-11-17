@@ -12,6 +12,7 @@ namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use Konekt\Concord\Contracts\Concord;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Exceptions\UnknownLaravelVersionException;
@@ -101,7 +102,7 @@ class MakeModuleCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        $name = str_replace_first($this->laravel->getNamespace(), '', $name);
+        $name = Str::replaceFirst($this->laravel->getNamespace(), '', $name);
 
         return sprintf('%s/%s/%s/%s',
             $this->laravel['path'],
