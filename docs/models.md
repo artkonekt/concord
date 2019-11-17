@@ -181,7 +181,7 @@ So you need to extend the model class. Keep reading to see how.
 
 #### Overriding Accessors & Mutators
 
-Imagine you have this [accessor/mutator](https://laravel.com/docs/5.5/eloquent-mutators) pair in your model:
+Imagine you have this [accessor/mutator](https://laravel.com/docs/5.8/eloquent-mutators) pair in your model:
 
 ```php
 namespace App;
@@ -212,7 +212,7 @@ If you want to extend the base `ProductStatus` type with new statuses, then you 
 
 #### Attribute Casting
 
-[Attribute casting](https://laravel.com/docs/5.5/eloquent-mutators#attribute-casting) is another nice feature of Eloquent. If you want your `is_active` field to be represented as boolean, you need to extend the `Product` model and set:
+[Attribute casting](https://laravel.com/docs/5.8/eloquent-mutators#attribute-casting) is another nice feature of Eloquent. If you want your `is_active` field to be represented as boolean, you need to extend the `Product` model and set:
 
 ```php
     protected $casts = [
@@ -222,11 +222,11 @@ If you want to extend the base `ProductStatus` type with new statuses, then you 
 
 #### Adding Scopes
 
-If you want to add your own [scopes](https://laravel.com/docs/5.5/eloquent#query-scopes) (either local or global) to your model then you've found another reason why you need to override the base model class.
+If you want to add your own [scopes](https://laravel.com/docs/5.8/eloquent#query-scopes) (either local or global) to your model then you've found another reason why you need to override the base model class.
 
 #### Relationships
 
-Maybe you can live without scopes, attribute casting and mutators, but I doubt you'd give up model [relationships](https://laravel.com/docs/5.5/eloquent-relationships).
+Maybe you can live without scopes, attribute casting and mutators, but I doubt you'd give up model [relationships](https://laravel.com/docs/5.8/eloquent-relationships).
 
 In our reading, this is the **achilles heel** of the whole story. Read below to see how it can be achieved.
 
@@ -330,7 +330,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-##### 6) Always *type hint the entity with it's interface* ([binding](https://laravel.com/docs/5.5/container#binding-interfaces-to-implementations) is also registered with the container)
+##### 6) Always *type hint the entity with it's interface* ([binding](https://laravel.com/docs/5.8/container#binding-interfaces-to-implementations) is also registered with the container)
 
 ```php
 namespace App\Http\Controllers;

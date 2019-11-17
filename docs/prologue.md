@@ -14,7 +14,7 @@
 
 ## Main Considerations
 
-- Laravel 5.4+
+- Laravel 5.5+
 - Follow Laravel's standards and practices.
 - Don't duplicate functionality that exists in Laravel
 - Keep the developer's liberty so that it's not a nightmare to

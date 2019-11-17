@@ -25,7 +25,7 @@ Imagine you create a very-very minimal **shop module**, that is on github and
 can be used by any laravel application.
 
 - The module defines a `Product` and an `Order` model.
-- An order contains one product (via an [eloquent relationship](https://laravel.com/docs/5.5/eloquent-relationships#one-to-one)).
+- An order contains one product (via an [eloquent relationship](https://laravel.com/docs/5.8/eloquent-relationships#one-to-one)).
 - The product model has a name, sku and price fields.
 
 Let's say you (or someone else) uses this module in an application but wants to

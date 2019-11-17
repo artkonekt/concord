@@ -47,7 +47,7 @@ shall be able to do either of those.
 
 #### Composing Parts
 
-Modules consist of different [parts](parts.md) like models (entities),
+Modules consist of different [parts](map.md) like models (entities),
 controllers, config files, migrations, views, routes, requests, middleware,
 frontend assets and so on.
 
@@ -67,7 +67,7 @@ several modules, and are subject to customization by the final Application.
 
 ## Application
 
-Any Laravel 5.4+ application can be a Concord compliant application that
+Any Laravel 5.5+ application can be a Concord compliant application that
 complies with its rules.
 
 The application defines it's own logic and incorporates Concord
@@ -84,7 +84,7 @@ modules and/or boxes.
 
 ## Why Boxes And Modules?
 
-Reading further you'll see that some [parts](parts.md) are advised to be kept in
+Reading further you'll see that some [parts](map.md) are advised to be kept in
 modules and others in boxes/application.
 
 The reason behind is that modules should be kept decoupled, so whenever it's

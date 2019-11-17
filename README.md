@@ -6,13 +6,23 @@ _Concord is a Laravel Extension that helps building **Modules for Laravel Applic
 [![Packagist version](https://img.shields.io/packagist/v/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![StyleCI](https://styleci.io/repos/65661796/shield?branch=master)](https://styleci.io/repos/65661796)
+[![Code Quality](https://img.shields.io/scrutinizer/quality/g/artkonekt/concord?style=flat-square)](https://scrutinizer-ci.com/g/artkonekt/concord/)
 [![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
-Concord at first is a Laravel 5.4+
-[package](https://laravel.com/docs/5.4/packages). It also offers some
+Concord at first is a Laravel 5.5 - 6.x
+[package](https://laravel.com/docs/5.8/packages). It also offers some
 conventions that help you to better structure complex systems.
 
-> Laravel 5.6 is supported from v1.1.0 upwards
+## Version Compatibility
+
+| Laravel | Concord   |
+|:--------|:----------|
+| 5.4     | 1.0 - 1.3 |
+| 5.5     | 1.0+      |
+| 5.6     | 1.1+      |
+| 5.7     | 1.3+      |
+| 5.8     | 1.3+      |
+| 6.x     | 1.4+      |
 
 ## Basics
 
@@ -54,7 +64,7 @@ Either module types are always coupled to Laravel and Concord;
 
 ## Installation
 
-Refer to the [Installation Section](https://artkonekt.github.io/concord/#/installation) of the Documentation.
+Refer to the [Installation Section](https://konekt.dev/concord/1.4/installation) of the Documentation.
 
 ## Create Your First Module
 

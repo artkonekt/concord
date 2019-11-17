@@ -1,7 +1,7 @@
 # Commands
 
 Boxes (or modules) can add their custom
-[Artisan (CLI) commands](https://laravel.com/docs/5.5/artisan#writing-commands).
+[Artisan (CLI) commands](https://laravel.com/docs/5.8/artisan#writing-commands).
 
 Their location should be the `Console/Commands` folder (following Laravel
 defaults).

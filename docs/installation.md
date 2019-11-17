@@ -1,38 +1,22 @@
 # Installation
 
-## 1. Add To Composer
+## Version Compatibility
 
-Add the dependency with composer: `composer require konekt/concord`
+| Laravel | Concord   |
+|:--------|:----------|
+| 5.4     | 1.0 - 1.3 |
+| 5.5     | 1.0+      |
+| 5.6     | 1.1+      |
+| 5.7     | 1.3+      |
+| 5.8     | 1.3+      |
+| 6.x     | 1.4+      |
 
-## 2. Register The Provider (Laravel 5.4 Only)
+## Installing Concord with Composer
 
-> This step is only necessary for Laravel 5.4. For v5.5+
-> [Package Auto Discovery](https://laravel.com/docs/5.5/packages#package-discovery)
-> does this automatically.
-
-In the `config/app.php` configuration file, add to the provider array:
-
-```php
-'providers' => [
-    // Other Service Providers
-    Konekt\Concord\ConcordServiceProvider::class,
-];
-```
-
-Optionally, you can register facade aliases in `config/app.php`:
-
-```php
-'aliases' => [
-    // ...
-    'Concord' => Konekt\Concord\Facades\Concord::class,
-    'Helper'  => Konekt\Concord\Facades\Helper::class,
-],
-```
-
-## 3. Publish The Config File
-
-```
-php artisan vendor:publish --provider="Konekt\Concord\ConcordServiceProvider" --tag=config
-```
+1. Add the dependency with composer: `composer require konekt/concord`
+2. Publish the config file:
+    ```bash
+    php artisan vendor:publish --provider="Konekt\Concord\ConcordServiceProvider" --tag=config
+    ```
 
 **Next**: [Directory Structure &raquo;](directory-structure.md)

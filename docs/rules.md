@@ -30,7 +30,7 @@ that you can keep working your way.
 
 ## External Modules Have To Be Aware Of
 
-1. Apps may or may not use their [parts](parts.md);
+1. Apps may or may not use their [parts](map.md);
 2. Eloquent models are subject to customization in the host app;
 3. Event and Listener classes are visible to apps, but their bindings defined by
    the module might be ignored by the host app.
