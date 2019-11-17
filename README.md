@@ -32,7 +32,7 @@ conventions that help you to better structure complex systems.
 
 Concord itself (this library) manages the modules.
 
-Concord [modules](https://artkonekt.github.io/concord/#/modules) are isolated
+Concord [modules](https://konekt.dev/concord/1.4/modules) are isolated
 fractions of the business logic, built around a single topic.
 
 There are two kinds of modules from the usage perspective:
@@ -86,7 +86,7 @@ return [
 
 ## Documenatation
 
-See the [Concord Documentation](https://artkonekt.github.io/concord) for all the
+See the [Concord Documentation](https://konekt.dev/concord/1.4) for all the
 nasty details ;)
 
 ## Plans For Version 2.0
