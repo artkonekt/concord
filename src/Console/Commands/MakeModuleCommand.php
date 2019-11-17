@@ -8,7 +8,6 @@
  * @since       2017-01-18
  */
 
-
 namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
@@ -44,7 +43,7 @@ class MakeModuleCommand extends GeneratorCommand
 
     public function handle()
     {
-        if (parent::handle() === false) {
+        if (false === parent::handle()) {
             return;
         }
 
@@ -135,13 +134,12 @@ class MakeModuleCommand extends GeneratorCommand
             return $this->qualifyClass($name);
         } elseif (method_exists($this, 'parseName')) {
             return $this->parseName($name);
-        } else {
-            throw new UnknownLaravelVersionException(
+        }
+        throw new UnknownLaravelVersionException(
                 sprintf(
                     "There's an incompatible parent class `%s` in your installed version of Laravel",
                     get_parent_class($this)
                 )
             );
-        }
     }
 }

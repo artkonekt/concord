@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -23,11 +22,6 @@ class VersionCommand extends Command
     /** @var string  */
     protected $description = 'Displays Concord version';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle(Concord $concord)
     {
         $this->info($concord->getVersion());

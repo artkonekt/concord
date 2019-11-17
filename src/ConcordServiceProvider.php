@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
@@ -93,7 +92,6 @@ class ConcordServiceProvider extends ServiceProvider
             ]);
         }
     }
-
 
     /**
      * Resolve the convention class

@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Tests\Unit;
 
 use Konekt\Concord\Conventions\ConcordDefault;
@@ -17,7 +16,6 @@ use PHPUnit\Framework\TestCase as PHPUnitBaseTestCase;
 
 class SupportFunctionsTest extends PHPUnitBaseTestCase
 {
-
     /**
      * @test
      */

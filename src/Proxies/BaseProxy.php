@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Proxies;
 
 use Konekt\Concord\Contracts\Concord;
@@ -17,14 +16,14 @@ use LogicException;
 
 abstract class BaseProxy
 {
+    /** @var Concord */
+    public $concord;
+
     /** @var string */
     protected $contract;
 
     /** @var array */
     protected static $instances = [];
-
-    /** @var Concord */
-    public $concord;
 
     /**
      * Repository constructor.
@@ -46,20 +45,6 @@ abstract class BaseProxy
                 )
             );
         }
-    }
-
-    /**
-     * This is a method where the dark word 'static' has 7 occurrences
-     *
-     * @return BaseProxy
-     */
-    public static function getInstance()
-    {
-        if (!isset(static::$instances[static::class])) {
-            static::$instances[static::class] = new static();
-        }
-
-        return static::$instances[static::class];
     }
 
     /**
@@ -89,6 +74,20 @@ abstract class BaseProxy
     }
 
     /**
+     * This is a method where the dark word 'static' has 7 occurrences
+     *
+     * @return BaseProxy
+     */
+    public static function getInstance()
+    {
+        if (!isset(static::$instances[static::class])) {
+            static::$instances[static::class] = new static();
+        }
+
+        return static::$instances[static::class];
+    }
+
+    /**
      * Try guessing the associated contract class for a concrete proxy class
      *
      * @return string
@@ -100,5 +99,5 @@ abstract class BaseProxy
      *
      * @return string
      */
-    abstract protected function targetClass() : string;
+    abstract protected function targetClass(): string;
 }

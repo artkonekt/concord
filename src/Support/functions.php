@@ -8,7 +8,6 @@
  * @since       2016-09-25
  *
  */
-
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Konekt\Concord\Contracts\Concord;
@@ -131,7 +130,6 @@ function shorten($classname)
 {
     return Str::snake(class_basename($classname));
 }
-
 
 /**
  * Shorthand function for returning an enum object by it's short name

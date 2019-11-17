@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Exceptions;
 
 use Exception;

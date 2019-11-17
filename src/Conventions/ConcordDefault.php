@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Conventions;
 
 use Konekt\Concord\Contracts\Convention;
@@ -19,11 +18,10 @@ use Konekt\Concord\Contracts\Convention;
  */
 class ConcordDefault extends BaseConvention implements Convention
 {
-
     /**
      * @inheritdoc
      */
-    public function modulesFolder() : string
+    public function modulesFolder(): string
     {
         return 'Modules';
     }
@@ -80,11 +78,10 @@ class ConcordDefault extends BaseConvention implements Convention
         );
     }
 
-
     /**
      * @inheritDoc
      */
-    public function contractForModel(string $modelClass) : string
+    public function contractForModel(string $modelClass): string
     {
         return sprintf(
             '%s\\Contracts\\%s',
@@ -112,7 +109,7 @@ class ConcordDefault extends BaseConvention implements Convention
     /**
      * @inheritDoc
      */
-    public function repositoryForModel(string $modelClass) : string
+    public function repositoryForModel(string $modelClass): string
     {
         return $modelClass . 'Repository';
     }
@@ -120,7 +117,7 @@ class ConcordDefault extends BaseConvention implements Convention
     /**
      * @inheritDoc
      */
-    public function proxyForModel(string $modelClass) : string
+    public function proxyForModel(string $modelClass): string
     {
         return $modelClass . 'Proxy';
     }
@@ -128,7 +125,7 @@ class ConcordDefault extends BaseConvention implements Convention
     /**
      * @inheritDoc
      */
-    public function manifestFile() : string
+    public function manifestFile(): string
     {
         return 'resources/manifest.php';
     }
@@ -172,7 +169,6 @@ class ConcordDefault extends BaseConvention implements Convention
     {
         return 'Providers';
     }
-
 
     /**
      * @inheritDoc

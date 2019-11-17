@@ -8,7 +8,6 @@
  * @since       2016-08-14
  */
 
-
 namespace Konekt\Concord\Console\Commands;
 
 use Illuminate\Console\Command;

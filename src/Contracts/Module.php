@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Contracts;
 
 use Konekt\Concord\Module\Kind;
@@ -17,7 +16,6 @@ use Konekt\Concord\Module\Manifest;
 
 interface Module
 {
-
     /**
      * Returns the id of the module (eg. foovendor.barmodule)
      *

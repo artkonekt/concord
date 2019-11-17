@@ -9,10 +9,9 @@
  *
  */
 
-
 namespace Konekt\Concord\Tests\Feature;
 
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 use Konekt\Concord\Concord;
 use Konekt\Concord\Tests\TestCase;
 

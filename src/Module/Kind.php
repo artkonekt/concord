@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Module;
 
 use Konekt\Enum\Enum;

@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Contracts;
 
 /**
@@ -24,91 +23,91 @@ interface Convention
      *
      * @return string
      */
-    public function modulesFolder() : string;
+    public function modulesFolder(): string;
 
     /**
      * Returns the folder name for Model classes
      *
      * @return string
      */
-    public function modelsFolder() : string;
+    public function modelsFolder(): string;
 
     /**
      * Returns the folder name for Enum classes
      *
      * @return string
      */
-    public function enumsFolder() : string;
+    public function enumsFolder(): string;
 
     /**
      * Returns the folder name for Contracts (interfaces)
      *
      * @return string
      */
-    public function contractsFolder() : string;
+    public function contractsFolder(): string;
 
     /**
      * Returns the folder name for Controllers
      *
      * @return string
      */
-    public function controllersFolder() : string;
+    public function controllersFolder(): string;
 
     /**
      * Returns the folder name for Requests
      *
      * @return string
      */
-    public function requestsFolder() : string;
+    public function requestsFolder(): string;
 
     /**
      * Returns the folder name for API Resources
      *
      * @return string
      */
-    public function resourcesFolder() : string;
+    public function resourcesFolder(): string;
 
     /**
      * Returns the folder name for config files
      *
      * @return string
      */
-    public function configFolder() : string;
+    public function configFolder(): string;
 
     /**
      * Returns the folder name for migration files
      *
      * @return string
      */
-    public function migrationsFolder() : string;
+    public function migrationsFolder(): string;
 
     /**
      * Returns the folder name for Provider classes
      *
      * @return string
      */
-    public function providersFolder() : string;
+    public function providersFolder(): string;
 
     /**
      * Returns the base folder name for views
      *
      * @return string
      */
-    public function viewsFolder() : string;
+    public function viewsFolder(): string;
 
     /**
      * Returns the folder name for route files
      *
      * @return string
      */
-    public function routesFolder() : string;
+    public function routesFolder(): string;
 
     /**
      * Returns the path + filename to the manifest file relative to the module
      *
      * @return string
      */
-    public function manifestFile() : string;
+    public function manifestFile(): string;
 
     /**
      * Return the contract class (interface) for the given model class according to the convention
@@ -117,7 +116,7 @@ interface Convention
      *
      * @return string
      */
-    public function contractForModel(string $modelClass) : string;
+    public function contractForModel(string $modelClass): string;
 
     /**
      * Return the contract class (interface) for the given enum class according to the convention
@@ -126,7 +125,7 @@ interface Convention
      *
      * @return string
      */
-    public function contractForEnum(string $enumClass) : string;
+    public function contractForEnum(string $enumClass): string;
 
     /**
      * Return the contract class (interface) for the given request class according to the convention
@@ -135,7 +134,7 @@ interface Convention
      *
      * @return string
      */
-    public function contractForRequest(string $requestClass) : string;
+    public function contractForRequest(string $requestClass): string;
 
     /**
      * Return the model class for the given repository according to the convention
@@ -144,7 +143,7 @@ interface Convention
      *
      * @return string
      */
-    public function modelForRepository(string $repositoryClass) : string;
+    public function modelForRepository(string $repositoryClass): string;
 
     /**
      * Return the model class for the given proxy according to the convention
@@ -153,7 +152,7 @@ interface Convention
      *
      * @return string
      */
-    public function modelForProxy(string $proxyClass) : string;
+    public function modelForProxy(string $proxyClass): string;
 
     /**
      * Returns the repository class for a given model according to the convention
@@ -162,7 +161,7 @@ interface Convention
      *
      * @return mixed
      */
-    public function repositoryForModel(string $modelClass) : string;
+    public function repositoryForModel(string $modelClass): string;
 
     /**
      * Returns the proxy class for a given model according to the convention
@@ -171,7 +170,7 @@ interface Convention
      *
      * @return mixed
      */
-    public function proxyForModel(string $modelClass) : string;
+    public function proxyForModel(string $modelClass): string;
 
     /**
      * Returns the proxy class for a given enum according to the convention
@@ -180,7 +179,7 @@ interface Convention
      *
      * @return mixed
      */
-    public function proxyForEnum(string $enumClass) : string;
+    public function proxyForEnum(string $enumClass): string;
 
     /**
      * Return the enum class for the given proxy according to the convention
@@ -189,8 +188,7 @@ interface Convention
      *
      * @return string
      */
-    public function enumForProxy(string $proxyClass) : string;
-
+    public function enumForProxy(string $proxyClass): string;
 
     /**
      * Returns the proxy class for a given enum contract (interface) according to the convention
@@ -208,5 +206,5 @@ interface Convention
      *
      * @return string
      */
-    public function proxyForModelContract(string $modelContract) : string;
+    public function proxyForModelContract(string $modelContract): string;
 }

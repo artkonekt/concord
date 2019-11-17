@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Proxies;
 
 class EnumProxy extends BaseProxy

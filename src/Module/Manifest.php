@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Module;
 
 class Manifest
@@ -19,7 +18,6 @@ class Manifest
 
     /** @var  string */
     protected $version;
-
 
     /**
      * Manifest constructor.

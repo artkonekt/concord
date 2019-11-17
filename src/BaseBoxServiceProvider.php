@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord;
 
 abstract class BaseBoxServiceProvider extends BaseServiceProvider

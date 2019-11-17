@@ -9,14 +9,12 @@
  *
  */
 
-
 namespace Konekt\Concord\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 class Concord extends Facade
 {
-
     /**
      * Get the registered name of the component.
      *

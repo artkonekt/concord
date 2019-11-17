@@ -15,6 +15,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Route;
 use InvalidArgumentException;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
@@ -22,7 +23,6 @@ use Konekt\Concord\Events\EnumWasRegistered;
 use Konekt\Concord\Events\HelperWasRegistered;
 use Konekt\Concord\Events\ModelWasRegistered;
 use Konekt\Concord\Events\RequestWasRegistered;
-use Route;
 
 class Concord implements ConcordContract
 {
@@ -42,9 +42,6 @@ class Concord implements ConcordContract
 
     /** @var  array */
     protected $implicitModules = [];
-
-    /** @var  Loader */
-    protected $loader;
 
     /** @var  Application */
     protected $app;
@@ -78,7 +75,7 @@ class Concord implements ConcordContract
         $module = $this->app->register($moduleClass);
 
         $this->modules->put($module->getId(), $module);
-        $implicit = isset($config['implicit']) ? $config['implicit'] : false;
+        $implicit = $config['implicit'] ?? false;
 
         if ($implicit) {
             $this->implicitModules[get_class($module)] = true;
@@ -98,7 +95,7 @@ class Concord implements ConcordContract
     /**
      * @inheritdoc
      */
-    public function getModules($includeImplicits = false) : Collection
+    public function getModules($includeImplicits = false): Collection
     {
         if ($includeImplicits) {
             return $this->modules;
@@ -161,7 +158,7 @@ class Concord implements ConcordContract
     /**
      * @inheritdoc
      */
-    public function getModelBindings() : Collection
+    public function getModelBindings(): Collection
     {
         return collect($this->models);
     }
@@ -264,7 +261,6 @@ class Concord implements ConcordContract
     {
         $proxyClass::__reset();
     }
-
 
     /**
      * Register a model/enum/request shorthand

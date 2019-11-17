@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Conventions;
 
 /**
@@ -17,7 +16,6 @@ namespace Konekt\Concord\Conventions;
  */
 abstract class BaseConvention
 {
-
     /**
      * Returns the namespace part of a class
      *

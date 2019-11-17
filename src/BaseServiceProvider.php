@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
@@ -79,7 +78,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     {
         $this->loadConfiguration();
 
-        if ($this->config('event_listeners') === true) {
+        if (true === $this->config('event_listeners')) {
             $this->registerEventServiceProvider();
         }
     }
@@ -139,7 +138,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
 
         return config($key, $default);
     }
-
 
     /**
      * @return Manifest
@@ -207,7 +205,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
 
         return $p ? substr($id, $p + 1) : $id;
     }
-
 
     /**
      * Returns a standard module name based on the module provider's classname

@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Concord\Tests\Feature\Helpers;
 
 class HelloHelper

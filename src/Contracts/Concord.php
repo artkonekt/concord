@@ -8,14 +8,12 @@
  * @since       2016-10-30
  */
 
-
 namespace Konekt\Concord\Contracts;
 
 use Illuminate\Support\Collection;
 
 interface Concord
 {
-
     /**
      * Registers a new module based on its class name
      *
@@ -49,7 +47,7 @@ interface Concord
      *
      * @return Collection
      */
-    public function getModules($includeImplicits = false) : Collection;
+    public function getModules($includeImplicits = false): Collection;
 
     /**
      * Register/overwrite a model for a specific abstract/interface
@@ -85,7 +83,7 @@ interface Concord
      *
      * @return Collection
      */
-    public function getModelBindings() : Collection;
+    public function getModelBindings(): Collection;
 
     /**
      * Register/overwrite an enum for a specific abstract/interface
@@ -121,21 +119,21 @@ interface Concord
      *
      * @return Collection
      */
-    public function getEnumBindings() : Collection;
+    public function getEnumBindings(): Collection;
 
     /**
      * Returns all request bindings
      *
      * @return Collection
      */
-    public function getRequestBindings() : Collection;
+    public function getRequestBindings(): Collection;
 
     /**
      * Returns the the current convention
      *
      * @return Convention
      */
-    public function getConvention() : Convention;
+    public function getConvention(): Convention;
 
     /**
      * Returns a helper instance for the specified helper name
@@ -152,7 +150,7 @@ interface Concord
      *
      * @return string
      */
-    public function getVersion() : string;
+    public function getVersion(): string;
 
     /**
      * Returns the complete abstract class/interface name for a short name
