@@ -46,7 +46,7 @@ before_install:
   - '[ 6 -eq $MAJOR ] && ORCH=4 || ORCH=3'
   - composer require "illuminate/support:${MAJOR}.${MINOR}.*" --no-update -v
   - composer require "illuminate/console:${MAJOR}.${MINOR}.*" --no-update -v
-  - composer require "orchestra/testbench:${ORCH}.${MINOR}.*" --no-update -v
+  # - composer require "orchestra/testbench:${ORCH}.*" --no-update -v
 
 install: composer install --no-interaction
 
