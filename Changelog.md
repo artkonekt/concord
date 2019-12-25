@@ -1,18 +1,23 @@
 # Concord Changelog
 
-## 1.0 Series
+## 1.X Series
+
+### Unreleased
+##### 2019-12-XX
+
+- Dropped PHP 7.1 Support
+- Added PHP 7.4 Support
 
 ### 1.4.0
 ##### 2019-11-17
 
-- Added Laravel 6.0 support
+- Added Laravel 6 support
 - Dropped Laravel 5.4 support
 
 ### 1.3.1
 ##### 2019-06-08
 
 - Annotations have been added to ModelProxy (for IDE autocompletion)
-
 
 ### 1.3.0
 ##### 2019-06-05
