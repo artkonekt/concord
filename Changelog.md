@@ -2,8 +2,8 @@
 
 ## 1.X Series
 
-### Unreleased
-##### 2020-03-XX
+### 1.5.0
+##### 2020-03-13
 
 - Dropped PHP 7.1 Support
 - Added PHP 7.4 Support

@@ -9,8 +9,8 @@ _Concord is a Laravel Extension that helps building **Modules for Laravel Applic
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/artkonekt/concord?style=flat-square)](https://scrutinizer-ci.com/g/artkonekt/concord/)
 [![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
-Concord at first is a Laravel 5.5 - 6.x
-[package](https://laravel.com/docs/5.8/packages). It also offers some
+Concord at first is a Laravel 5.5 - 7.x
+[package](https://laravel.com/docs/7.x/packages). It also offers some
 conventions that help you to better structure complex systems.
 
 ## Version Compatibility
@@ -23,6 +23,7 @@ conventions that help you to better structure complex systems.
 | 5.7     | 1.3+      |
 | 5.8     | 1.3+      |
 | 6.x     | 1.4+      |
+| 7.x     | 1.5+      |
 
 ## Basics
 
