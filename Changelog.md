@@ -2,6 +2,11 @@
 
 ## 1.X Series
 
+### 1.5.1
+##### 2020-03-19
+
+- Allowing enum v3.0 as well (v2.1+ is still supported)
+
 ### 1.5.0
 ##### 2020-03-13
 
