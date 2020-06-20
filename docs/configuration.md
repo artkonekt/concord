@@ -71,6 +71,25 @@ return [
 ];
 ```
 
+## Box Configuration
+
+### Cascade Submodule Configuration
+
+> Feature available in v1.6+
+
+[Boxes](boxes.md) - modules that include other modules - can override configuration
+values of *all* the included modules using the `cascade_config` config key:
+
+```php
+// resources/configuration/box.php
+return [
+    `cascade_config` => [
+        'migrations' => false, // disables migrations of all submodules,
+        'some_value' => 'YES!', // Sets `some_value` to "YES!" in all submodules        
+    ]  
+];
+```
+
 ## Using Application Config Files
 
 Your modules can also use

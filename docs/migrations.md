@@ -25,6 +25,13 @@ return [
     ]
 ];
 ```
-By default, migrations are published.
+
+Until version 1.5, migrations are published by default.
+
+Beginning with version 1.6, migrations of modules loaded via boxes are only published by default if
+the `migrations` config of the parent box is true.
+
+Prior to v1.6, submodules of boxes were always publishing their migrations by default unless
+explicitly disabled on a per-module level.
 
 **Next**: [Seeds &raquo;](seeds.md)

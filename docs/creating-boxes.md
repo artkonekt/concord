@@ -86,9 +86,12 @@ return [
 ];
 ```
 
+> See also: [Box Configuration](configuration.md#box-configuration)
+> and [Turn Migrations On/Off](migrations.md#turn-migrations-onoff)
+
 !> Make sure to provide a compatible replacement if you're suppressing a module's migration.
 
-## Adding A Box The An Application
+## Adding A Box To An Application
 
 1. In the laravel application: `composer require vendor/mybox`
 2. Add the module to `config/concord.php`:
