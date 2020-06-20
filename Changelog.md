@@ -2,6 +2,15 @@
 
 ## 1.X Series
 
+### 1.6.0
+##### 2020-06-20
+
+- Added support for cascading config values to all submodules in boxes
+- Changed the default of loading migrations of submodules: it defaults to the box's config (until 1.5 it defaulted to true)
+- Added automatic publishing of module migrations
+- Added automatic publishing of box + submodule migrations at boxes
+- Added publish tag `own-migrations-only` for boxes to exclude the migrations of its submodules.
+
 ### 1.5.1
 ##### 2020-03-19
 
