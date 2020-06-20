@@ -26,12 +26,20 @@ return [
 ];
 ```
 
-Until version 1.5, migrations are published by default.
+Until version 1.5, migrations are loaded by default.
 
-Beginning with version 1.6, migrations of modules loaded via boxes are only published by default if
+Beginning with version 1.6, migrations of modules loaded via boxes are only loaded by default if
 the `migrations` config of the parent box is true.
 
-Prior to v1.6, submodules of boxes were always publishing their migrations by default unless
-explicitly disabled on a per-module level.
+Prior to v1.6, submodules of boxes were always loading their migrations by default unless explicitly
+disabled on a per-module level.
+
+If you turn the migrations off, they won't be visible for the artisan command.
+
+In such cases you can still [publish the migrations](publishing.md#migrations).
+This way all the migrations are part of your application, will be managed there, so the
+app is responsible for them and not the module. If you're updating the module, make sure you're
+taking over the newer migrations by running the `vendor:publish` command with the appropriate
+parameters. 
 
 **Next**: [Seeds &raquo;](seeds.md)

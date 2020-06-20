@@ -11,6 +11,7 @@
     - [Creating Modules](creating-modules.md)
     - [Boxes Explained](boxes.md)
     - [Creating Boxes](creating-boxes.md)
+    - [Publishing File Groups](publishing.md)
 
 - III. Parts
     - [Configuration](configuration.md)
