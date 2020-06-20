@@ -81,12 +81,16 @@ return [
 values of *all* the included modules using the `cascade_config` config key:
 
 ```php
-// resources/configuration/box.php
+// config/concord.php
 return [
-    `cascade_config` => [
-        'migrations' => false, // disables migrations of all submodules,
-        'some_value' => 'YES!', // Sets `some_value` to "YES!" in all submodules        
-    ]  
+    'modules' => [
+        Vendor\Box\Providers\ModuleServiceProvider::class => [
+            'cascade_config' => [
+                'migrations' => false, // disables migrations of all submodules in the box,
+                'some_value' => 'YES!', // Sets `some_value` to "YES!" in all submodules      
+            ]
+        ]
+    ] 
 ];
 ```
 
