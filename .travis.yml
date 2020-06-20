@@ -17,7 +17,7 @@ env:
     - LARAVEL=6.0
     - LARAVEL=6.18
     - LARAVEL=7.0
-    - LARAVEL=7.1
+    - LARAVEL=7.16
 
 before_script: echo 'memory_limit = 512M' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 

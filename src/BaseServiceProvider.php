@@ -88,17 +88,17 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
      */
     public function boot()
     {
-        if ($this->config('migrations', true)) {
+        if ($this->areMigrationsEnabled()) {
             $this->registerMigrations();
         }
 
-        if ($this->config('models', true)) {
+        if ($this->areModelsEnabled()) {
             $this->registerModels();
             $this->registerEnums();
             $this->registerRequestTypes();
         }
 
-        if ($this->config('views', true)) {
+        if ($this->areViewsEnabled()) {
             $this->registerViews();
         }
 
@@ -114,6 +114,28 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
                 }
             }
         }
+    }
+
+    public function areMigrationsEnabled(): bool
+    {
+        return (bool) $this->config('migrations', true);
+    }
+
+
+    public function areModelsEnabled(): bool
+    {
+        return (bool) $this->config('models', true);
+    }
+
+    public function areViewsEnabled(): bool
+    {
+        return (bool) $this->config('views', true);
+    }
+
+
+    public function areRoutesEnabled(): bool
+    {
+        return (bool) $this->config('routes', true);
     }
 
     /**

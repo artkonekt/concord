@@ -31,10 +31,23 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
             } else {
                 $configuration = array_merge($this->getDefaultModuleConfiguration(),
                     is_array($configuration) ? $configuration : []);
+                $configuration = array_replace_recursive($configuration, $this->getCascadeModuleConfiguration());
             }
 
             $this->concord->registerModule($module, $configuration);
         }
+    }
+
+    /**
+     * Returns the "cascade" configuration: the "apply to all submodules" config override array
+     *
+     * @return array
+     */
+    protected function getCascadeModuleConfiguration(): array
+    {
+        $result = $this->config('cascade_config', []);
+
+        return is_array($result) ? $result : [];
     }
 
     /**
@@ -46,9 +59,9 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
     {
         return [
             'implicit'   => true,
-            'migrations' => true,
-            'views'      => true,
-            'routes'     => true
+            'migrations' => $this->areMigrationsEnabled(),
+            'views'      => $this->areViewsEnabled(),
+            'routes'     => $this->areRoutesEnabled()
         ];
     }
 }
