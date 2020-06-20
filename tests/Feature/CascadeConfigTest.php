@@ -30,7 +30,7 @@ class CascadeConfigTest extends TestCase
 
         $this->assertEquals('George', $module1->config('parent.child_1'));
 
-        $this->assertEquals('George', $module2->config('parent.child_1'));;
+        $this->assertEquals('George', $module2->config('parent.child_1'));
     }
 
     protected function resolveApplicationConfiguration($app)
@@ -41,8 +41,8 @@ class CascadeConfigTest extends TestCase
             SimpleBox::class => [
                 'cascade_config' => [
                     'migrations' => false,
-                    'some_key' => 'NO!',
-                    'parent' => [
+                    'some_key'   => 'NO!',
+                    'parent'     => [
                         'child_1' => 'George'
                     ]
                 ]

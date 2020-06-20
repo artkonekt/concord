@@ -121,7 +121,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         return (bool) $this->config('migrations', true);
     }
 
-
     public function areModelsEnabled(): bool
     {
         return (bool) $this->config('models', true);
@@ -131,7 +130,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     {
         return (bool) $this->config('views', true);
     }
-
 
     public function areRoutesEnabled(): bool
     {

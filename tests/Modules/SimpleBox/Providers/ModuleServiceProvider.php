@@ -15,5 +15,4 @@ use Konekt\Concord\BaseBoxServiceProvider;
 
 class ModuleServiceProvider extends BaseBoxServiceProvider
 {
-
 }

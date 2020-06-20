@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'migrations' => false,
-    'some_key' => 'SURE',
+    'migrations'      => false,
+    'some_key'        => 'SURE',
     'yet_another_key' => 'Hey!',
-    'parent' => [
+    'parent'          => [
         'child_1' => 'Fritz',
         'child_2' => 'Schwarz',
     ]
