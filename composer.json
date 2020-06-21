@@ -39,9 +39,6 @@
         "test": "phpunit"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.5-dev"
-        },
         "laravel": {
             "providers": [
                 "Konekt\\Concord\\ConcordServiceProvider"
