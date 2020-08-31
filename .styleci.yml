@@ -26,7 +26,6 @@ enabled:
     - no_whitespace_in_blank_line
     - object_operator_without_whitespace
     - ordered_class_elements
-    - php_unit_no_expectation_annotation
     - php_unit_set_up_tear_down_visibility
     - phpdoc_link_to_see
     - phpdoc_no_package
