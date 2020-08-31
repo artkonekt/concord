@@ -137,9 +137,9 @@ class MakeModuleCommand extends GeneratorCommand
         }
         throw new UnknownLaravelVersionException(
             sprintf(
-                    "There's an incompatible parent class `%s` in your installed version of Laravel",
-                    get_parent_class($this)
-                )
+                "There's an incompatible parent class `%s` in your installed version of Laravel",
+                get_parent_class($this)
+            )
         );
     }
 }
