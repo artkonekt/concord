@@ -19,7 +19,6 @@ enabled:
     - no_extra_consecutive_blank_lines
     - no_leading_namespace_whitespace
     - no_null_property_initialization
-    - no_unreachable_default_argument_value
     - no_unused_imports
     - no_useless_else
     - no_useless_return
