@@ -66,11 +66,13 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         $this->kind          = Kind::create(static::$_kind);
         $this->basePath      = dirname(dirname((new ReflectionClass(static::class))->getFileName()));
         $this->namespaceRoot = str_replace(
-                                    sprintf('\\%s\\ModuleServiceProvider',
+            sprintf(
+                                        '\\%s\\ModuleServiceProvider',
                                         str_replace('/', '\\', $this->convention->providersFolder())
                                     ),
-                                    '', static::class
-                                );
+            '',
+            static::class
+        );
         $this->id            = $this->getModuleId();
     }
 
@@ -301,7 +303,8 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
      */
     protected function registerEventServiceProvider()
     {
-        $eventServiceProviderClass = sprintf('%s\\%s\\EventServiceProvider',
+        $eventServiceProviderClass = sprintf(
+            '%s\\%s\\EventServiceProvider',
             $this->namespaceRoot,
             str_replace('/', '\\', $this->convention->providersFolder())
         );

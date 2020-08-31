@@ -86,8 +86,8 @@ class ConcordDefault extends BaseConvention implements Convention
     {
         return sprintf(
             '%s\\Contracts\\%s',
-                $this->oneLevelUp($this->getNamespace($modelClass)),
-                class_basename($modelClass)
+            $this->oneLevelUp($this->getNamespace($modelClass)),
+            class_basename($modelClass)
         );
     }
 
@@ -212,8 +212,8 @@ class ConcordDefault extends BaseConvention implements Convention
     public function proxyForEnumContract(string $enumContract)
     {
         return $this->proxyForEnum(
-                    $this->defaultEnumClassForContract($enumContract)
-                );
+            $this->defaultEnumClassForContract($enumContract)
+        );
     }
 
     /**

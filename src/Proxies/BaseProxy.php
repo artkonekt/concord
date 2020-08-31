@@ -40,8 +40,10 @@ abstract class BaseProxy
 
         if (!interface_exists($this->contract)) {
             throw new LogicException(
-                sprintf('The proxy %s has a non-existent contract class: `%s`',
-                    static::class, $this->contract
+                sprintf(
+                    'The proxy %s has a non-existent contract class: `%s`',
+                    static::class,
+                    $this->contract
                 )
             );
         }

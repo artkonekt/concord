@@ -29,8 +29,8 @@ class ConcordServiceProvider extends ServiceProvider
     {
         // Set convention to use
         $this->app->bind(
-                Convention::class,
-                $this->resolveConventionClass(
+            Convention::class,
+            $this->resolveConventionClass(
                     $this->app->config->get('concord.convention', 'default')
                 )
         );
