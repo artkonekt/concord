@@ -2,6 +2,11 @@
 
 ## 1.X Series
 
+### 1.7.0
+##### 2020-08-31
+
+- Added generic concord config for disabling automatic Route::model registration
+
 ### 1.6.0
 ##### 2020-06-20
 
