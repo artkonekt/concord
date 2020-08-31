@@ -62,4 +62,29 @@ return [
 ];
 ```
 
+## Route Model Bindings
+
+Up until Concord v1.6, all the models that were registered with Concord were automatically bound to
+the Laravel router by implicitly calling the `Route::model()` method.
+
+> See: https://laravel.com/docs/7.x/routing#route-model-binding
+
+Eg. if your module defines a `Product` model, then Concord calls `Route::model('product', Product::class)`
+upon registering the model.
+
+As of v1.7.0 this behavior can be disabled, by setting the `register_route_models` configuration to
+false in your app's `config/concord.php` file:
+
+```php
+// config/concord.php
+return [
+    'register_route_models' => false,
+    'modules' => [
+        // list of modules here...        
+    ]
+];
+```
+
+This will prevent Concord from automatically registering models with the router.
+
 **Next**: [Resources &raquo;](resources.md)
