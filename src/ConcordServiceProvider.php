@@ -31,8 +31,8 @@ class ConcordServiceProvider extends ServiceProvider
         $this->app->bind(
             Convention::class,
             $this->resolveConventionClass(
-                    $this->app->config->get('concord.convention', 'default')
-                )
+                $this->app->config->get('concord.convention', 'default')
+            )
         );
 
         // Register interface -> actual class binding as singleton

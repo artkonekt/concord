@@ -67,9 +67,9 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         $this->basePath      = dirname(dirname((new ReflectionClass(static::class))->getFileName()));
         $this->namespaceRoot = str_replace(
             sprintf(
-                                        '\\%s\\ModuleServiceProvider',
-                                        str_replace('/', '\\', $this->convention->providersFolder())
-                                    ),
+                '\\%s\\ModuleServiceProvider',
+                str_replace('/', '\\', $this->convention->providersFolder())
+            ),
             '',
             static::class
         );
