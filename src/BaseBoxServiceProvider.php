@@ -29,8 +29,10 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
                 $module        = $configuration;
                 $configuration = $this->getDefaultModuleConfiguration();
             } else {
-                $configuration = array_merge($this->getDefaultModuleConfiguration(),
-                    is_array($configuration) ? $configuration : []);
+                $configuration = array_merge(
+                    $this->getDefaultModuleConfiguration(),
+                    is_array($configuration) ? $configuration : []
+                );
                 $configuration = array_replace_recursive($configuration, $this->getCascadeModuleConfiguration());
             }
 

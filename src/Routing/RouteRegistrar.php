@@ -48,12 +48,14 @@ class RouteRegistrar
             $routes = $files;
 
             foreach ($routes as $route) {
-                Route::group([
+                Route::group(
+                    [
                         'namespace'  => Arr::get($config, 'namespace', $this->getDefaultRouteNamespace()),
                         'prefix'     => Arr::get($config, 'prefix', $this->module->shortName()),
                         'as'         => Arr::get($config, 'as', $this->module->shortName() . '.'),
                         'middleware' => Arr::get($config, 'middleware', ['web'])
-                    ], sprintf('%s/%s.php', $path, $route)
+                    ],
+                    sprintf('%s/%s.php', $path, $route)
                 );
             }
         }
@@ -66,7 +68,8 @@ class RouteRegistrar
      */
     private function getDefaultRouteNamespace()
     {
-        return sprintf('%s\\%s',
+        return sprintf(
+            '%s\\%s',
             $this->module->getNamespaceRoot(),
             str_replace('/', '\\', $this->convention->controllersFolder())
         );

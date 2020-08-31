@@ -60,15 +60,13 @@ class MakeModuleCommand extends GeneratorCommand
 
         $name         = $this->getNameInput();
         $manifestPath = str_replace(
-                sprintf('%s/ModuleServiceProvider.php', $this->convention->providersFolder()),
-                $this->convention->manifestFile(),
-                $this->getPath($this->getFQCNComp($name)
-            )
+            sprintf('%s/ModuleServiceProvider.php', $this->convention->providersFolder()),
+            $this->convention->manifestFile(),
+            $this->getPath($this->getFQCNComp($name))
         );
 
         if (!$this->files->exists($manifestPath)) {
             $this->makeDirectory($manifestPath);
-
             $this->files->put($manifestPath, $this->buildManifest($name));
         }
     }
@@ -104,7 +102,8 @@ class MakeModuleCommand extends GeneratorCommand
     {
         $name = Str::replaceFirst($this->laravel->getNamespace(), '', $name);
 
-        return sprintf('%s/%s/%s/%s',
+        return sprintf(
+            '%s/%s/%s/%s',
             $this->laravel['path'],
             str_replace('\\', '/', $name),
             $this->convention->providersFolder(),
@@ -137,10 +136,10 @@ class MakeModuleCommand extends GeneratorCommand
             return $this->parseName($name);
         }
         throw new UnknownLaravelVersionException(
-                sprintf(
-                    "There's an incompatible parent class `%s` in your installed version of Laravel",
-                    get_parent_class($this)
-                )
-            );
+            sprintf(
+                "There's an incompatible parent class `%s` in your installed version of Laravel",
+                get_parent_class($this)
+            )
+        );
     }
 }
