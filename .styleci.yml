@@ -3,7 +3,6 @@ preset: psr2
 enabled:
     - align_phpdoc
     - align_double_arrow
-    - align_equals
     - blank_line_before_return
     - cast_spaces
     - concat_with_spaces
