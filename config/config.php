@@ -8,5 +8,6 @@ return [
          * VendorB\ModuleY\Providers\ModuleServiceProvider::class
          *
          */
-    ]
+    ],
+    'register_route_models' => true
 ];

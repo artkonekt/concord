@@ -257,7 +257,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     {
         foreach ($this->models as $key => $model) {
             $contract = is_string($key) ? $key : $this->convention->contractForModel($model);
-            $this->concord->registerModel($contract, $model);
+            $this->concord->registerModel($contract, $model, config('concord.register_route_models', true));
         }
     }
 
