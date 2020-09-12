@@ -17,7 +17,16 @@ env:
     - LARAVEL=6.0
     - LARAVEL=6.18
     - LARAVEL=7.0
-    - LARAVEL=7.26
+    - LARAVEL=7.28
+    - LARAVEL=8.0
+    - LARAVEL=8.1
+
+matrix:
+  exclude:
+    - php: '7.2'
+      env: 'LARAVEL=8.0'
+    - php: '7.2'
+      env: 'LARAVEL=8.1'
 
 before_script: echo 'memory_limit = 512M' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
@@ -25,11 +34,11 @@ script:
 - vendor/bin/phpunit -c phpunit.xml.dist tests/
 
 before_install:
-  - MINOR=`echo $LARAVEL | sed 's/[5|6|7]\.\([0-9]\+\)/\1/'`
+  - MINOR=`echo $LARAVEL | sed 's/[5|6|7|8]\.\([0-9]\+\)/\1/'`
   - '[[ $LARAVEL =~ ^6\.[0-9]+$ ]] && MAJOR=6 || MAJOR=5'
   - '[[ $LARAVEL =~ ^7\.[0-9]+$ ]] && MAJOR=7 || true'
-  - '[ 6 -eq $MAJOR ] && ORCH=4 || ORCH=3'
-  - '[ 7 -eq $MAJOR ] && ORCH=5 || true'
+  - '[[ $LARAVEL =~ ^8\.[0-9]+$ ]] && MAJOR=8 || true'
+  - echo "Testing against Laravel ${MAJOR}.${MINOR}"
   - composer require "illuminate/support:${MAJOR}.${MINOR}.*" --no-update -v
   - composer require "illuminate/console:${MAJOR}.${MINOR}.*" --no-update -v
 
