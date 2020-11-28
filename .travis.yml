@@ -17,6 +17,15 @@ env:
     - LARAVEL=8.0
     - LARAVEL=8.16
 
+matrix:
+  exclude:
+    - php: 'nightly'
+      env: 'LARAVEL=6.0'
+    - php: 'nightly'
+      env: 'LARAVEL=7.0'
+    - php: 'nightly'
+      env: 'LARAVEL=8.0'
+
 before_script: echo 'memory_limit = 512M' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 script:
