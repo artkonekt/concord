@@ -2,15 +2,15 @@
 
 _Concord is a Laravel Extension that helps building **Modules for Laravel Applications** on top of Laravel's built in Service Providers._
 
-[![Travis](https://img.shields.io/travis/artkonekt/concord.svg?style=flat-square)](https://travis-ci.org/artkonekt/concord)
+[![Travis](https://img.shields.io/travis/com/artkonekt/concord.svg?style=flat-square)](https://travis-ci.com/artkonekt/concord)
 [![Packagist version](https://img.shields.io/packagist/v/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![StyleCI](https://styleci.io/repos/65661796/shield?branch=master)](https://styleci.io/repos/65661796)
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/artkonekt/concord?style=flat-square)](https://scrutinizer-ci.com/g/artkonekt/concord/)
 [![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
-Concord at first is a Laravel 5.5 - 8.x
-[package](https://laravel.com/docs/7.x/packages). It also offers some
+Concord at first is a Laravel 6.x - 8.x
+[package](https://laravel.com/docs/8.x/packages). It also offers some
 conventions that help you to better structure complex systems.
 
 ## Version Compatibility
@@ -18,10 +18,10 @@ conventions that help you to better structure complex systems.
 | Laravel | Concord   |
 |:--------|:----------|
 | 5.4     | 1.0 - 1.3 |
-| 5.5     | 1.0+      |
-| 5.6     | 1.1+      |
-| 5.7     | 1.3+      |
-| 5.8     | 1.3+      |
+| 5.5     | 1.0 - 1.8 |
+| 5.6     | 1.1 - 1.8 |
+| 5.7     | 1.3 - 1.8 |
+| 5.8     | 1.3 - 1.8 |
 | 6.x     | 1.4+      |
 | 7.x     | 1.5+      |
 | 8.x     | 1.8+      |
@@ -34,7 +34,7 @@ conventions that help you to better structure complex systems.
 
 Concord itself (this library) manages the modules.
 
-Concord [modules](https://konekt.dev/concord/1.4/modules) are isolated
+Concord [modules](https://konekt.dev/concord/1.8/modules) are isolated
 fractions of the business logic, built around a single topic.
 
 There are two kinds of modules from the usage perspective:
@@ -66,7 +66,7 @@ Either module types are always coupled to Laravel and Concord;
 
 ## Installation
 
-Refer to the [Installation Section](https://konekt.dev/concord/1.4/installation) of the Documentation.
+Refer to the [Installation Section](https://konekt.dev/concord/1.8/installation) of the Documentation.
 
 ## Create Your First Module
 
