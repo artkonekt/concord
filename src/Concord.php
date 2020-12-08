@@ -16,6 +16,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
@@ -132,7 +133,13 @@ class Concord implements ConcordContract
         // Route models can't resolve models by interface
         // so we're registering them explicitly
         if ($registerRouteModel) {
-            Route::model(shorten($abstract), $concrete);
+            $short = shorten($abstract);
+            Route::model($short, $concrete);
+            // Register both `payment_method` and `paymentMethod`:
+            $camel = Str::camel(class_basename($abstract));
+            if ($short !== $camel) {
+                Route::model($camel, $concrete);
+            }
         }
 
         $this->resetProxy($this->getConvention()->proxyForModelContract($abstract));

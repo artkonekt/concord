@@ -2,6 +2,12 @@
 
 ## 1.X Series
 
+### Unreleased
+##### 2020-12-XX
+
+- Registering camel case route model bindings as well, ie. not only `product_type` but also `productType`
+- Switched CI from travis to Github Actions
+
 ### 1.9.0
 ##### 2020-11-28
 

@@ -21,6 +21,8 @@ class RouteModelTest extends TestCase
     public function route_models_are_registered_by_default()
     {
         $this->assertNotNull(Route::getBindingCallback('product'));
+        $this->assertNotNull(Route::getBindingCallback('product_type'));
+        $this->assertNotNull(Route::getBindingCallback('productType'));
     }
 
     protected function resolveApplicationConfiguration($app)

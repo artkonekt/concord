@@ -13,10 +13,12 @@ namespace Konekt\Concord\Tests\Modules\ModuleWithProductModel\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
 use Konekt\Concord\Tests\Modules\ModuleWithProductModel\Models\Product;
+use Konekt\Concord\Tests\Modules\ModuleWithProductModel\Models\ProductType;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider
 {
     protected $models = [
-        Product::class
+        Product::class,
+        ProductType::class,
     ];
 }

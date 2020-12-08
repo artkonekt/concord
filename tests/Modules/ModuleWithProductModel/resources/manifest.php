@@ -2,5 +2,5 @@
 
 return [
     'name'    => 'Module With Product Model',
-    'version' => '1.0.0'
+    'version' => '1.10.0'
 ];
