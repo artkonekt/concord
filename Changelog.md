@@ -2,6 +2,11 @@
 
 ## 1.X Series
 
+### Unreleased
+##### 2021-03-XX
+
+- Fixed PHP 8 compatibility with enums, models and requests commands
+
 ### 1.10.0
 ##### 2020-12-08
 

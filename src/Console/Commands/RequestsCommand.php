@@ -49,7 +49,7 @@ class RequestsCommand extends Command
                 'concrete'  => $item
             ];
         })->sort(function ($a, $b) {
-            return $a['shortName'] > $b['shortName'];
+            return $a['shortName'] <=> $b['shortName'];
         })->each(function ($binding) use (&$table) {
             $table[] = [
                 $binding['shortName'],
