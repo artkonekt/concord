@@ -19,5 +19,4 @@ use Konekt\Concord\Tests\Modules\ModuleWithProductModel\Contracts\ProductType as
 
 class ProductType extends Model implements ProductTypeContract
 {
-
 }

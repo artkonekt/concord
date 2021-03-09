@@ -22,6 +22,6 @@ class KeyValueStoreHelper
 
     public function get($key)
     {
-        return isset($this->registry[$key]) ? $this->registry[$key] : null;
+        return $this->registry[$key] ?? null;
     }
 }
