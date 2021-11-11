@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the Module Manifest class.
  *
@@ -27,7 +29,7 @@ class Manifest
      */
     public function __construct(string $name, string $version)
     {
-        $this->name    = $name;
+        $this->name = $name;
         $this->version = $version;
     }
 

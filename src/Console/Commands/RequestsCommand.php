@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the Requests Command class
  *
@@ -45,8 +47,8 @@ class RequestsCommand extends Command
         $bindings->map(function ($item, $key) {
             return [
                 'shortName' => shorten($key),
-                'abstract'  => $key,
-                'concrete'  => $item
+                'abstract' => $key,
+                'concrete' => $item
             ];
         })->sort(function ($a, $b) {
             return $a['shortName'] <=> $b['shortName'];

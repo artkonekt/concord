@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Konekt\Concord\Tests\Modules\ModuleWithEnum\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;

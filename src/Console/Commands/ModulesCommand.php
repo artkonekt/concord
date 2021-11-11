@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the Modules Command class.
  *
@@ -45,18 +47,18 @@ class ModulesCommand extends Command
     protected function showModules(Collection $modules)
     {
         $table = [];
-        $i     = 0;
+        $i = 0;
 
         /** @var BaseModuleServiceProvider $module */
         foreach ($modules as $module) {
             $i++;
 
             $table[] = [
-                'no'        => sprintf('%d.', $i),
-                'name'      => $module->getManifest()->getName(),
-                'kind'      => $module->getKind()->label(),
-                'version'   => $module->getManifest()->getVersion(),
-                'id'        => $module->getId(),
+                'no' => sprintf('%d.', $i),
+                'name' => $module->getManifest()->getName(),
+                'kind' => $module->getKind()->label(),
+                'version' => $module->getManifest()->getVersion(),
+                'id' => $module->getId(),
                 'namespace' => $module->getNamespaceRoot()
             ];
         }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the Concord helper functions
  *
@@ -75,17 +77,17 @@ function slug_to_classpath($str)
  */
 function concord_module_id($classname, $convention = null)
 {
-    $convention    = $convention ?: concord()->getConvention();
+    $convention = $convention ?: concord()->getConvention();
     $modulesFolder = $convention->modulesFolder();
     // Check if '\Modules\' is part of the namespace
     $p = strrpos($classname, "\\$modulesFolder\\");
     // if no \Modules\, but starts with 'Modules\' that's also a match
     $p = false === $p ? strpos($classname, "$modulesFolder\\") : $p;
     if (false !== $p) {
-        $parts           = explode('\\', substr($classname, $p + strlen($modulesFolder) + 1));
+        $parts = explode('\\', substr($classname, $p + strlen($modulesFolder) + 1));
         $vendorAndModule = empty($parts[0]) ? Arr::only($parts, 1) : Arr::only($parts, 0);
     } else {
-        $parts           = explode('\\', $classname);
+        $parts = explode('\\', $classname);
         $vendorAndModule = empty($parts[0]) ? Arr::only($parts, [1,2]) : Arr::only($parts, [0,1]);
     }
 

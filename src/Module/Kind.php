@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the Module Kind class.
  *
@@ -15,13 +17,13 @@ use Konekt\Enum\Enum;
 
 class Kind extends Enum
 {
-    const __DEFAULT = self::MODULE;
+    public const __DEFAULT = self::MODULE;
 
-    const MODULE    = 'module';
-    const BOX       = 'box';
+    public const MODULE = 'module';
+    public const BOX = 'box';
 
     protected static $labels = [
         self::MODULE => 'Module',
-        self::BOX    => 'Box'
+        self::BOX => 'Box'
     ];
 }

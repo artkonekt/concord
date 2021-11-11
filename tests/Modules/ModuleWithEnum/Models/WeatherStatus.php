@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the WeatherStatus class.
  *
@@ -16,6 +18,6 @@ use Konekt\Enum\Enum;
 
 class WeatherStatus extends Enum implements WeatherStatusContract
 {
-    const GOOD = 'good';
-    const BAD  = 'bad';
+    public const GOOD = 'good';
+    public const BAD = 'bad';
 }

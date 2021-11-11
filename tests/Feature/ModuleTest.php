@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the ModuleTest class.
  *
@@ -29,7 +31,7 @@ class ModuleTest extends TestCase
         $minimalModule = $modules->get('minimal');
         $this->assertTrue($minimalModule->getKind()->equals(Kind::MODULE()));
 
-        $manifest      = $minimalModule->getManifest();
+        $manifest = $minimalModule->getManifest();
         $this->assertEquals('2.3.0', $manifest->getVersion());
         $this->assertEquals('Minimal', $manifest->getName());
     }

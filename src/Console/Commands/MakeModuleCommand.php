@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the MakeModule Command class.
  *
@@ -58,7 +60,7 @@ class MakeModuleCommand extends GeneratorCommand
             )
         );
 
-        $name         = $this->getNameInput();
+        $name = $this->getNameInput();
         $manifestPath = str_replace(
             sprintf('%s/ModuleServiceProvider.php', $this->convention->providersFolder()),
             $this->convention->manifestFile(),

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the BaseBoxServiceProvider class.
  *
@@ -26,7 +28,7 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
 
         foreach ($modules as $module => $configuration) {
             if (is_int($module) && is_string($configuration)) { // means no configuration was set for module
-                $module        = $configuration;
+                $module = $configuration;
                 $configuration = $this->getDefaultModuleConfiguration();
             } else {
                 $configuration = array_merge(
@@ -68,10 +70,10 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
     protected function getDefaultModuleConfiguration()
     {
         return [
-            'implicit'   => true,
+            'implicit' => true,
             'migrations' => $this->areMigrationsEnabled(),
-            'views'      => $this->areViewsEnabled(),
-            'routes'     => $this->areRoutesEnabled()
+            'views' => $this->areViewsEnabled(),
+            'routes' => $this->areRoutesEnabled()
         ];
     }
 

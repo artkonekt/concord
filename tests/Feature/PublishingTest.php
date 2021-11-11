@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the PublishingTest class.
  *
@@ -69,8 +71,8 @@ class PublishingTest extends TestCase
             SimpleBox::class => [
                 'cascade_config' => [
                     'migrations' => false,
-                    'some_key'   => 'NO!',
-                    'parent'     => [
+                    'some_key' => 'NO!',
+                    'parent' => [
                         'child_1' => 'George'
                     ]
                 ]

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the HelpersTest class
  *
@@ -12,9 +14,9 @@
 namespace Konekt\Concord\Tests\Feature;
 
 use Konekt\Concord\Contracts\Concord;
-use Konekt\Concord\Tests\TestCase;
 use Konekt\Concord\Tests\Feature\Helpers\HelloHelper;
 use Konekt\Concord\Tests\Feature\Helpers\KeyValueStoreHelper;
+use Konekt\Concord\Tests\TestCase;
 
 class HelpersTest extends TestCase
 {

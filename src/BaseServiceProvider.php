@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the BaseServiceProvider class.
  *
@@ -15,8 +17,8 @@ use Illuminate\Support\ServiceProvider;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Contracts\Module;
-use Konekt\Concord\Module\Manifest;
 use Konekt\Concord\Module\Kind;
+use Konekt\Concord\Module\Manifest;
 use Konekt\Concord\Routing\RouteRegistrar;
 use ReflectionClass;
 
@@ -61,10 +63,10 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     {
         parent::__construct($app);
 
-        $this->concord       = $app->make(ConcordContract::class); // retrieve the concord singleton
-        $this->convention    = $this->concord->getConvention(); // storing to get rid of train wrecks
-        $this->kind          = Kind::create(static::$_kind);
-        $this->basePath      = dirname(dirname((new ReflectionClass(static::class))->getFileName()));
+        $this->concord = $app->make(ConcordContract::class); // retrieve the concord singleton
+        $this->convention = $this->concord->getConvention(); // storing to get rid of train wrecks
+        $this->kind = Kind::create(static::$_kind);
+        $this->basePath = dirname(dirname((new ReflectionClass(static::class))->getFileName()));
         $this->namespaceRoot = str_replace(
             sprintf(
                 '\\%s\\ModuleServiceProvider',
@@ -73,7 +75,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
             '',
             static::class
         );
-        $this->id            = $this->getModuleId();
+        $this->id = $this->getModuleId();
     }
 
     public function register()
@@ -165,7 +167,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         if (!$this->manifest) {
             $data = include($this->basePath . '/' . $this->convention->manifestFile());
 
-            $name    = $data['name'] ?? 'N/A';
+            $name = $data['name'] ?? 'N/A';
             $version = $data['version'] ?? 'n/a';
 
             $this->manifest = new Manifest($name, $version);
@@ -219,7 +221,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     public function shortName()
     {
         $id = $this->getModuleId();
-        $p  = strrpos($id, '.');
+        $p = strrpos($id, '.');
 
         return $p ? substr($id, $p + 1) : $id;
     }
@@ -290,7 +292,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
      */
     protected function registerViews()
     {
-        $path      = $this->getBasePath() . '/' . $this->convention->viewsFolder();
+        $path = $this->getBasePath() . '/' . $this->convention->viewsFolder();
         $namespace = $this->config('views.namespace', $this->shortName());
 
         if (is_dir($path)) {

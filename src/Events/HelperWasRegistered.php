@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the HelperWasRegistered class.
  *
@@ -21,7 +23,7 @@ class HelperWasRegistered
 
     public function __construct($name, $class)
     {
-        $this->name      = $name;
+        $this->name = $name;
         $this->className = $class;
     }
 }

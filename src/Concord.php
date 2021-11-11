@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the Concord class.
  *
@@ -27,7 +29,7 @@ use Konekt\Concord\Events\RequestWasRegistered;
 
 class Concord implements ConcordContract
 {
-    const VERSION = '2.0-dev';
+    public const VERSION = '2.0-dev';
 
     /** @var Collection  */
     protected $modules;
@@ -61,8 +63,8 @@ class Concord implements ConcordContract
      */
     public function __construct(Application $app, Convention $convention)
     {
-        $this->modules    = Collection::make();
-        $this->app        = $app;
+        $this->modules = Collection::make();
+        $this->app = $app;
         $this->convention = $convention;
     }
 
@@ -278,7 +280,7 @@ class Concord implements ConcordContract
     protected function registerShort($abstract, $type)
     {
         $this->shorts[shorten($abstract)] = [
-            'type'  => $type,
+            'type' => $type,
             'class' => $abstract
         ];
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the ExtWeatherStatus class.
  *
@@ -15,5 +17,5 @@ use Konekt\Concord\Tests\Modules\ModuleWithEnum\Models\WeatherStatus;
 
 class ExtWeatherStatus extends WeatherStatus
 {
-    const MEH  = 'meh';
+    public const MEH = 'meh';
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the ModelWasRegistered class.
  *
@@ -24,8 +26,8 @@ class ModelWasRegistered
 
     public function __construct($abstract, $concrete, $routeModelWasRegistered)
     {
-        $this->abstract                = $abstract;
-        $this->concrete                = $concrete;
+        $this->abstract = $abstract;
+        $this->concrete = $concrete;
         $this->routeModelWasRegistered = $routeModelWasRegistered;
     }
 }

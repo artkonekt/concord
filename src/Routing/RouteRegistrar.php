@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the RouteRegistrar class.
  *
@@ -27,7 +29,7 @@ class RouteRegistrar
 
     public function __construct(Module $module, Convention $convention)
     {
-        $this->module     = $module;
+        $this->module = $module;
         $this->convention = $convention;
     }
 
@@ -50,9 +52,9 @@ class RouteRegistrar
             foreach ($routes as $route) {
                 Route::group(
                     [
-                        'namespace'  => Arr::get($config, 'namespace', $this->getDefaultRouteNamespace()),
-                        'prefix'     => Arr::get($config, 'prefix', $this->module->shortName()),
-                        'as'         => Arr::get($config, 'as', $this->module->shortName() . '.'),
+                        'namespace' => Arr::get($config, 'namespace', $this->getDefaultRouteNamespace()),
+                        'prefix' => Arr::get($config, 'prefix', $this->module->shortName()),
+                        'as' => Arr::get($config, 'as', $this->module->shortName() . '.'),
                         'middleware' => Arr::get($config, 'middleware', ['web'])
                     ],
                     sprintf('%s/%s.php', $path, $route)
