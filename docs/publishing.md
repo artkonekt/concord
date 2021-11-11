@@ -1,11 +1,11 @@
 # Publishing File Groups
 
-Modules and Boxes are all [Laravel Service Providers](https://laravel.com/docs/7.x/providers).
+Modules and Boxes are all [Laravel Service Providers](https://laravel.com/docs/8.x/providers).
 Therefore you can use all the features Laravel provides for package development.
 
 Concord modules provide several convenience features compared to the base Laravel service providers.
 
-One of those features is that some [file groups are published](https://laravel.com/docs/7.x/packages#publishing-file-groups)
+One of those features is that some [file groups are published](https://laravel.com/docs/8.x/packages#publishing-file-groups)
 by default.
 
 ## Migrations
@@ -32,11 +32,11 @@ the setup, the tenant migrations have to be separated from the "landlord" migrat
 It might be confusing, what is publishing and what is loading of migrations.
 
 **Loading** is when a set of migrations are made visible for `artisan migrate` command.
-These migrations are available to be **executed** on demand. See https://laravel.com/docs/7.x/packages#migrations
+These migrations are available to be **executed** on demand. See https://laravel.com/docs/8.x/packages#migrations
 
 **Publishing** is when a set of files (eg. migrations) are made visible for the
 `artisan vendor:publish` command. These files can be **copied** to your application's migrations
-folder. See https://laravel.com/docs/7.x/packages#publishing-file-groups
+folder. See https://laravel.com/docs/8.x/packages#publishing-file-groups
 
 The main differences are:
 

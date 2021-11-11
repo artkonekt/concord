@@ -1,7 +1,7 @@
 # Request Types
 
 Concord encourages the use of Laravel's
-[Form Request validation](https://laravel.com/docs/5.8/validation#form-request-validation).
+[Form Request validation](https://laravel.com/docs/8.x/validation#form-request-validation).
 
 As they closely relate to models, and are very often a subject to customization,
 their use with Concord is very similar to [models](models.md) and

@@ -97,7 +97,7 @@ return [
 ## Using Application Config Files
 
 Your modules can also use
-[package config files](https://laravel.com/docs/5.8/packages#configuration) (in
+[package config files](https://laravel.com/docs/8.x/packages#configuration) (in
 the app's `config/` folder). This can use the same "namespace" as your module
 id, in this case the values will be merged. Or you can use any other name for
 the configuration keys, that's completely up to you.

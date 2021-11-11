@@ -17,7 +17,7 @@ return [
     ]
 ];
 ```
-All routes will be included in a [route group](https://laravel.com/docs/5.8/routing#route-groups) whose parameters can also be configured:
+All routes will be included in a [route group](https://laravel.com/docs/8.x/routing#route-groups) whose parameters can also be configured:
 
 ```php
 return [
@@ -67,7 +67,7 @@ return [
 Up until Concord v1.6, all the models that were registered with Concord were automatically bound to
 the Laravel router by implicitly calling the `Route::model()` method.
 
-> See: https://laravel.com/docs/7.x/routing#route-model-binding
+> See: https://laravel.com/docs/8.x/routing#route-model-binding
 
 Eg. if your module defines a `Product` model, then Concord calls `Route::model('product', Product::class)`
 upon registering the model.

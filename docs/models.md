@@ -46,7 +46,7 @@ Possible modifications:
 
 Most of these can be done by adding migrations and extending the original Model class using simple OOP inheritance. The essence of the problem is **how will your lower level modules know that the system is using an extended class** for that entity?
 
-The most trivial scenario of this kind appears when you define an [Eloquent relationship](https://laravel.com/docs/5.5/eloquent-relationships). Say you have `Product` model (defined in the lowest, module layer) and `AppProduct` (which extends `Product`). You also have a `FavoriteItem` class (defined in the module layer) which has a relationship to the product.
+The most trivial scenario of this kind appears when you define an [Eloquent relationship](https://laravel.com/docs/8.x/eloquent-relationships). Say you have `Product` model (defined in the lowest, module layer) and `AppProduct` (which extends `Product`). You also have a `FavoriteItem` class (defined in the module layer) which has a relationship to the product.
 
 **Traditional approach**:
 
@@ -92,7 +92,7 @@ Concord's concept also requires to have an interface `Product` and this way it's
 
 `Models\Product` class gets bound to the `Contracts\Product` interface within the module (consider it as a default). If the application wants to extend that class, it invokes Concord's `registerModel()` again, and that's all.
 
-The `registerModel()` method also silently [binds the interface to the implementation with Laravel's service container](https://laravel.com/docs/5.5/container#binding-interfaces-to-implementations) so you can simply type hint the interface at any point where [automatic injection](https://laravel.com/docs/5.5/container#automatic-injection) happens.
+The `registerModel()` method also silently [binds the interface to the implementation with Laravel's service container](https://laravel.com/docs/8.x/container#binding-interfaces-to-implementations) so you can simply type hint the interface at any point where [automatic injection](https://laravel.com/docs/5.5/container#automatic-injection) happens.
 
 **Overriding Model class in application:**
 
@@ -181,7 +181,7 @@ So you need to extend the model class. Keep reading to see how.
 
 #### Overriding Accessors & Mutators
 
-Imagine you have this [accessor/mutator](https://laravel.com/docs/5.8/eloquent-mutators) pair in your model:
+Imagine you have this [accessor/mutator](https://laravel.com/docs/8.x/eloquent-mutators) pair in your model:
 
 ```php
 namespace App;
@@ -212,7 +212,7 @@ If you want to extend the base `ProductStatus` type with new statuses, then you 
 
 #### Attribute Casting
 
-[Attribute casting](https://laravel.com/docs/5.8/eloquent-mutators#attribute-casting) is another nice feature of Eloquent. If you want your `is_active` field to be represented as boolean, you need to extend the `Product` model and set:
+[Attribute casting](https://laravel.com/docs/8.x/eloquent-mutators#attribute-casting) is another nice feature of Eloquent. If you want your `is_active` field to be represented as boolean, you need to extend the `Product` model and set:
 
 ```php
     protected $casts = [
@@ -222,11 +222,11 @@ If you want to extend the base `ProductStatus` type with new statuses, then you 
 
 #### Adding Scopes
 
-If you want to add your own [scopes](https://laravel.com/docs/5.8/eloquent#query-scopes) (either local or global) to your model then you've found another reason why you need to override the base model class.
+If you want to add your own [scopes](https://laravel.com/docs/8.x/eloquent#query-scopes) (either local or global) to your model then you've found another reason why you need to override the base model class.
 
 #### Relationships
 
-Maybe you can live without scopes, attribute casting and mutators, but I doubt you'd give up model [relationships](https://laravel.com/docs/5.8/eloquent-relationships).
+Maybe you can live without scopes, attribute casting and mutators, but I doubt you'd give up model [relationships](https://laravel.com/docs/8.x/eloquent-relationships).
 
 In our reading, this is the **achilles heel** of the whole story. Read below to see how it can be achieved.
 
@@ -330,7 +330,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-##### 6) Always *type hint the entity with it's interface* ([binding](https://laravel.com/docs/5.8/container#binding-interfaces-to-implementations) is also registered with the container)
+##### 6) Always *type hint the entity with it's interface* ([binding](https://laravel.com/docs/8.x/container#binding-interfaces-to-implementations) is also registered with the container)
 
 ```php
 namespace App\Http\Controllers;
