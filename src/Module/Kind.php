@@ -15,7 +15,7 @@ use Konekt\Enum\Enum;
 
 class Kind extends Enum
 {
-    const __default = self::MODULE;
+    const __DEFAULT = self::MODULE;
 
     const MODULE    = 'module';
     const BOX       = 'box';

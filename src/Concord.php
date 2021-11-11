@@ -27,7 +27,7 @@ use Konekt\Concord\Events\RequestWasRegistered;
 
 class Concord implements ConcordContract
 {
-    const VERSION = '1.10.1';
+    const VERSION = '2.0-dev';
 
     /** @var Collection  */
     protected $modules;

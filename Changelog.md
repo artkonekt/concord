@@ -1,5 +1,15 @@
 # Concord Changelog
 
+## 2.X Series
+
+### Unreleased
+##### 2021-XX-YY
+
+- Dropped PHP 7.3 & 7.4 support
+- Dropped Laravel 6 & 7 support
+- Dropped Enum v2 support
+- Added PHP 8.1 support
+
 ## 1.X Series
 
 ### 1.10.1
