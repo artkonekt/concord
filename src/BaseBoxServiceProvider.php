@@ -43,18 +43,6 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
         $this->publishAllSubModuleMigrations();
     }
 
-    /**
-     * Returns the "cascade" configuration: the "apply to all submodules" config override array
-     *
-     * @return array
-     */
-    protected function getCascadeModuleConfiguration(): array
-    {
-        $result = $this->config('cascade_config', []);
-
-        return is_array($result) ? $result : [];
-    }
-
     private function publishAllSubModuleMigrations(): void
     {
         $folder = '/' . $this->convention->migrationsFolder();
