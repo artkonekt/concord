@@ -42,4 +42,6 @@ trait HasModuleConfig
     {
         return (bool) $this->config('routes', true);
     }
+
+    abstract public function getId(): string;
 }

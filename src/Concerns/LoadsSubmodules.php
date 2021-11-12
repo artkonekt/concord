@@ -18,6 +18,8 @@ use JetBrains\PhpStorm\ArrayShape;
 
 trait LoadsSubmodules
 {
+    use HasModuleConfig;
+
     private function loadSubModules(array $modules): void
     {
         foreach ($modules as $module => $configuration) {
