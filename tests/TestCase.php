@@ -20,8 +20,7 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    /** @var  Concord   This was added only to help IDE auto-completion */
-    protected $concord;
+    protected Concord $concord;
 
     protected function setUp(): void
     {
