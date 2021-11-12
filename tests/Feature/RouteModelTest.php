@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Konekt\Concord\Tests\Feature;
 
 use Illuminate\Support\Facades\Route;
-use Konekt\Concord\Tests\Modules\ModuleWithProductModel\Providers\ModuleServiceProvider as ModuleWithProduct;
+use Konekt\Concord\Tests\ExampleModules\ModuleWithProductModel\Providers\ModuleServiceProvider as ModuleWithProduct;
 use Konekt\Concord\Tests\TestCase;
 
 class RouteModelTest extends TestCase

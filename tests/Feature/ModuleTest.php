@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Konekt\Concord\Tests\Feature;
 
 use Konekt\Concord\Module\Kind;
-use Konekt\Concord\Tests\Modules\Minimal\Providers\ModuleServiceProvider as MinimalModule;
+use Konekt\Concord\Tests\ExampleModules\Minimal\Providers\ModuleServiceProvider as MinimalModule;
 use Konekt\Concord\Tests\TestCase;
 
 class ModuleTest extends TestCase

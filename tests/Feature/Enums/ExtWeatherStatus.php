@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Konekt\Concord\Tests\Feature\Enums;
 
-use Konekt\Concord\Tests\Modules\ModuleWithEnum\Models\WeatherStatus;
+use Konekt\Concord\Tests\ExampleModules\ModuleWithEnum\Models\WeatherStatus;
 
 class ExtWeatherStatus extends WeatherStatus
 {

@@ -15,10 +15,10 @@ declare(strict_types=1);
 namespace Konekt\Concord\Tests\Feature;
 
 use Konekt\Concord\Tests\Feature\Enums\ExtWeatherStatus;
-use Konekt\Concord\Tests\Modules\ModuleWithEnum\Contracts\WeatherStatus as WeatherStatusContract;
-use Konekt\Concord\Tests\Modules\ModuleWithEnum\Models\WeatherStatus;
-use Konekt\Concord\Tests\Modules\ModuleWithEnum\Models\WeatherStatusProxy;
-use Konekt\Concord\Tests\Modules\ModuleWithEnum\Providers\ModuleServiceProvider as ModuleWithEnum;
+use Konekt\Concord\Tests\ExampleModules\ModuleWithEnum\Contracts\WeatherStatus as WeatherStatusContract;
+use Konekt\Concord\Tests\ExampleModules\ModuleWithEnum\Models\WeatherStatus;
+use Konekt\Concord\Tests\ExampleModules\ModuleWithEnum\Models\WeatherStatusProxy;
+use Konekt\Concord\Tests\ExampleModules\ModuleWithEnum\Providers\ModuleServiceProvider as ModuleWithEnum;
 use Konekt\Concord\Tests\TestCase;
 use Konekt\Enum\Enum;
 

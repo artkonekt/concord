@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Konekt\Concord\Tests\Feature;
 
-use Konekt\Concord\Tests\Modules\SimpleBox\Providers\ModuleServiceProvider as SimpleBox;
+use Konekt\Concord\Tests\ExampleModules\SimpleBox\Providers\ModuleServiceProvider as SimpleBox;
 use Konekt\Concord\Tests\TestCase;
 
 class DefaultConfigTest extends TestCase

@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Konekt\Concord;
 
 use Illuminate\Support\ServiceProvider;
+use Konekt\Concord\Concerns\HasModuleConfig;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Contracts\Module;
@@ -25,6 +26,8 @@ use ReflectionClass;
 
 abstract class BaseServiceProvider extends ServiceProvider implements Module
 {
+    use HasModuleConfig;
+
     /** @var  string */
     protected $basePath;
 
@@ -117,47 +120,9 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
         ], 'migrations');
     }
 
-    public function areMigrationsEnabled(): bool
-    {
-        return (bool) $this->config('migrations', true);
-    }
-
-    public function areModelsEnabled(): bool
-    {
-        return (bool) $this->config('models', true);
-    }
-
-    public function areViewsEnabled(): bool
-    {
-        return (bool) $this->config('views', true);
-    }
-
-    public function areRoutesEnabled(): bool
-    {
-        return (bool) $this->config('routes', true);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getId(): string
     {
         return $this->id;
-    }
-
-    /**
-     * Returns module configuration value(s)
-     *
-     * @param string $key If left empty, the entire module configuration gets retrieved
-     * @param mixed  $default
-     *
-     * @return mixed
-     */
-    public function config(string $key = null, $default = null)
-    {
-        $key = $key ? sprintf('%s.%s', $this->getId(), $key) : $this->getId();
-
-        return config($key, $default);
     }
 
     /**

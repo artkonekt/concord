@@ -14,8 +14,12 @@ declare(strict_types=1);
 
 namespace Konekt\Concord;
 
+use Konekt\Concord\Concerns\LoadsSubmodules;
+
 abstract class BaseBoxServiceProvider extends BaseServiceProvider
 {
+    use LoadsSubmodules;
+
     protected $configFileName = 'box.php';
 
     protected static $_kind = 'box';
@@ -24,22 +28,10 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
     {
         parent::register();
 
-        $modules = $this->config("modules");
-        $modules = $modules ?: [];
+        $modules = $this->config("modules", []);
 
-        foreach ($modules as $module => $configuration) {
-            if (is_int($module) && is_string($configuration)) { // means no configuration was set for module
-                $module = $configuration;
-                $configuration = $this->getDefaultModuleConfiguration();
-            } else {
-                $configuration = array_merge(
-                    $this->getDefaultModuleConfiguration(),
-                    is_array($configuration) ? $configuration : []
-                );
-                $configuration = array_replace_recursive($configuration, $this->getCascadeModuleConfiguration());
-            }
-
-            $this->concord->registerModule($module, $configuration);
+        if (is_array($modules)) {
+            $this->loadSubModules($modules);
         }
     }
 
@@ -61,21 +53,6 @@ abstract class BaseBoxServiceProvider extends BaseServiceProvider
         $result = $this->config('cascade_config', []);
 
         return is_array($result) ? $result : [];
-    }
-
-    /**
-     * Returns the default configuration settings for modules loaded within boxes
-     *
-     * @return array
-     */
-    protected function getDefaultModuleConfiguration()
-    {
-        return [
-            'implicit' => true,
-            'migrations' => $this->areMigrationsEnabled(),
-            'views' => $this->areViewsEnabled(),
-            'routes' => $this->areRoutesEnabled()
-        ];
     }
 
     private function publishAllSubModuleMigrations(): void

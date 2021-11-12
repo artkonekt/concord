@@ -16,9 +16,9 @@ namespace Konekt\Concord\Tests\Feature;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Konekt\Concord\Tests\Modules\SimpleBox\Providers\ModuleServiceProvider as SimpleBox;
-use Konekt\Concord\Tests\Modules\SimpleBoxSubmodule1\Providers\ModuleServiceProvider as Submodule1;
-use Konekt\Concord\Tests\Modules\SimpleBoxSubmodule2\Providers\ModuleServiceProvider as Submodule2;
+use Konekt\Concord\Tests\ExampleModules\SimpleBox\Providers\ModuleServiceProvider as SimpleBox;
+use Konekt\Concord\Tests\ExampleModules\SimpleBoxSubmodule1\Providers\ModuleServiceProvider as Submodule1;
+use Konekt\Concord\Tests\ExampleModules\SimpleBoxSubmodule2\Providers\ModuleServiceProvider as Submodule2;
 use Konekt\Concord\Tests\TestCase;
 
 class PublishingTest extends TestCase
