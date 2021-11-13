@@ -12,7 +12,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Konekt\Concord\Tests\Feature;
+namespace Konekt\Concord\Tests\Feature\Commands;
 
 use Illuminate\Support\Facades\Artisan;
 use Konekt\Concord\Concord;
@@ -20,7 +20,8 @@ use Konekt\Concord\Tests\TestCase;
 
 class VersionTest extends TestCase
 {
-    public function testVersionCommandMatchesConst()
+    /** @test */
+    public function the_output_matches_the_version_const_value()
     {
         Artisan::call('concord:version');
 
