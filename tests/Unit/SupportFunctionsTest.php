@@ -65,5 +65,4 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
             ['Vendor\WTF\Models\Blah', 'vendor.w_t_f.models.blah'],
         ];
     }
-
 }

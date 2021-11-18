@@ -21,6 +21,5 @@ class VersionTest extends TestCase
     /** @test */
     public function the_version_is_not_mandatory()
     {
-
     }
 }

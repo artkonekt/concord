@@ -22,6 +22,12 @@ final class ManifestFile
 
     private ?string $version;
 
+    private function __construct(string $name, ?string $version)
+    {
+        $this->name = $name;
+        $this->version = $version;
+    }
+
     public static function read(string $filePath): ManifestFile
     {
         if (!is_readable($filePath)) {
@@ -41,11 +47,5 @@ final class ManifestFile
     public function getVersion(): ?string
     {
         return $this->version;
-    }
-
-    private function __construct(string $name, ?string $version)
-    {
-        $this->name = $name;
-        $this->version = $version;
     }
 }
