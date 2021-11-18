@@ -15,43 +15,21 @@ declare(strict_types=1);
 namespace Konekt\Concord\Contracts;
 
 use Konekt\Concord\Module\Kind;
-use Konekt\Concord\Module\Manifest;
 
 interface Module
 {
-    /**
-     * Returns the id of the module (eg. foovendor.barmodule)
-     *
-     * @return string
-     */
-    public function getId(): string;
+    public static function getId(): string;
 
-    /**
-     * Returns the module's manifest object
-     *
-     * @return Manifest
-     */
-    public function getManifest(): Manifest;
+    public static function getConvention(): Convention;
 
-    /**
-     * Returns the root folder on the filesystem containing the module
-     *
-     * @return string
-     */
+    public function getName(): string;
+
+    public function getVersion(): ?string;
+
     public function getBasePath(): string;
 
-    /**
-     * Returns the module's root (topmost) namespace
-     *
-     * @return string
-     */
     public function getNamespaceRoot(): string;
 
-    /**
-     * Returns the kind of the module (box/module)
-     *
-     * @return Kind
-     */
     public function getKind(): Kind;
 
     /**
@@ -62,7 +40,7 @@ interface Module
      *
      * @return mixed
      */
-    public function config(string $key = null, $default = null);
+    public function config(string $key = null, mixed $default = null): mixed;
 
     /**
      * Returns the short (abbreviated) name of the module

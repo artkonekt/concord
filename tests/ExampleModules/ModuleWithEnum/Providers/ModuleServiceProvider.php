@@ -9,7 +9,9 @@ use Konekt\Concord\Tests\ExampleModules\ModuleWithEnum\Models\WeatherStatus;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider
 {
-    protected $enums = [
+    protected static ?string $moduleId = 'module_with_enum';
+
+    protected array $enums = [
         WeatherStatus::class
     ];
 }

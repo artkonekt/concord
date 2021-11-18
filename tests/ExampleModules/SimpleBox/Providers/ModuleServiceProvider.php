@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace Konekt\Concord\Tests\ExampleModules\SimpleBox\Providers;
 
-use Konekt\Concord\BaseBoxServiceProvider;
+use Konekt\Concord\BaseModuleServiceProvider;
 
-class ModuleServiceProvider extends BaseBoxServiceProvider
+class ModuleServiceProvider extends BaseModuleServiceProvider
 {
 }

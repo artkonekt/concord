@@ -74,7 +74,10 @@ class Concord implements ConcordContract
      */
     public function registerModule($moduleClass, $config = [])
     {
-        $this->mergeModuleConfig(concord_module_id($moduleClass), $config);
+        if (is_not_a_concord_module_class($moduleClass)) {
+            throw new InvalidArgumentException("$moduleClass is not a Concord Module class.");
+        }
+        $this->mergeModuleConfig($moduleClass::getId(), $config);
 
         $module = $this->app->register($moduleClass);
 

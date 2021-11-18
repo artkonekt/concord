@@ -14,6 +14,7 @@ declare(strict_types=1);
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Konekt\Concord\Contracts\Concord;
+use Konekt\Concord\Contracts\Module;
 
 /**
  * Converts a fully qualified classname to a string (backslashes to dots, parts to snake case)
@@ -66,40 +67,6 @@ function slug_to_classpath($str)
 }
 
 /**
- * Returns a standard module name based on the module provider's classname
- *
- * Eg.: '\Vendor\Module\Providers\ModuleServiceProvider' -> 'vendor.module'
- *      'App\Modules\Billing' -> 'billing'
- *
- * @param string $classname
- * @param null|\Konekt\Concord\Contracts\Convention   $convention
- *
- * @return string
- */
-function concord_module_id($classname, $convention = null)
-{
-    $convention = $convention ?: concord()->getConvention();
-    $modulesFolder = $convention->modulesFolder();
-    // Check if '\Modules\' is part of the namespace
-    $p = strrpos($classname, "\\$modulesFolder\\");
-    // if no \Modules\, but starts with 'Modules\' that's also a match
-    $p = false === $p ? strpos($classname, "$modulesFolder\\") : $p;
-    if (false !== $p) {
-        $parts = explode('\\', substr($classname, $p + strlen($modulesFolder) + 1));
-        $vendorAndModule = empty($parts[0]) ? Arr::only($parts, 1) : Arr::only($parts, 0);
-    } else {
-        $parts = explode('\\', $classname);
-        $vendorAndModule = empty($parts[0]) ? Arr::only($parts, [1,2]) : Arr::only($parts, [0,1]);
-    }
-
-    array_walk($vendorAndModule, function (&$part) {
-        $part = Str::snake($part);
-    });
-
-    return implode('.', $vendorAndModule);
-}
-
-/**
  * Shortcut function for returning helper instances by their name
  *
  * @param string    $name       The name of the helper
@@ -148,4 +115,14 @@ function enum($shortname, $value = null)
     if ($abstract && $class = concord()->enum($abstract)) {
         return new $class($value);
     }
+}
+
+function is_a_concord_module_class(string $class): bool
+{
+    return in_array(Module::class, class_implements($class));
+}
+
+function is_not_a_concord_module_class(string $class): bool
+{
+    return !is_a_concord_module_class($class);
 }

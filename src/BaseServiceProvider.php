@@ -20,7 +20,6 @@ use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Convention;
 use Konekt\Concord\Contracts\Module;
 use Konekt\Concord\Module\Kind;
-use Konekt\Concord\Module\Manifest;
 use Konekt\Concord\Routing\RouteRegistrar;
 use ReflectionClass;
 
@@ -30,9 +29,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
 
     /** @var  string */
     protected $basePath;
-
-    /** @var  Manifest */
-    protected $manifest;
 
     /** @var  string */
     protected $namespaceRoot;
@@ -123,23 +119,6 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
     public function getId(): string
     {
         return $this->id;
-    }
-
-    /**
-     * @return Manifest
-     */
-    public function getManifest(): Manifest
-    {
-        if (!$this->manifest) {
-            $data = include($this->basePath . '/' . $this->convention->manifestFile());
-
-            $name = $data['name'] ?? 'N/A';
-            $version = $data['version'] ?? 'n/a';
-
-            $this->manifest = new Manifest($name, $version);
-        }
-
-        return $this->manifest;
     }
 
     /**

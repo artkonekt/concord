@@ -16,9 +16,9 @@ namespace Konekt\Concord\Concerns;
 
 trait HasModuleConfig
 {
-    public function config(string $key = null, $default = null): mixed
+    public function config(string $key = null, mixed $default = null): mixed
     {
-        $key = $key ? sprintf('%s.%s', $this->getId(), $key) : $this->getId();
+        $key = $key ? sprintf('%s.%s', static::getId(), $key) : $this->getId();
 
         return config($key, $default);
     }
@@ -43,7 +43,7 @@ trait HasModuleConfig
         return (bool) $this->config('routes', true);
     }
 
-    abstract public function getId(): string;
+    abstract public static function getId(): string;
 
     /**
      * Returns the "cascade" configuration: the "apply to all submodules" config override array

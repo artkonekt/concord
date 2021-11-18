@@ -9,6 +9,14 @@
 - Dropped Laravel 6 & 7 support
 - Dropped Enum v2 support
 - Added PHP 8.1 support
+- BC: Removed the `Manifest` class, moved its `getName` and `getVersion` methods to the Module interface
+- BC: The module version has become optional and may be `null`
+- BC: The `concord_module_id` function has been removed. Use the `CalculatesModuleId` trait instead
+- BC: Default generated module id has changed, it's no longer snake case, it's lowercase. Examples:
+  - Module: `App\Modules\WTF`, v1 id: `w_t_f`, v2 id: `wtf`
+  - Module: `App\Modules\OpsGenie`, v1 id: `ops_genie`, v2 id: `opsgenie`
+  - Module: `SamuelStancl\LeanAdmin`, v1 id: `samuel_stancl.lean_admin`, v2 id: `samuelstancl.leanadmin`
+- BC: The module's `enums` property must have a type, and it must be array
 
 ## 1.X Series
 
