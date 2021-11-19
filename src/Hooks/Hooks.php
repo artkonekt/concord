@@ -42,10 +42,10 @@ final class Hooks
     {
         dump('h', $this->hooks->all());
         $hooks = $this->hooks->filter(
-            fn($hook, $index) => $event->equals($hook['event']) && $this->theHookIsForTheModule($hook['filter'], $moduleId)
+            fn ($hook, $index) => $event->equals($hook['event']) && $this->theHookIsForTheModule($hook['filter'], $moduleId)
         );
 
-        foreach($hooks as $hook) {
+        foreach ($hooks as $hook) {
             $hookableArgument = call_user_func($hook['callback'], $moduleId, $hookableArgument);
         }
 
