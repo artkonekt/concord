@@ -15,20 +15,10 @@ declare(strict_types=1);
 namespace Konekt\Concord\Tests;
 
 use Konekt\Concord\ConcordServiceProvider;
-use Konekt\Concord\Contracts\Concord;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    protected Concord $concord;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->concord = $this->app->make('concord');
-    }
-
     /**
      * @param \Illuminate\Foundation\Application $app
      *

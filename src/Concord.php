@@ -27,8 +27,10 @@ use Konekt\Concord\Events\EnumWasRegistered;
 use Konekt\Concord\Events\HelperWasRegistered;
 use Konekt\Concord\Events\ModelWasRegistered;
 use Konekt\Concord\Events\RequestWasRegistered;
+use Konekt\Concord\Hooks\HookEvent;
+use Konekt\Concord\Hooks\Hooks;
 
-class Concord implements ConcordContract
+final class Concord implements ConcordContract
 {
     public const VERSION = '2.0-dev';
 
@@ -56,6 +58,8 @@ class Concord implements ConcordContract
     /** @var Convention */
     private $convention;
 
+    private Hooks $hooks;
+
     /**
      * Concord class constructor
      *
@@ -67,6 +71,7 @@ class Concord implements ConcordContract
         $this->modules = Collection::make();
         $this->app = $app;
         $this->convention = $convention;
+        $this->hooks = new Hooks();
     }
 
     /**
@@ -265,6 +270,11 @@ class Concord implements ConcordContract
         return Arr::get($this->shorts, "$name.class");
     }
 
+    public function hookInto(HookEvent $event, callable $callback, array|string $filter = null): void
+    {
+        $this->hooks->register($event, $callback, $filter);
+    }
+
     /**
      * Resets the proxy class to ensure no stale instance gets stuck
      *
@@ -292,18 +302,20 @@ class Concord implements ConcordContract
     /**
      * Merge the module's config with the existing config
      *
-     * @param string $key
+     * @param string $moduleId
      * @param array  $config
      */
-    protected function mergeModuleConfig(string $key, array $config)
+    protected function mergeModuleConfig(string $moduleId, array $config)
     {
+        $current = $this->app['config']->get($moduleId);
+        $final = $this->hooks->happening(
+            HookEvent::LOADING_CONFIGURATION(),
+            $moduleId,
+            is_array($current) ? array_merge($current, $config) : $config,
+        );
+
         if (!empty($config)) {
-            $current = $this->app['config']->get($key);
-            if (is_array($current)) {
-                $this->app['config']->set($key, array_merge($current, $config));
-            } else {
-                $this->app['config']->set($key, $config);
-            }
+            $this->app['config']->set($moduleId, $final);
         }
     }
 }

@@ -20,6 +20,7 @@ use Konekt\Concord\Concerns\HasDefaultConvention;
 use Konekt\Concord\Concerns\HasModuleConfig;
 use Konekt\Concord\Concerns\ReadsManifestFile;
 use Konekt\Concord\Concerns\RegistersEnums;
+use Konekt\Concord\Concerns\RegistersModels;
 use Konekt\Concord\Contracts\Concord as ConcordContract;
 use Konekt\Concord\Contracts\Module;
 use Konekt\Concord\Module\Kind;
@@ -31,6 +32,7 @@ class BaseModuleServiceProvider extends ServiceProvider implements Module
     use AutoGeneratesModuleId;
     use HasDefaultConvention;
     use RegistersEnums;
+    use RegistersModels;
     use ReadsManifestFile;
 
     private string $basePath;
@@ -50,7 +52,7 @@ class BaseModuleServiceProvider extends ServiceProvider implements Module
         }
 
         if ($this->areModelsEnabled()) {
-            //$this->registerModels();
+            $this->registerModels();
             $this->registerEnums();
             //$this->registerRequestTypes();
         }

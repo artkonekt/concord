@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Konekt\Concord\Contracts;
 
 use Illuminate\Support\Collection;
+use Konekt\Concord\Hooks\HookEvent;
 
 interface Concord
 {
@@ -163,4 +164,6 @@ interface Concord
      * @return string|null
      */
     public function short($name);
+
+    public function hookInto(HookEvent $event, callable $callback, string|array $filter = null): void;
 }

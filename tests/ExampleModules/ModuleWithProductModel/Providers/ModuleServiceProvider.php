@@ -20,7 +20,7 @@ use Konekt\Concord\Tests\ExampleModules\ModuleWithProductModel\Models\ProductTyp
 
 class ModuleServiceProvider extends BaseModuleServiceProvider
 {
-    protected $models = [
+    protected array $models = [
         Product::class,
         ProductType::class,
     ];

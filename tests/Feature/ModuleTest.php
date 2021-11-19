@@ -21,9 +21,7 @@ use Konekt\Concord\Tests\TestCase;
 
 class ModuleTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function minimal_module_can_properly_be_loaded()
     {
         $modules = $this->concord->getModules();
