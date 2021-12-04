@@ -2,6 +2,11 @@
 
 ## 1.X Series
 
+### Unreleased
+##### 2021-XX-YY
+
+- Added PHP 8.1 support
+
 ### 1.10.1
 ##### 2021-03-08
 
