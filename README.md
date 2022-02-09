@@ -2,10 +2,10 @@
 
 _Concord is a Laravel Extension that helps building **Modules for Laravel Applications** on top of Laravel's built in Service Providers._
 
-[![Tests](https://img.shields.io/github/workflow/status/artkonekt/concord/tests/master?style=flat-square)](https://github.com/artkonekt/concord/actions?query=workflow%3Atests)
+[![Tests](https://img.shields.io/github/workflow/status/artkonekt/concord/tests/1.x?style=flat-square)](https://github.com/artkonekt/concord/actions?query=workflow%3Atests)
 [![Packagist version](https://img.shields.io/packagist/v/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
-[![StyleCI](https://styleci.io/repos/65661796/shield?branch=master)](https://styleci.io/repos/65661796)
+[![StyleCI](https://styleci.io/repos/65661796/shield?branch=1.x)](https://styleci.io/repos/65661796)
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/artkonekt/concord?style=flat-square)](https://scrutinizer-ci.com/g/artkonekt/concord/)
 [![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
