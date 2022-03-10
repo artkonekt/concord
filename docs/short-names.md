@@ -13,7 +13,7 @@ Short name is the class's base name converted to snake case:
 You can access the abstract class name (usually the interface) with concord by using it's `short()` method:
 
 ```php
-concord()->short('bed_type');// Returns "Konekt\Address\Contracts\Gender"
+concord()->short('gender');// Returns "Konekt\Address\Contracts\Gender"
 ```
 
 [Enums](enums.md) can be accessed directly with the `enum()` globally available helper function:
