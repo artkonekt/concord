@@ -21,6 +21,20 @@
 
 ## 1.X Series
 
+### 1.11.0
+##### 2022-03-10
+
+- Added Enum v4 support
+- Dropped PHP 7.3 & 7.4 support
+- Dropped Laravel 6 & 7 support
+- Minimum Laravel version is 8.22.1, to enforce the [CVE-2021-21263](https://blog.laravel.com/security-laravel-62011-7302-8221-released) security patch
+
+### 1.10.2
+##### 2022-01-27
+
+- Added PHP 8.1 support
+- Added Laravel 9 support
+
 ### 1.10.1
 ##### 2021-03-08
 

@@ -1,30 +1,30 @@
 # Concord
 
-_Concord is a Laravel Extension that helps building **Modules for Laravel Applications** on top of Laravel's built in Service Providers._
+_Concord is a Laravel Extension that helps to build **Modules for Laravel Applications** on top of Laravel's built-in Service Providers._
 
-[![Travis](https://img.shields.io/travis/com/artkonekt/concord.svg?style=flat-square)](https://travis-ci.com/artkonekt/concord)
+[![Tests](https://img.shields.io/github/workflow/status/artkonekt/concord/tests/1.x?style=flat-square)](https://github.com/artkonekt/concord/actions?query=workflow%3Atests)
 [![Packagist version](https://img.shields.io/packagist/v/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
-[![StyleCI](https://styleci.io/repos/65661796/shield?branch=master)](https://styleci.io/repos/65661796)
+[![StyleCI](https://styleci.io/repos/65661796/shield?branch=1.x)](https://styleci.io/repos/65661796)
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/artkonekt/concord?style=flat-square)](https://scrutinizer-ci.com/g/artkonekt/concord/)
 [![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
-Concord at first is a Laravel 6.x - 8.x
-[package](https://laravel.com/docs/8.x/packages). It also offers some
-conventions that help you to better structure complex systems.
+Concord at first is a [Laravel package](https://laravel.com/docs/9.x/packages).
+It also offers some conventions that help you to better structure complex systems.
 
 ## Version Compatibility
 
-| Laravel | Concord   |
-|:--------|:----------|
-| 5.4     | 1.0 - 1.3 |
-| 5.5     | 1.0 - 1.8 |
-| 5.6     | 1.1 - 1.8 |
-| 5.7     | 1.3 - 1.8 |
-| 5.8     | 1.3 - 1.8 |
-| 6.x     | 1.4+      |
-| 7.x     | 1.5+      |
-| 8.x     | 1.8+      |
+| Laravel | Concord    |
+|:--------|:-----------|
+| 5.4     | 1.0 - 1.3  |
+| 5.5     | 1.0 - 1.8  |
+| 5.6     | 1.1 - 1.8  |
+| 5.7     | 1.3 - 1.8  |
+| 5.8     | 1.3 - 1.8  |
+| 6.x     | 1.4 - 1.10 |
+| 7.x     | 1.5 - 1.10 |
+| 8.x     | 1.8+       |
+| 9.x     | 1.10.2+    |
 
 ## Basics
 
@@ -88,7 +88,7 @@ return [
 
 ## Documenatation
 
-See the [Concord Documentation](https://konekt.dev/concord/1.4) for all the
+See the [Concord Documentation](https://konekt.dev/concord/1.x) for all the
 nasty details ;)
 
 ## Plans For Version 2.0
@@ -108,4 +108,3 @@ nasty details ;)
 - Will we ever use Controller overriding?
 - Add make:request, make:model, make:enum commands that scaffold with interface, proxy etc.
 - Fix AddressType -> address_type kind of style problem in route parameters
-- 

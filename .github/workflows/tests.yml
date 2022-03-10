@@ -9,11 +9,12 @@ jobs:
     strategy:
       matrix:
         php: ['8.0', '8.1']
-        laravel: ['8.22', '8.70']
+        laravel: ['8.22', '8.83', '9.0']
+        enum: ['3', '4']
         exclude:
           - php: '8.1'
             laravel: '8.22'
-    name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }}
+    name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }} Enum ${{ matrix.enum }}
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -23,8 +24,10 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, json, sqlite3
           tools: composer:v2
-      - name: Lock Laravel Version
-        run: composer require "illuminate/support:${{ matrix.laravel }}.*" --no-update -v && composer require "illuminate/console:${{ matrix.laravel }}.*" --no-update -v
+      - name: Lock Package Versions
+        run: |
+          composer require "konekt/enum:${{ matrix.enum }}.*" --no-update -v
+          composer require "illuminate/support:${{ matrix.laravel }}.*" --no-update -v && composer require "illuminate/console:${{ matrix.laravel }}.*" --no-update -v
       - name: Composer Install
         run: composer install --prefer-dist --no-progress --no-interaction
       - name: Create Database
