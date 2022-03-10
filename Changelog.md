@@ -2,8 +2,8 @@
 
 ## 1.X Series
 
-### Unreleased
-##### 2022-03-XX
+### 1.11.0
+##### 2022-03-10
 
 - Added Enum v4 support
 - Dropped PHP 7.3 & 7.4 support
