@@ -11,6 +11,8 @@ declare(strict_types=1);
  * @since       2016-09-25
  *
  */
+
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Konekt\Concord\Contracts\Concord;
@@ -45,11 +47,11 @@ function classpath_to_slug($classname)
 }
 
 /**
- * Counterpart of classpath_to_str, that converts the string back to a fully qualified classname
+ * Counterpart of classpath_to_slug, that converts the string back to a fully qualified classname
  *
  * Eg.: 'app.services.bam_bam_service' -> '\App\Services\BamBamService'
  *
- * @see classpath_to_str()
+ * @see classpath_to_slug()
  *
  * @param string    $str
  *
@@ -115,6 +117,15 @@ function enum($shortname, $value = null)
     if ($abstract && $class = concord()->enum($abstract)) {
         return new $class($value);
     }
+}
+
+function morph_type_of(string|object $model): string
+{
+    $classname = is_string($model) ? $model : $model::class;
+
+    $alias = array_search($classname, Relation::morphMap());
+
+    return  is_string($alias) ? $alias : $classname;
 }
 
 function is_a_concord_module_class(string $class): bool
