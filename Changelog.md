@@ -5,10 +5,7 @@
 ### Unreleased
 ##### 2021-XX-YY
 
-- Dropped PHP 7.3 & 7.4 support
-- Dropped Laravel 6 & 7 support
 - Dropped Enum v2 support
-- Added PHP 8.1 support
 - Added Hooks: tap into various stages of module lifecycle
 - BC: Removed the `Manifest` class, moved its `getName` and `getVersion` methods to the Module interface
 - BC: The module version has become optional and may be `null`
