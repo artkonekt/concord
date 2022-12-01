@@ -34,5 +34,6 @@
 - IV. Digging Deeper
     - [Short Names](short-names.md)
     - [Proxies](proxies.md)
+    - [Misc Functions](misc.md)
     - [Concord Events](concord-events.md)
     - [Conventions](conventions.md)

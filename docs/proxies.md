@@ -104,5 +104,4 @@ The interface and the proxy are immutable, and shouldn't be extended.
 The implementation is replaceable, using `concord()->registerModel()` and
 `concord()->registerEnum()` methods.
 
-
-**Next**: [Concord Events &raquo;](concord-events.md)
+**Next**: [Misc Functions &raquo;](misc.md)

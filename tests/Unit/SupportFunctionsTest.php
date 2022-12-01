@@ -11,7 +11,11 @@
 
 namespace Konekt\Concord\Tests\Unit;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Konekt\Concord\Conventions\ConcordDefault;
+use Konekt\Concord\Tests\Dummies\Funky;
+use Konekt\Concord\Tests\Dummies\Swing;
+use Konekt\Concord\Tests\Dummies\TripHop;
 use PHPUnit\Framework\TestCase as PHPUnitBaseTestCase;
 
 class SupportFunctionsTest extends PHPUnitBaseTestCase
@@ -51,6 +55,20 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
     public function concord_module_is_being_properly_obtained($class, $id)
     {
         $this->assertEquals($id, concord_module_id($class, new ConcordDefault()));
+    }
+
+    /** @test */
+    public function the_morph_type_of_function_returns_the_relation_alias_if_set_or_the_classname_if_no_relation_morphmap_entry_was_found()
+    {
+        Relation::morphMap([
+            'funky' => Funky::class,
+            'trip_hop' => TripHop::class,
+        ]);
+
+        $this->assertEquals('funky', morph_type_of(Funky::class));
+        $this->assertEquals('trip_hop', morph_type_of(new TripHop()));
+        $this->assertEquals(Swing::class, morph_type_of(Swing::class));
+        $this->assertEquals(Swing::class, morph_type_of(new Swing()));
     }
 
     public function classpathProvider()

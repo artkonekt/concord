@@ -2,6 +2,12 @@
 
 ## 1.X Series
 
+### Unreleased
+##### 2022-12-XX
+
+- Added the `morph_type_of()` helper function to achieve the reverse of `Relation::getMorphedModel()`
+- Added PHP 8.2 support
+
 ### 1.11.0
 ##### 2022-03-10
 
