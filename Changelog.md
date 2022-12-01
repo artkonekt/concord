@@ -7,6 +7,8 @@
 
 - Added the `morph_type_of()` helper function to achieve the reverse of `Relation::getMorphedModel()`
 - Added PHP 8.2 support
+- Dropped Laravel 8 support
+- Changed minimum Laravel version to 9.2
 
 ### 1.11.0
 ##### 2022-03-10
