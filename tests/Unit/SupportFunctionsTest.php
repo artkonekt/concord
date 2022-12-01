@@ -61,7 +61,7 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
     public function the_morph_type_of_function_returns_the_relation_alias_if_set_or_the_classname_if_no_relation_morphmap_entry_was_found()
     {
         Relation::morphMap([
-            'funky' => Funky::class,
+            'funky'    => Funky::class,
             'trip_hop' => TripHop::class,
         ]);
 
