@@ -8,8 +8,8 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        php: ['8.0', '8.1', '8.2']
-        laravel: ['9.2', '9.42']
+        php: [8.1]
+        laravel: [10.0]
         enum: ['2', '3', '4']
     name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }} Enum ${{ matrix.enum }}
     steps:
