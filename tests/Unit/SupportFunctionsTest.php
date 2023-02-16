@@ -71,7 +71,7 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
         $this->assertEquals(Swing::class, morph_type_of(new Swing()));
     }
 
-    public function classpathProvider()
+    public static function classpathProvider()
     {
         return [
             ['\App\Services\BamBamService', 'app.services.bam_bam_service'],
@@ -84,7 +84,7 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
         ];
     }
 
-    public function slugProvider()
+    public static function slugProvider()
     {
         return [
             ['App\Services\BamBamService', 'app.services.bam_bam_service'],
@@ -94,7 +94,7 @@ class SupportFunctionsTest extends PHPUnitBaseTestCase
         ];
     }
 
-    public function moduleIdProvider()
+    public static function moduleIdProvider()
     {
         return [
             ['Konekt\Acl\Providers\ModuleServiceProvider', 'konekt.acl'],
