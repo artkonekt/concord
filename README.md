@@ -2,7 +2,7 @@
 
 _Concord is a Laravel Extension that helps to build **Modules for Laravel Applications** on top of Laravel's built-in Service Providers._
 
-[![Tests](https://img.shields.io/github/workflow/status/artkonekt/concord/tests/1.x?style=flat-square)](https://github.com/artkonekt/concord/actions?query=workflow%3Atests)
+[![Tests](https://img.shields.io/github/actions/workflow/status/artkonekt/concord/tests.yml?branch=1.x&style=flat-square)](https://github.com/artkonekt/concord/actions?query=workflow%3Atests)
 [![Packagist version](https://img.shields.io/packagist/v/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/concord.svg?style=flat-square)](https://packagist.org/packages/konekt/concord)
 [![StyleCI](https://styleci.io/repos/65661796/shield?branch=1.x)](https://styleci.io/repos/65661796)
@@ -25,6 +25,7 @@ It also offers some conventions that help you to better structure complex system
 | 7.x     | 1.5 - 1.10 |
 | 8.x     | 1.8+       |
 | 9.x     | 1.10.2+    |
+| 10.x    | 1.13+      |
 
 ## Basics
 
