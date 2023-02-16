@@ -2,8 +2,8 @@
 
 ## 1.X Series
 
-### Unreleased
-##### 2023-XX-YY
+### 1.13.0
+##### 2023-02-16
 
 - Added Laravel 10 support
 
