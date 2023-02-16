@@ -14,13 +14,13 @@
     },
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^9.2",
-        "illuminate/console": "^9.2",
+        "illuminate/support": "^9.2|^10.0",
+        "illuminate/console": "^9.2|^10.0",
         "konekt/enum": "^2.1|^3.0|^4.0",
         "konekt/enum-eloquent": "^1.7"
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0",
+        "orchestra/testbench": "^7.0|^8.0",
         "phpunit/phpunit" : "9 - 10"
     },
     "autoload": {
