@@ -13,6 +13,7 @@
 | 7.x     | 1.5 - 1.10 |
 | 8.x     | 1.8+       |
 | 9.x     | 1.10.2+    |
+| 10.x    | 1.13+      |
 
 ## Installing Concord with Composer
 
