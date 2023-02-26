@@ -23,6 +23,7 @@ namespace Konekt\Concord\Proxies;
  * @method static int insertGetId(array $values, $sequence = null)
  * @method static int update(array $values)
  * @method static bool updateOrInsert(array $attributes, array $values = [])
+ * @method static \Illuminate\Database\Query\Builder query()
  * @method static \Illuminate\Database\Query\Builder where($column, $operator = null, $value = null, $boolean = 'and')
  * @method static \Illuminate\Database\Query\Builder whereIn($column, $values, $boolean = 'and', $not = false)
  * @method static \Illuminate\Database\Query\Builder whereNotIn($column, $values, $boolean = 'and')
