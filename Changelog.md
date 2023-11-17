@@ -2,8 +2,8 @@
 
 ## 1.X Series
 
-### Unreleased
-##### 2023-XX-YY
+### 1.13.1
+##### 2023-11-17
 
 - Added PHP 8.3 support
 
