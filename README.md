@@ -23,9 +23,10 @@ It also offers some conventions that help you to better structure complex system
 | 5.8     | 1.3 - 1.8  |
 | 6.x     | 1.4 - 1.10 |
 | 7.x     | 1.5 - 1.10 |
-| 8.x     | 1.8+       |
+| 8.x     | 1.8 - 1.11 |
 | 9.x     | 1.10.2+    |
 | 10.x    | 1.13+      |
+| 11.x    | 1.14+      |
 
 ## Basics
 
