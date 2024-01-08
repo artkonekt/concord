@@ -3,6 +3,8 @@
     "description": "Concord is a Laravel Extension for building modular Laravel Applications",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Attila Fulop",
