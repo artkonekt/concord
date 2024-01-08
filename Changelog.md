@@ -2,8 +2,8 @@
 
 ## 1.X Series
 
-### Unreleased
-##### 2024-XX-YY
+### 1.14.0
+##### 2024-01-08
 
 - Added Laravel 11 support (pre-release)
 
