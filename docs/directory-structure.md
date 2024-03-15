@@ -2,12 +2,14 @@
 
 ## Minimum Fileset For A Concord Module
 
-```
+```text
 module-src/
     Providers/
-        |-- ModuleServiceProvider.php
+        │
+        └── ModuleServiceProvider.php
     resources/
-        |-- manifest.php
+        │
+        └── manifest.php
     
 ```
 
@@ -18,7 +20,7 @@ module-src/
 
 The default locations are:
 
-```
+```text
 module-src/
     Console/
         Commands/
@@ -28,35 +30,35 @@ module-src/
     Factories/
     Helpers/
     Http/
-        |-- Controllers/
-        |-- Middleware/
-        |-- Requests/
-        |-- Resources/
+      ├── Controllers/
+      ├── Middleware/
+      ├── Requests/
+      └── Resources/
     Jobs/
     Listeners/
     Models/
     Notifications/ 
     Providers/
-        |-- ModuleServiceProvider.php
-        |-- EventServiceProvider.php
+      ├── ModuleServiceProvider.php
+      └── EventServiceProvider.php
     Services/
     Tests/
-        |-- Feature
-        |-- Unit
+      ├── Feature
+      └── Unit
     resources/
-        |-- assets/
-        |-- config/
-            |-- module.php
-            |-- box.php
-        |-- database/
-            |-- migrations/
-            |-- seeds/
-        |-- lang/
-        |-- routes/
-            |-- api.php
-            |-- web.php
-        |-- views/
-        |-- manifest.php
+      ├── assets/
+      └── config/
+           ├── module.php
+           └── box.php
+      ├── database/
+           ├── migrations/
+           └── seeds/
+      ├── lang/
+      └── routes/
+           ├── api.php
+           └── web.php
+      ├── views/
+      └── manifest.php
     
 ```
 

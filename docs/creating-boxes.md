@@ -7,7 +7,7 @@
 1. Init a git repo in an empty folder: `git init .`
 2. Add composer.json:
 
-    ```
+    ```json
     {
         "name": "vendor/mybox",
         "description": "My Box Rulez",
