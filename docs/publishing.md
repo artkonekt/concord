@@ -18,7 +18,7 @@ php artisan vendor:publish --provider="Vendor\Module\Providers\ModuleServiceProv
 ```
 
 Using this feature is useful if you want your application to control the migrations. In this case
-you likely need to [turn off the loading of migrations](migrations#turn-migrations-onoff)
+you likely need to [turn off the loading of migrations](migrations.md#turn-migrations-onoff)
 on the module level.
 
 One of such use-cases is when you're using the modules in a multi-tenant environment. Depending on
