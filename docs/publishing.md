@@ -1,11 +1,11 @@
 # Publishing File Groups
 
-Modules and Boxes are all [Laravel Service Providers](https://laravel.com/docs/7.x/providers).
+Modules and Boxes are all [Laravel Service Providers](https://laravel.com/docs/11.x/providers).
 Therefore you can use all the features Laravel provides for package development.
 
 Concord modules provide several convenience features compared to the base Laravel service providers.
 
-One of those features is that some [file groups are published](https://laravel.com/docs/7.x/packages#publishing-file-groups)
+One of those features is that some [file groups are published](https://laravel.com/docs/11.x/packages#publishing-file-groups)
 by default.
 
 ## Migrations
@@ -18,25 +18,25 @@ php artisan vendor:publish --provider="Vendor\Module\Providers\ModuleServiceProv
 ```
 
 Using this feature is useful if you want your application to control the migrations. In this case
-you likely need to [turn off the loading of migrations]((migrations.md#turn-migrations-onoff))
+you likely need to [turn off the loading of migrations](migrations.md#turn-migrations-onoff)
 on the module level.
 
 One of such use-cases is when you're using the modules in a multi-tenant environment. Depending on
 the setup, the tenant migrations have to be separated from the "landlord" migrations.
 
 > As an example see: [Tenancy for Laravel](https://tenancyforlaravel.com/docs/v3/migrations) or
-> [Spatie Laravel-Multitenancy](https://docs.spatie.be/laravel-multitenancy/v1/installation/using-multiple-databases/#migrating-the-landlord-database).
+> [Spatie Laravel-Multitenancy](https://docs.spatie.be/laravel-multitenancy/v3/installation/using-multiple-databases/#content-migrating-the-landlord-database).
 
 ### Difference Between Publishing and Loading Migrations
 
 It might be confusing, what is publishing and what is loading of migrations.
 
 **Loading** is when a set of migrations are made visible for `artisan migrate` command.
-These migrations are available to be **executed** on demand. See https://laravel.com/docs/7.x/packages#migrations
+These migrations are available to be **executed** on demand. See https://laravel.com/docs/11.x/packages#migrations
 
 **Publishing** is when a set of files (eg. migrations) are made visible for the
 `artisan vendor:publish` command. These files can be **copied** to your application's migrations
-folder. See https://laravel.com/docs/7.x/packages#publishing-file-groups
+folder. See https://laravel.com/docs/11.x/packages#publishing-file-groups
 
 The main differences are:
 
