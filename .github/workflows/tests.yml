@@ -1,15 +1,18 @@
 name: tests
 
-on: [push]
+on:
+  - push
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     timeout-minutes: 10
+
     strategy:
       matrix:
         php: ['8.0', '8.1', '8.2', '8.3']
-        laravel: ['9.2', '9.52', '10.0', '10.48', '11.0']
+        laravel: ['9.2', '9.52', '10.0', '10.48', '11.0', '12.0']
         enum: ['2', '3', '4']
         exclude:
           - php: '8.0'
@@ -20,20 +23,29 @@ jobs:
             laravel: '11.0'
           - php: '8.1'
             laravel: '11.0'
+          - laravel: '12.0'
+            php: '8.0'
+          - laravel: '12.0'
+            php: '8.1'
+
     name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }} Enum ${{ matrix.enum }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@master
+
       - name: Installing PHP
         uses: shivammathur/setup-php@master
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, json, sqlite3
           tools: composer:v2
+
       - name: Lock Package Versions
         run: |
           composer require "konekt/enum:${{ matrix.enum }}.*" --no-update -v
           composer require "illuminate/support:${{ matrix.laravel }}.*" --no-update -v && composer require "illuminate/console:${{ matrix.laravel }}.*" --no-update -v
+
       - name: Testbench Version Adjustments
         run: |
           is_smaller_version() [[ $(echo -e "$1\n$2"|sort -V|head -1) != $2 ]]
@@ -44,9 +56,12 @@ jobs:
           is_smaller_version "${{ matrix.laravel }}" "9.7" && composer req "orchestra/testbench-core:7.3.0" --no-update
           is_smaller_version "${{ matrix.laravel }}" "9.6" && composer req "orchestra/testbench-core:7.2.0" --no-update
           is_smaller_version "${{ matrix.laravel }}" "9.5" && composer req "orchestra/testbench-core:7.1.0" --no-update || true
+
       - name: Composer Install
         run: composer install --prefer-dist --no-progress --no-interaction
+
       - name: Create Database
         run: mkdir -p database && touch database/database.sqlite
+
       - name: Run Tests
         run: php vendor/bin/phpunit --testdox
