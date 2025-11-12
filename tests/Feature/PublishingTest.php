@@ -17,10 +17,11 @@ use Konekt\Concord\Tests\Modules\SimpleBox\Providers\ModuleServiceProvider as Si
 use Konekt\Concord\Tests\Modules\SimpleBoxSubmodule1\Providers\ModuleServiceProvider as Submodule1;
 use Konekt\Concord\Tests\Modules\SimpleBoxSubmodule2\Providers\ModuleServiceProvider as Submodule2;
 use Konekt\Concord\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class PublishingTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function a_box_publishes_a_group_called_own_migrations_only()
     {
         $this->assertContains(
@@ -29,20 +30,20 @@ class PublishingTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function a_box_publishes_its_very_own_migrations_under_the_own_migrations_only_group()
     {
         $this->assertCount(1, ServiceProvider::pathsToPublish(SimpleBox::class, 'own-migrations-only'));
     }
 
-    /** @test */
+    #[Test]
     public function modules_only_publish_their_own_migrations()
     {
         $this->assertCount(1, ServiceProvider::pathsToPublish(Submodule1::class, 'migrations'));
         $this->assertCount(1, ServiceProvider::pathsToPublish(Submodule2::class, 'migrations'));
     }
 
-    /** @test */
+    #[Test]
     public function a_box_publishes_the_migrations_from_all_its_submodules_under_migrations_group()
     {
         $publishedMigrations = $this->concord

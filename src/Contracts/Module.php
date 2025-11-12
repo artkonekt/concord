@@ -59,7 +59,7 @@ interface Module
      *
      * @return mixed
      */
-    public function config(string $key = null, $default = null);
+    public function config(?string $key = null, $default = null);
 
     /**
      * Returns the short (abbreviated) name of the module

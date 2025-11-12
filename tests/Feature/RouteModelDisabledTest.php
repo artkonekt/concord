@@ -14,10 +14,11 @@ namespace Konekt\Concord\Tests\Feature;
 use Illuminate\Support\Facades\Route;
 use Konekt\Concord\Tests\Modules\ModuleWithProductModel\Providers\ModuleServiceProvider as ModuleWithProduct;
 use Konekt\Concord\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class RouteModelDisabledTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function route_model_registration_can_be_disabled_via_config()
     {
         $this->assertNull(Route::getBindingCallback('product'));

@@ -150,7 +150,7 @@ abstract class BaseServiceProvider extends ServiceProvider implements Module
      *
      * @return mixed
      */
-    public function config(string $key = null, $default = null)
+    public function config(?string $key = null, $default = null)
     {
         $key = $key ? sprintf('%s.%s', $this->getId(), $key) : $this->getId();
 

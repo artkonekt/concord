@@ -2,6 +2,13 @@
 
 ## 1.X Series
 
+## Unreleased
+##### 2025-XX-YY
+
+- Changed the minimal Laravel version from 10.0 to 10.49 (latest in the 10.x series)
+- Added support for PHP 8.5
+- Improved the test suite internals
+
 ### 1.16.0
 ##### 2025-03-03
 

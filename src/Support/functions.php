@@ -133,19 +133,21 @@ function shorten($classname)
     return Str::snake(class_basename($classname));
 }
 
-/**
- * Shorthand function for returning an enum object by it's short name
- *
- * @param string    $shortname  The short name of the enum
- * @param mixed     $value      The value to create the enum with
- *
- * @return \Konekt\Enum\Enum
- */
-function enum($shortname, $value = null)
-{
-    $abstract = concord()->short($shortname);
-    if ($abstract && $class = concord()->enum($abstract)) {
-        return new $class($value);
+if (! function_exists('enum')) {
+    /**
+     * Shorthand function for returning an enum object by it's short name
+     *
+     * @param string $shortname The short name of the enum
+     * @param mixed $value The value to create the enum with
+     *
+     * @return \Konekt\Enum\Enum
+     */
+    function enum($shortname, $value = null)
+    {
+        $abstract = concord()->short($shortname);
+        if ($abstract && $class = concord()->enum($abstract)) {
+            return new $class($value);
+        }
     }
 }
 

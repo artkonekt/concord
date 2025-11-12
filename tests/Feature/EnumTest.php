@@ -18,12 +18,11 @@ use Konekt\Concord\Tests\Modules\ModuleWithEnum\Providers\ModuleServiceProvider 
 use Konekt\Concord\Tests\TestCase;
 use Konekt\Concord\Tests\Feature\Enums\ExtWeatherStatus;
 use Konekt\Enum\Enum;
+use PHPUnit\Framework\Attributes\Test;
 
 class EnumTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function module_with_enums_properly_loaded()
     {
         $this->assertArrayHasKey(
@@ -32,9 +31,7 @@ class EnumTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function module_has_the_enum_registered()
     {
         $this->assertEquals(
@@ -43,9 +40,7 @@ class EnumTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function enum_helper_works_for_module_registered_enums()
     {
         $goodWeather = enum('weather_status', 'good');
@@ -54,9 +49,7 @@ class EnumTest extends TestCase
         $this->assertEquals(WeatherStatus::GOOD, $goodWeather->value());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function enum_proxy_returns_proper_instance()
     {
         $this->assertEquals(WeatherStatus::class, WeatherStatusProxy::enumClass());
@@ -64,9 +57,7 @@ class EnumTest extends TestCase
         $this->assertInstanceOf(Enum::class, WeatherStatusProxy::create('bad'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function enums_can_be_replaced_on_the_fly()
     {
         $this->app->make('concord')->registerEnum(WeatherStatusContract::class, ExtWeatherStatus::class);
@@ -83,9 +74,6 @@ class EnumTest extends TestCase
         $this->assertInstanceOf(ExtWeatherStatus::class, WeatherStatusProxy::create('meh'));
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function resolveApplicationConfiguration($app)
     {
         parent::resolveApplicationConfiguration($app);

@@ -13,10 +13,11 @@ namespace Konekt\Concord\Tests\Feature;
 
 use Konekt\Concord\Tests\Modules\SimpleBox\Providers\ModuleServiceProvider as SimpleBox;
 use Konekt\Concord\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class DefaultConfigTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function module_config_is_independent_of_parent_box_by_default()
     {
         $modules = $this->concord->getModules(true);

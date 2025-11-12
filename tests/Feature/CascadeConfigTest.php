@@ -13,10 +13,11 @@ namespace Konekt\Concord\Tests\Feature;
 
 use Konekt\Concord\Tests\Modules\SimpleBox\Providers\ModuleServiceProvider as SimpleBox;
 use Konekt\Concord\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class CascadeConfigTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function box_config_can_be_cascaded_to_child_modules()
     {
         $module1 = $this->concord->module('simple_box_submodule1');

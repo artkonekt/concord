@@ -14,12 +14,11 @@ namespace Konekt\Concord\Tests\Feature;
 use Konekt\Concord\Module\Kind;
 use Konekt\Concord\Tests\Modules\Minimal\Providers\ModuleServiceProvider as MinimalModule;
 use Konekt\Concord\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ModuleTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function minimal_module_can_properly_be_loaded()
     {
         $modules = $this->concord->getModules();
@@ -34,9 +33,6 @@ class ModuleTest extends TestCase
         $this->assertEquals('Minimal', $manifest->getName());
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function resolveApplicationConfiguration($app)
     {
         parent::resolveApplicationConfiguration($app);
