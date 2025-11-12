@@ -2,8 +2,8 @@
 
 ## 1.X Series
 
-## Unreleased
-##### 2025-XX-YY
+## 1.17.0
+##### 2025-11-12
 
 - Changed the minimal Laravel version from 10.0 to 10.49 (latest in the 10.x series)
 - Added support for PHP 8.5
