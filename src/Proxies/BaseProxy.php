@@ -30,7 +30,7 @@ abstract class BaseProxy
      *
      * @param Concord $concord
      */
-    public function __construct(Concord $concord = null)
+    public function __construct(?Concord $concord = null)
     {
         $this->concord = $concord ?: app('concord');
 
