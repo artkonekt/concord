@@ -2,8 +2,8 @@
 
 ## 1.X Series
 
-## Unreleased
-##### 2025-XX-YY
+## 1.17.1
+##### 2025-12-20
 
 - Changed the minimum Laravel version requirements to v10.49, v11.46.2 and v12.38 respectively
 - Fixed PHP deprecation notice in the BaseProxy class
