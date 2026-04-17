@@ -14,7 +14,7 @@ jobs:
         exclude:
           - php: '8.2'
             laravel: '13.0'
-          - php: '8.3'
+          - php: '8.2'
             laravel: '13.5'
     name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }} Enum ${{ matrix.enum }}
     steps:
