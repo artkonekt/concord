@@ -1,6 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
 return [
-    'name'    => 'DummyName',
-    'version' => '0.1.0'
+    'name' => 'DummyName Module',
+    'version' => '1.0.0',
 ];
