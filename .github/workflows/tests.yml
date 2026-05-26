@@ -9,13 +9,13 @@ jobs:
     strategy:
       matrix:
         php: ['8.2', '8.3', '8.4', '8.5']
-        laravel: ['11.46', '11.51', '12.50', '12.56', '13.0', '13.5']
+        laravel: ['11.46', '11.53', '12.50', '12.60', '13.0', '13.11']
         enum: ['2', '3', '4']
         exclude:
           - php: '8.2'
             laravel: '13.0'
           - php: '8.2'
-            laravel: '13.5'
+            laravel: '13.11'
     name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }} Enum ${{ matrix.enum }}
     steps:
       - name: Checkout
